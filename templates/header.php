@@ -8,6 +8,30 @@
                 <meta charset="utf-8">
             </head>
             <body>
+
+        <?php
+
+
+            if( isset($_SESSION['username']) ){
+
+                ?>
+                    <div id = "login">
+                        <a href="user.php"> <?=$_SESSION['username']?> </a>
+                    </div>
+
+                <?php
+
+            }else{
+                ?>
+                    <div id = "login">
+                        <a href="login.php"> Login </a>
+                        <h2> / </h2>
+                        <a href="register.php"> Register </a>
+                    </div>
+
+                <?php
+            }
+        ?>
   
   <?php }
 ?>

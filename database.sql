@@ -55,10 +55,13 @@ CREATE TABLE Comment(
     comment text NOT NULL
 );
 
-INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Joao" , "exemplo@gmail.com","dsdfaasf235",30,912345678); /*owner*/
-INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Fernado" , "exemplo2@gmail.com","f5as12g35",19,924324346); /*tourist*/
+INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Joao" , "joao@gmail.com","dsdfaasf235",30,912345678); /*owner*/
+INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Ricardo" , "ricardo@gmail.com","fhds03ndsklaq1",45,914994618); /*owner*/
+INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Fernando" , "fernando@gmail.com","f5as12g35",19,924324346); /*tourist*/
 
 INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Nice house" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",1);
+INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Cozy house" , "Nice rustic house with a beautiful village nearby and a river great for taking a bath as well for long walks . " , "Rua de Vila Nova", "Bragança",2);
+INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Great Appartment" , "Amazing apartment, many rooms, very big and with a fantastic view to the beach and great acesses" , "Avenida da Praia", "Espinho",1); 
 
 INSERT INTO Rent(place,tourist,price,maxCapacity,startDate,endDate) VALUES (1,2,1000,3,'12-10-2019','20-10-2019');
 
