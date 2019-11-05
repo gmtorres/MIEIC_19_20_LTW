@@ -42,7 +42,7 @@ CREATE TABLE Rent(
     price integer NOT NULL CHECK(price > 0),
     maxCapacity integer NOT NULL CHECK(maxCapacity > 0),
     startDate date NOT NULL,
-    endDate date NOT NULL CHECK(startDate >= endDateq)
+    endDate date NOT NULL 
 );
 
 
@@ -58,7 +58,7 @@ CREATE TABLE Comment(
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Joao" , "exemplo@gmail.com","dsdfaasf235",30,912345678); /*owner*/
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Fernado" , "exemplo2@gmail.com","f5as12g35",19,924324346); /*tourist*/
 
-INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Nice house" , "Very good" , "Rua dfs", "Porto",1);
+INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Nice house" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",1);
 
 INSERT INTO Rent(place,tourist,price,maxCapacity,startDate,endDate) VALUES (1,2,1000,3,'12-10-2019','20-10-2019');
 
