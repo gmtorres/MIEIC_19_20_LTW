@@ -12,7 +12,7 @@
         </form>
 
         <footer>
-        <p>Don't have an account? Let's create one!</p>  <a href="signup.php">Register!</a>
+        <p>Don't have an account? Let's create one!</p>  <a href="register.php">Register!</a>
         </footer>
 
         <?php
@@ -30,6 +30,8 @@
             <input type="text" name="username" placeholder="username" required>
             <input type="password" name="password" placeholder="password" required>
             <input type="text" name="phoneNumber" placeholder="phoneNumber" required>
+            <input type="email" name="email" placeholder="email" required>
+            <input type="text" name="age" placeholder="age" required>
             <input type="submit" value="Register">
         </form>
 
