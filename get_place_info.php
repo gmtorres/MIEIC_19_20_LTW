@@ -1,4 +1,5 @@
-<?php
+
+<?php 
 
 function drawPlace($place_id)
 {

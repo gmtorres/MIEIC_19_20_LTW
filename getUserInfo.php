@@ -1,7 +1,7 @@
 <?php 
     
     function getUserInfo ($user_id){
-        $db = new PDO('sqlite:database.db');
+        $db = new PDO('sqlite:../database.db');
 
         $stmt = $db->prepare('Select * from Place 
                             JOIN User 
