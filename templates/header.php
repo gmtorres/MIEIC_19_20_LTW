@@ -1,5 +1,4 @@
 <?php
-
     function draw_header(){  ?>
         <!DOCTYPE html>
         <html> 
@@ -9,29 +8,27 @@
             </head>
             <body>
 
-        <?php
+            <a href="homePage.php"> HOME </a>
 
+            <?php
+                if( isset($_SESSION['username']) ){
+                    ?>
+                        <div id = "login">
+                            <a href="user.php"> <?=$_SESSION['username']?> </a>
+                        </div>
 
-            if( isset($_SESSION['username']) ){
+                    <?php
+                }else{
+                    ?>
+                        <div id = "login">
+                            <a href="login.php"> Login </a>
+                            <h2> / </h2>
+                            <a href="register.php"> Register </a>
+                        </div>
 
-                ?>
-                    <div id = "login">
-                        <a href="user.php"> <?=$_SESSION['username']?> </a>
-                    </div>
-
-                <?php
-
-            }else{
-                ?>
-                    <div id = "login">
-                        <a href="login.php"> Login </a>
-                        <h2> / </h2>
-                        <a href="register.php"> Register </a>
-                    </div>
-
-                <?php
-            }
-        ?>
+                    <?php
+                }
+            ?>
   
   <?php }
 ?>

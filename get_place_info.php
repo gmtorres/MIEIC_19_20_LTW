@@ -3,7 +3,7 @@
 
 function drawPlace($place_id)
 {
-    $db = new PDO('sqlite:database.db');
+    $db = new PDO('sqlite:../database.db');
 
     $stmt = $db->prepare('Select * from Place 
                             JOIN User 

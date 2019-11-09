@@ -12,17 +12,13 @@
     $stmt->execute();
     $user = $stmt->fetch();
 
-    ?>
-            <h1>olf</h1>
-        <?php
-
     //if($user !== false && password_verify($password , $user['password'])){
     if($user !== false && $password == $user['passHash']){
         $_SESSION['username'] = $username;
+        $_SESSION['login_message'] = "Sucessful login.";
         header('Location: ../pages/homePage.php');
     }else{
+        $_SESSION['login_message'] = "Wrong username or password, try again."; 
         header('Location: ../pages/login.php');
     }
-
-
 ?>

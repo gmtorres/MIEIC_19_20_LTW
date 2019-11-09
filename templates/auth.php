@@ -5,6 +5,15 @@
 
         <header><h2>Ready for a booking?</h2></header>
 
+        <?php
+            if(isset($_SESSION['login_message'])){
+                ?>
+                    <h4> <?= $_SESSION['login_message'] ?> <h4>
+                <?php
+                unset($_SESSION['login_message']);
+            }
+        ?>
+
         <form method="post" action="../actions/check_login.php">
             <input type="text" name="username" placeholder="username" required>
             <input type="password" name="password" placeholder="password" required>
@@ -25,6 +34,15 @@
     ?>
 
         <header><h2>Join us!</h2></header>
+
+        <?php
+            if(isset($_SESSION['register_message'])){
+                ?>
+                    <h4> <?= $_SESSION['register_message'] ?> <h4>
+                <?php
+                unset($_SESSION['register_message']);
+            }
+        ?>
 
         <form method="post" action="../actions/register.php">
             <input type="text" name="username" placeholder="username" required>

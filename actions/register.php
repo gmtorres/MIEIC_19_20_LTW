@@ -1,0 +1,58 @@
+<?php
+
+    include_once ('../includes/session.php');
+
+    $db = new PDO('sqlite:../database.db');
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $email = $_POST['email'];
+    $age = $_POST['age'];
+
+    if(strlen((string)$phoneNumber) !==  9){
+        $_SESSION['register_message'] = "Phone number must be 9 digits.";
+
+        header('Location: ../pages/register.php');
+        exit;
+    }
+
+    $stmt1 = $db->prepare('Select userName from User where username = :username');
+    $stmt1->bindParam(':username',$username);
+    $stmt1->execute();
+    $user1 = $stmt1->fetch();
+
+    $stmt2 = $db->prepare('Select userName from User where email = :email');
+    $stmt2->bindParam(':email',$email);
+    $stmt2->execute();
+    $user2 = $stmt2->fetch();
+
+    if($user1 !== FALSE || $user2 !== FALSE){
+        if($user1 !== FALSE)
+            $_SESSION['register_message'] = "User already exists, try another one.";
+        else if($userw !== FALSE)
+            $_SESSION['register_message'] = "Email already in use, try another one.";
+
+        header('Location: ../pages/register.php');
+    }else{
+
+        try{
+            $stmt = $db->prepare('Insert into 
+                                    User(userName,email,passHash,age,phoneNumber) 
+                                    values (?,?,?,?,?)');
+            $stmt->execute(array($username,$email,$password,$age,$phoneNumber));
+            
+            $_SESSION['username'] = $username;
+
+            header('Location: ../pages/homePage.php');
+        }
+        catch (PDOException $e) {
+            die($e->getMessage());
+            $_SESSION['register_message'] = "Failed to register try again.";
+            //$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
+            header('Location: ../pages/register.php');
+        }
+    }
+
+
+?>
