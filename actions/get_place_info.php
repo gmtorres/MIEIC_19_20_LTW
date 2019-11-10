@@ -16,7 +16,9 @@ function drawPlace($place_id)
     ?>
 
     <h1> <?= $place['title'] ?> </h1>
-    <h3> <?= $place['userName'] ?> </h3>
+    <a href="./user.php?id= <?= $place['placeOwner']?> " > 
+        <h3> <?= $place['userName'] ?> </h3>
+    </a>
     <h4> <?= $place['area'] ?> </h4>
     <h1> <?= $place['placeAddress'] ?> </h1>
     <h3> <?= $place['placeDescription'] ?> </h3>

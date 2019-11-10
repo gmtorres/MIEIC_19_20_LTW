@@ -40,7 +40,7 @@
             $stmt = $db->prepare('Insert into 
                                     User(userName,email,passHash,age,phoneNumber) 
                                     values (?,?,?,?,?)');
-            $stmt->execute(array($username,$email,$password,$age,$phoneNumber));
+            $stmt->execute(array($username,$email,password_hash($password,PASSWORD_DEFAULT),$age,$phoneNumber));
             
             $_SESSION['username'] = $username;
 

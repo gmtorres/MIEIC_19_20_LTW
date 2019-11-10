@@ -13,7 +13,7 @@
     $user = $stmt->fetch();
 
     //if($user !== false && password_verify($password , $user['password'])){
-    if($user !== false && $password == $user['passHash']){
+    if($user !== false && password_verify($password, $user['passHash'])){
         $_SESSION['username'] = $username;
         $_SESSION['login_message'] = "Sucessful login.";
         header('Location: ../pages/homePage.php');
