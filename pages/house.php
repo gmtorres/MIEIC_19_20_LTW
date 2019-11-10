@@ -1,7 +1,7 @@
 <?php
     include_once ('../includes/session.php');
     include_once ('../templates/header.php');
-    include_once ('../etc/get_place_info.php');
+    include_once ('../actions/get_place_info.php');
 
     draw_header();
     ?>

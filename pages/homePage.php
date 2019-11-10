@@ -9,29 +9,25 @@
     ?>
         <div>
             <img src="" alt="">
-            <form>
+            <form method="get" action="../pages/search.php">
                 <h1>Book Now</h1>
                 <label>Where:
-                    <br>
-                    <input type = "text" name = "Destiny" required = "required" placeholder="ex: Porto">
+                    <br> <input type = "text" name = "Destiny" required = "required" placeholder="ex: Porto">
                 </label>
                 <br>
                 <label>Price
-                    <br>
-                    <input type="range" min="0" max="2000" value="500" class="slider" id="myRange">
+                    <br> <input type="range" name = 'PriceRange' min="0" max="2000" value="500" class="slider" id="PriceRange">
                 </label>
                 <br>
                 <label>When
-                    <br>
-                    <input type="date" name="startDate">
-                    <br>
-                    <input type="date" name="endDate">
+                    <br> <input type="date" name="startDate">
+                    <br> <input type="date" name="endDate">
                 </label>
                 <br>
                 <label>Guests
-                    <br>
-                    <input type = "text" name = "guests" required = "required" placeholder="ex: 1">
+                    <br> <input type = "text" name = "guests" placeholder="ex: 1">
                 </label>
+                <input type="submit" value="Search">
             </form>
         </div>
         <div>

@@ -20,6 +20,7 @@ CREATE TABLE Place(
     placeDescription text NOT NULL,
     placeAddress text NOT NULL,
     area real NOT NULL CHECK(area > 0),
+    maxGuests INTEGER NOT NULL,
 
     placeOwner integer NOT NULL REFERENCES User(userID)
 
@@ -62,9 +63,11 @@ INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Joao" , "joao
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Ricardo" , "ricardo@gmail.com","fhds03ndsklaq1",45,914994618); /*owner*/
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Fernando" , "fernando@gmail.com","f5as12g35",19,924324346); /*tourist*/
 
-INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Nice house" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",1);
-INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Cozy house" , "Nice rustic house with a beautiful village nearby and a river great for taking a bath as well for long walks . " , "Rua de Vila Nova", "Bragança",2);
-INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("Great Appartment" , "Amazing apartment, many rooms, very big and with a fantastic view to the beach and great acesses" , "Avenida da Praia", "Espinho",1); 
+INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,placeOwner) VALUES ("Nice house" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",4,1);
+INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,placeOwner) VALUES ("Cozy house" , "Nice rustic house with a beautiful village nearby and a river great for taking a bath as well for long walks . " , "Rua de Vila Nova", "Bragança",8,2);
+INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,placeOwner) VALUES ("Great Appartment" , "Amazing apartment, many rooms, very big and with a fantastic view to the beach and great acesses" , "Avenida da Praia", "Espinho",6,1); 
+INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,placeOwner) VALUES ("Nice house2" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",6,1);
+
 
 INSERT INTO Rent(place,tourist,price,maxCapacity,startDate,endDate) VALUES (1,2,1000,3,'12-10-2019','20-10-2019');
 
