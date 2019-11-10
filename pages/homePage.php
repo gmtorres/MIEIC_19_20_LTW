@@ -2,8 +2,8 @@
     include_once ('../includes/session.php');
     include_once ('../templates/header.php');
     include_once ('../templates/footer.php');
-    include_once ('../get_place_info.php');
-    include_once ('../getUserInfo.php');
+    include_once ('../actions/getHotPicks.php');
+
     
     draw_header();
     ?>
@@ -36,6 +36,9 @@
         </div>
         <div>
             <h1>Top Picks</h1>
+            <?php
+                drawHotPicks();
+            ?>
         </div>
         <div>
             <h1>Categories</h1>

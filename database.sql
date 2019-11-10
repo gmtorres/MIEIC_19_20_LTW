@@ -32,6 +32,9 @@ CREATE TABLE Place(
         preço
         etc....
     */
+
+
+
 );
 
 
@@ -66,3 +69,5 @@ INSERT INTO Place(title,placeDescription,placeAddress,area,placeOwner) VALUES ("
 INSERT INTO Rent(place,tourist,price,maxCapacity,startDate,endDate) VALUES (1,2,1000,3,'12-10-2019','20-10-2019');
 
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,2,4,"My stay","could improve");
+INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,3,5,"Great!","Very Good");
+INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (2,2,5,"Terrible place!","so much to improve ");

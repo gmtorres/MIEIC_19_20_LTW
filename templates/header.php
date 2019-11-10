@@ -8,13 +8,15 @@
             </head>
             <body>
 
-            <a href="homePage.php"> HOME </a>
+            <a href="../pages/homePage.php"> HOME </a>
 
             <?php
                 if( isset($_SESSION['username']) ){
                     ?>
                         <div id = "login">
                             <a href="user.php"> <?=$_SESSION['username']?> </a>
+                            <h2> | </h2>
+                            <a href="../actions/logout.php"> Logout </a>
                         </div>
 
                     <?php
