@@ -15,8 +15,15 @@
     //if($user !== false && password_verify($password , $user['password'])){
     if($user !== false && password_verify($password, $user['passHash'])){
         $_SESSION['username'] = $username;
+        $_SESSION['userID'] = $user['userID'];
         $_SESSION['login_message'] = "Sucessful login.";
-        header('Location: ../pages/homePage.php');
+
+        if(isset($_SESSION['redirect'])){
+            $redirect = $_SESSION['redirect'];
+            unset($_SESSION['redirect']);
+            header('Location: ' . $redirect);
+        }else
+            header('Location: ../pages/homePage.php');
     }else{
         $_SESSION['login_message'] = "Wrong username or password, try again."; 
         header('Location: ../pages/login.php');
