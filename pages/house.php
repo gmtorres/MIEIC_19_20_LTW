@@ -3,7 +3,10 @@
     include_once ('../templates/header.php');
     include_once ('../actions/get_place_info.php');
 
+    $placeId = $_GET['id'];
     draw_header();
+    $place = getPlace($placeId);
+    drawPlaceTitle($place);
     ?>
 
     <div>
@@ -11,11 +14,11 @@
     </div>
 
     <?php
-        $placeId = $_GET['id'];
-        drawPlace($placeId);
+        drawPlaceDescription($place);
+        drawUser($place);
+        drawPlaceAmenities($place);
     ?>
 
-
-</body>
+    </body>
 
 </html>
