@@ -1,9 +1,11 @@
 
 <?php 
 
+include_once ('../includes/database.php');
+
 function drawPlace($place_id)
 {
-    $db = new PDO('sqlite:../database.db');
+    $db = Database::instance()->db();
 
     $stmt = $db->prepare('Select * from Place 
                             JOIN User 

@@ -1,8 +1,9 @@
 <?php
 
     include_once ('../includes/session.php');
+    include_once ('../includes/database.php');
 
-    $db = new PDO('sqlite:../database.db');
+    $db = Database::instance()->db();
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -44,7 +45,18 @@
             
             $_SESSION['username'] = $username;
 
-            header('Location: ../pages/homePage.php');
+            $stmt3 = $db->prepare('Select * from User 
+                                    where userName = :username
+                                ');
+            $stmt3->bindParam(':username', $username);
+            $stmt3->execute();
+            $userId = $stmt3->fetch();
+
+            $_SESSION['userID'] = $userId['userID'];
+
+            //print_r($userId);
+
+            header('Location: ../actions/register_getId.php');
         }
         catch (PDOException $e) {
             die($e->getMessage());

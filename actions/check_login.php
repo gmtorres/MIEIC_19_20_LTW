@@ -1,8 +1,9 @@
 <?php
 
     include_once ('../includes/session.php');
+    include_once ('../includes/database.php');
 
-    $db = new PDO('sqlite:../database.db');
+    $db = Database::instance()->db();
 
     $username = $_POST['username'];
     $password = $_POST['password'];

@@ -10,7 +10,7 @@ CREATE TABLE User(
     email text NOT NULL,
     passHash text NOT NULL,
     age date NOT NULL,
-    phoneNumber text UNIQUE NOT NULL CHECK(length(phoneNumber) = 9)
+    phoneNumber text NOT NULL CHECK(length(phoneNumber) = 9)
 );
 
 

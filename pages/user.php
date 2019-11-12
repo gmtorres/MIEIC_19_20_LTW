@@ -10,10 +10,11 @@
     if(!isset($_GET['id'])){
 
         if(isset($_SESSION['username'])){
+
             $userId = $_SESSION['userID'];
 
             $user_info = getUserInfo($userId);
-            drawUserInfo($user_info);
+            //drawUserInfo($user_info);
 
             drawMainUserMenu();
             

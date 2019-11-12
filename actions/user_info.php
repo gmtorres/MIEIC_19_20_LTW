@@ -1,38 +1,49 @@
 <?php
 
+    include_once ('../includes/database.php');
+
+
     function getUserInfo($userId){
-
-        $db = new PDO('sqlite:../database.db');
-
+        $db = Database::instance()->db();
         $stmt = $db->prepare('Select * from User 
                               where User.userId = :userId
                                 ');
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         $user = $stmt->fetch();
-
         if($user !== false){
             return $user;
         }
-        else
+        else{
             echo "PAGE NOT FOUND";
+        }
+    }
 
+    function getUserID($userName){
+        $db = Database::instance()->db();
+        $stmt = $db->prepare('Select userID from User 
+                              where userName = :userName
+                                ');
+        $stmt->bindParam(':userName', $userName);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        if($user !== false){
+            return $user['userID'];
+        }
+        else
+            return 0;
     }
 
     function getUserPlaces($userId){
-
-        $db = new PDO('sqlite:../database.db');
-
+        $db = Database::instance()->db();
         $stmt1 = $db->prepare('Select * from User 
                               where User.userId = :userId
                                 ');
         $stmt1->bindParam(':userId', $userId);
         $stmt1->execute();
         $user1 = $stmt1->fetch();
-
         if($user1 == false)
             exit;
-
         $stmt = $db->prepare('Select Place.placeId as id,Place.title, 
                                 Place.area,Place.maxGuests as maxGuests, 
                                 IFNULL(avg(comment.classification),\'No Reviews yet\') as class,
@@ -45,11 +56,8 @@
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         $places = $stmt->fetchAll();
-
         return $places;
-
     }
-
     function drawUserInfo($user){
         ?>
 
@@ -59,15 +67,12 @@
 
         <?php
     }
-
     function drawUserPlaces($places){
-
         if(count($places) == 0){
             ?>
             <h3> This user has no places to rent. </h3>
             <?php
         }
-
         foreach($places as $place){
             ?>  
                 <a href="./house.php?id=<?= $place['id']?>" >
@@ -80,11 +85,8 @@
                 </a>
             <?php
         } 
-
     }
-
     function drawMainUserMenu(){
-
     ?>
         <ul>
             <li> <a href="manage.php" > Manage Places </a> </li>
@@ -93,17 +95,9 @@
         </ul>
 
     <?php
-
     }
-
     function drawMainUser(){
         $userId = $_SESSION['userId'];
-
         drawUserInfo($userId);
-
-
     }
-
-
-
 ?>
