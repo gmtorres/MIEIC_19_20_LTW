@@ -18,7 +18,7 @@ function getPlace($place_id)
     if ($place !== false) {
         return $place;
     } else
-        echo "Page not found";
+        return null;
 }
 
 
@@ -51,50 +51,38 @@ function drawUser($place)
 
 function drawPlaceAmenities($place)
 {
+    
     if ($place['swimmingPool'] == 1) {
     ?>
-
-    <h3> SwimingPoll: yes </h3>
-
+        <h3> SwimingPoll: yes </h3>
     <?php
     } else {
     ?>
-
-    <h3> SwimingPoll: no </h3>
-
+        <h3> SwimingPoll: no </h3>
     <?php
     }
 
     if ($place['wiFi'] == 1) {
-
     ?>
-
-    <h3> WiFi: yes </h3>
-    
+        <h3> WiFi: yes </h3>
     <?php
     } else {
     ?>
-
-    <h3> Wifi: no </h3>
-    
+        <h3> Wifi: no </h3>
     <?php
     }
 
     if ($place['houseMaid'] == 1) {
-
     ?>
-
-    <h3> HouseMaid: yes </h3>
-    
+        <h3> HouseMaid: yes </h3>
     <?php
     } else {
     ?>
-
-    <h3> HouseMaid: no </h3>
-    
+        <h3> HouseMaid: no </h3>
     <?php
     }
     ?>
     <h3> <?= $place['placeAddress'] ?> </h1>
     <?php
-    }
+}
+?>

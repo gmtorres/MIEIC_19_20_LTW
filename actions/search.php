@@ -11,15 +11,17 @@
                         from place LEFT JOIN Comment 
                             on Place.placeid = comment.placeid 
                         where Place.area = :area group by place.placeId
-                        limit 20';
+                    ';
 
         $area = $_GET['Destiny'];
         $guests = $_GET['guests'];
+        
 
         if(!empty($_GET['guests'])){
             $query = 'Select * from (' . $query . ') where maxGuests >= :guests ';
         }
-
+        
+        $query = $query . 'limit 20';
 
         $stmt = $db->prepare($query);
         $stmt->bindParam(':area', $area);
@@ -38,14 +40,14 @@
 
         foreach($places as $place){
             ?>  
-                <a href="./house.php?id=<?= $place['id']?>" >
-                    <div id='Search '>
-                        <h3> <?= $place['title']?> </h3>
-                        <h4> <?= $place['class']?> </h4>
-                        <h4> <?= $place['area']?> </h4>
-                        <h5> <?= $place['placeDescription']?> </h5>
-                    </div>
-                </a>
+                <div id='Search '>
+                    <a href="./house.php?id=<?= $place['id']?>" >
+                            <h3> <?= $place['title']?> </h3>
+                            <h4> <?= $place['class']?> </h4>
+                            <h4> <?= $place['area']?> </h4>
+                            <h5> <?= $place['placeDescription']?> </h5>
+                    </a>
+                </div>
             <?php
         } 
 
