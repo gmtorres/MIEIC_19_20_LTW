@@ -4,7 +4,6 @@
     include_once ('../templates/footer.php');
     include_once ('../actions/getHotPicks.php');
 
-    
     draw_header();
     ?>
         <div>
