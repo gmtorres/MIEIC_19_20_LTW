@@ -14,12 +14,35 @@
 
         </ul>
 
-
-
+        
     <?php
+        $userId = $_SESSION['userID'];
+        $user_places = getUserPlaces($userId);
+        drawUserPlacesManager($user_places);
 
     }
 
+    function drawUserPlacesManager($places){
+        if(count($places) == 0){
+            ?>
+            <h3> This user has no places to rent. </h3>
+            <?php
+        }
+        foreach($places as $place){
+            ?>  
+                <a href="./houseManage.php?id=<?= $place['id']?>" >
+                    <div id='UserPlace '>
+                        <h3> <?= $place['title']?> </h3>
+                        <h4> <?= $place['class']?> </h4>
+                        <h4> <?= $place['area']?> </h4>
+                        <h5> <?= $place['placeDescription']?> </h5>
+                    </div>
+                </a>
+            <?php
+        } 
+    }
+
+    
 
     function draw_addPlace(){
 

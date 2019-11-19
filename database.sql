@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Place;
 DROP TABLE IF EXISTS Rent;
 DROP TABLE IF EXISTS Comment;
+DROP TABLE IF EXISTS My_Date;
+DROP TABLE IF EXISTS Available_Dates;
 
 
 CREATE TABLE User(
@@ -73,3 +75,30 @@ INSERT INTO Rent(place,tourist,price,maxCapacity,startDate,endDate) VALUES (1,2,
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,2,4,"My stay","could improve");
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,3,5,"Great!","Very Good");
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (2,2,5,"Terrible place!","so much to improve ");
+
+
+
+Create TABLE Available_Dates(
+    Available_DatesId integer PRIMARY KEY,
+    PlaceId integer NOT NULL REFERENCES Place(placeId),
+    startDate Date,
+    endDate Date,
+    price INTEGER
+);
+
+INSERT INTO Available_Dates (PlaceId,startDate,endDate,price) VALUES (1,date('2019-02-10') , date('2019-02-18') , 20);
+INSERT INTO Available_Dates (PlaceId,startDate,endDate,price) VALUES (1,date('2019-02-18') , date('2019-02-20') , 51);
+INSERT INTO Available_Dates (PlaceId,startDate,endDate,price) Values (1,date('2019-02-20') , date('2019-02-27') , 13);
+
+
+/*Calcular o preço total
+*/
+/*
+Select sum(TPrice) from (
+Select min(T1,T2,T3)* price as TPrice from (
+    Select * , julianDay(endDate)-julianDay(date('2019-02-17')) as T1 , julianDay(date('2019-02-19'))-julianDay(startDate) as T2 , julianDay(endDate)-julianDay(startDate) as T3
+        from available_dates 
+        where endDate > date('2019-02-17') and startDate < date('2019-02-19')
+        )
+    );
+*/

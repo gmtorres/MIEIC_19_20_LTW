@@ -85,4 +85,32 @@ function drawPlaceAmenities($place)
     <h3> <?= $place['placeAddress'] ?> </h1>
     <?php
 }
+
+
+    function getAvailabitities($placeId){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('Select * from Available_Dates where PlaceId = :placeid');
+        $stmt->bindParam(':placeid',$placeId);
+        $stmt->execute();
+
+        $dates = $stmt->fetchAll();
+
+        return $dates;
+
+    }
+
+    function drawAvailables($dates){
+        foreach($dates as $date){
+            ?>
+
+                <h3> <?= $date['startDate']?> </h3>
+                <h3> <?= $date['endDate']?> </h3>
+                <h3> <?= $date['price']?> </h3>
+            
+            <?php
+        }
+    }
+
 ?>

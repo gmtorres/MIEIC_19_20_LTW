@@ -74,7 +74,12 @@
             <?php
         }
         foreach($places as $place){
-            ?>  
+            drawPlace($place);
+        } 
+    }
+
+    function drawPlace($place){
+        ?>  
                 <a href="./house.php?id=<?= $place['id']?>" >
                     <div id='UserPlace '>
                         <h3> <?= $place['title']?> </h3>
@@ -84,8 +89,8 @@
                     </div>
                 </a>
             <?php
-        } 
     }
+
     function drawMainUserMenu(){
     ?>
         <ul>
