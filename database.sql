@@ -3,6 +3,8 @@ DROP TABLE IF EXISTS Place;
 DROP TABLE IF EXISTS Rent;
 DROP TABLE IF EXISTS Comment;
 DROP TABLE IF EXISTS Available_Dates;
+DROP TABLE IF EXISTS ExtraAmenities;
+DROP TABLE IF EXISTS ExtraRestrictions;
 
 
 CREATE TABLE User(
@@ -74,7 +76,7 @@ CREATE TABLE Available_Dates(
 );
 
 
-INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Joao", "joao@gmail.com", "dsdfaasf235", 30, 912345678); /*owner*/
+INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Gustavo", "torresgustam@gmail.com", "$2y$10$sy6xWzj7p3gVAcVNNxRanO53lS8Bsr7E192cu9CdzLbp7Hjlcdvpi", 20, 912345678); /*owner*/
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Ricardo", "ricardo@gmail.com", "fhds03ndsklaq1",45,914994618); /*owner*/
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Fernando", "fernando@gmail.com", "f5as12g35",19,924324346); /*tourist*/
 

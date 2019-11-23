@@ -5,10 +5,15 @@
             <head>
                 <title>My Project</title>
                 <meta charset="utf-8">
+
+                <link href="../css/calendar.css" rel="stylesheet">
+
+
             </head>
             <body>
 
             <a href="../pages/homePage.php"> HOME </a>
+
 
             <?php
                 if( isset($_SESSION['username']) ){

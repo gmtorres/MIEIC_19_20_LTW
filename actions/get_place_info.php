@@ -86,6 +86,9 @@ function drawPlaceAmenities($place)
     <?php
 }
 
+    function sortFunction( $a, $b ) {
+        return strtotime($a["startDate"]) - strtotime($b["startDate"]);
+    }
 
     function getAvailabitities($placeId){
 
@@ -96,7 +99,7 @@ function drawPlaceAmenities($place)
         $stmt->execute();
 
         $dates = $stmt->fetchAll();
-
+        usort($dates, "sortFunction");
         return $dates;
 
     }
@@ -111,6 +114,15 @@ function drawPlaceAmenities($place)
             
             <?php
         }
+    }
+
+    function getAvailabititiesArray($availabities){
+        $datas = array();
+        foreach($availabities as $available){
+            $temp = array($available['startDate'] , $available['endDate']);
+            array_push($datas,$temp);
+        }
+        return $datas;
     }
 
 ?>

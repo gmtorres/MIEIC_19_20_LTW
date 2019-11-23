@@ -32,15 +32,18 @@
     $availables = getAvailabitities($Userplace['id']);
 
     drawAvailables($availables);
-
     ?>
         <label> Add availabity </label>
         <form method="post" action="../actions/addAvailability.php">
             <input type = "hidden" name = "placeId" value = "<?= $Userplace['id']?>" />
-            <label> Start date </label>
-                <input type="date" name="startDate" placeholder="" required><br>
-            <label> End date </label>
-                <input type="date" name="endDate" placeholder="" required><br>
+            
+            <myDatePicker allowOverlaps="true" ></myDatePicker>
+            <script type="text/javascript" src='../js/calendar.js'> </script>
+            
+            <script>
+                createAllCalendars( <?php echo json_encode(getAvailabititiesArray($availables)) ?>);
+            </script>
+
             <label> Price per night </label>
                 <input type="number" name="price" placeholder="" required><br>
             <input type="submit" value="Submit">

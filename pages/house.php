@@ -2,6 +2,7 @@
     include_once ('../includes/session.php');
     include_once ('../templates/header.php');
     include_once ('../templates/comments.php');
+    include_once ('../templates/booking.php');
     include_once ('../actions/get_place_info.php');
 
     $placeId = -1;
@@ -23,10 +24,17 @@
     </div>
 
     <?php
+
         drawPlaceDescription($place);
         drawUser($place);
         drawPlaceAmenities($place);
+
+        if(isset($_SESSION['userID'])){
+            drawRentSubmition($placeId,$_SESSION['userID']);
+        }
+
         drawComments($placeId);
+
         if(isset($_SESSION['userID'])){
             drawCommentsSubmition($placeId,$_SESSION['userID']);
         }

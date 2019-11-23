@@ -1,0 +1,60 @@
+.calendar {
+    width: 227px;
+    background: gainsboro;
+    border-radius: 5px;
+    margin: 2px;
+
+}
+.calendarHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topHeader {
+    font-size: 20px;
+    background: #03A9F4;
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.calendarHeaderContainer{
+    padding: 2px;
+    display: flex;
+}
+
+#dayofTheWeek{
+    text-align: center;
+}
+
+#calendar_body_0 td{
+    padding: 0px;
+    padding-top: 1px;
+    padding-bottom: -1px;
+}
+#calendar_body_0 tr td button{
+    margin: 1px;
+    padding: 0px;
+    width: 28px;
+    text-align: center;
+}
+
+#unavailable{
+    background-color: darkgrey;
+}
+
+#available button{
+    color: royalblue;
+}
+#selected {
+    background-color: rgb(14, 151, 121);
+}
+#half{
+    background-color: rgb(144, 179, 161);
+}
+
+/*Button Reset*/
+button {
+    background: none;
+    border: none;
+}
