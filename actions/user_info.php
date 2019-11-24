@@ -95,6 +95,8 @@
     ?>
         <ul>
             <li> <a href="manage.php" > Manage Places </a> </li>
+            <li> <a href="requests.php" > Requests </a> </li>
+            <li> <a href="myReservations.php" > My reservations </a> </li>
             <li> <a href="" > Settings </a> </li>
 
         </ul>

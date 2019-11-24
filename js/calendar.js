@@ -13,7 +13,7 @@ let daysOfTheMonth = ["S","M","T","W","T","F","S"];
 var datePickers = document.getElementsByTagName("myDatePicker");
 
 class Calendar {
-    constructor(id,year, month, allowOverlaps, blockedDates) {
+    constructor(id,year, month, allowOverlaps, blockedDates, availableDates) {
         this.id = id,
         this.year = year,
         this.month = month,
@@ -25,7 +25,11 @@ class Calendar {
 
         if(blockedDates == undefined || blockedDates == null)
             this.blockedDates = null;
-        else    this.blockedDates = blockedDates;
+        else this.blockedDates = blockedDates;
+
+        if(availableDates == undefined || availableDates == null)
+            this.availableDates = null;
+        else this.availableDates = availableDates;
 
         this.startDate = null;
         this.endDate = null;
@@ -36,7 +40,7 @@ class Calendar {
         this.month = (this.month === 0) ? 11 : this.month - 1;
         this.update(calendarBody,calendarHeader,mainHeader)
     }
-    //Go to nexr month
+    //Go to next month
     next(calendarBody,calendarHeader,mainHeader) {
         this.year = (this.month === 11) ? this.year + 1 : this.year;
         this.month = (this.month + 1) % 12;
@@ -104,7 +108,7 @@ class Calendar {
                         let cell = document.createElement("td");
                         let currentDay = new Date(this.year,this.month,date);
                         let vm = this;
-                        if(this.availableDate( currentDay )){
+                        if(this.available( currentDay.getTime() )){
                         
                                 
                                 if((this.startDate != null && this.overlapsDates(currentDay,currentDay,this.startDate,this.startDate)) || 
@@ -129,7 +133,12 @@ class Calendar {
                             button.innerHTML = date;
                             cell.appendChild(button);
                             if(this.allowOverlaps == true && this.dateBound(currentDay) == 1){
-                                cell.setAttribute('id' , 'half');
+
+                                if((this.startDate != null && this.overlapsDates(currentDay,currentDay,this.startDate,this.startDate)) || 
+                                    (this.endDate != null && this.overlapsDates(currentDay,currentDay,this.startDate,this.endDate))){
+                                        cell.setAttribute('id' , 'selected');
+                                }else cell.setAttribute('id' , 'half');
+                                
                                 button.addEventListener('click',function(e){
 
                                     vm.selectDate(e.target.innerHTML);
@@ -176,7 +185,7 @@ class Calendar {
         inputStart.setAttribute("calendar", "calendar_"+vm.id);
         inputStart.setAttribute("placeholder", "Select a date");
         inputStart.setAttribute("readonly", "true");
-        inputStart.setAttribute("required", "true");
+        inputStart.setAttribute("required", "required");
 
         datePicker.appendChild(inputStart);
 
@@ -189,17 +198,19 @@ class Calendar {
         inputEnd.setAttribute("calendar", "calendar_"+vm.id);
         inputEnd.setAttribute("placeholder", "Select a date");
         inputEnd.setAttribute("readonly", "true");
-        inputEnd.setAttribute("required", "true");
+        inputEnd.setAttribute("required", "required");
 
         datePicker.appendChild(inputEnd);
 
         let calendarHeaderContainer = document.createElement("div");
         calendarHeaderContainer.setAttribute("class","calendarHeaderContainer");
         let prevButton = document.createElement("button");
+            prevButton.setAttribute("type","button");
             prevButton.setAttribute("id", "prevButton_"+vm.id);
             prevButton.innerHTML = "<";
 
         let nextButton = document.createElement("button");
+            nextButton.setAttribute("type","button");
             nextButton.setAttribute("id", "nextButton_"+vm.id);
             nextButton.innerHTML = ">";
 
@@ -286,16 +297,26 @@ class Calendar {
         return count;
     }
 
-    availableDate(date){
-        if(this.blockedDates == null)
-            return true;
-        for(let i = 0; i < this.blockedDates.length ;i++){
-            let inicialString = this.blockedDates[i][0] + 'T00:00:00Z';
-            let finalString = this.blockedDates[i][1] + 'T00:00:00Z';
-            let inicial =  new Date(inicialString);
-            let final =  new Date(finalString);
-            if(date >= inicial && date <= final)
-                return false;
+    available(date){
+        if(this.blockedDates != null)
+            for(let i = 0; i < this.blockedDates.length ;i++){
+                let inicialString = this.blockedDates[i][0] + 'T00:00:00Z';
+                let finalString = this.blockedDates[i][1] + 'T00:00:00Z';
+                let inicial =  new Date(inicialString).getTime();
+                let final =  new Date(finalString).getTime();
+                if(date >= inicial && date <= final)
+                    return false;
+            }
+        if(this.availableDates != null){
+            for(let i = 0; i < this.availableDates.length ;i++){
+                let inicialString = this.availableDates[i][0] + 'T00:00:00Z';
+                let finalString = this.availableDates[i][1] + 'T00:00:00Z';
+                let inicial =  new Date(inicialString).getTime();
+                let final =  new Date(finalString).getTime();
+                if(date >= inicial && date <= final)
+                    return true;
+            }
+            return false;
         }
         return true;
     }
@@ -337,10 +358,10 @@ function formatDate(date) {
 
     return [year, month, day].join('-');
 }
-function createAllCalendars(blockedDates){
+function createAllCalendars(blockedDates , availableDates){
     for ( var x = 0; x < datePickers.length; x++) {
         var allowOverlaps = datePickers[x].getAttribute('allowOverlaps');
-        var calendar = new Calendar(x, currentYear, currentMonth ,allowOverlaps, blockedDates);
+        var calendar = new Calendar(x, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates);
         calendar.createPicker(datePickers[x]);
     }
 }

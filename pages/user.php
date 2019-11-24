@@ -7,7 +7,7 @@
 
     draw_header();  
 
-    if(!isset($_GET['id'])){
+    if(!isset($_GET['id'])){ //se o Id nao estiver set entao irá mostrar a sua propria pagina
 
         if(isset($_SESSION['username'])){
 
@@ -21,7 +21,7 @@
             $user_places = getUserPlaces($userId);
             drawUserPlaces($user_places);
 
-        }else{
+        }else{ //se a sessao nao esta iniciada ira fazer redirect
             $_SESSION['redirect'] = '../pages/user.php';
             header('Location: ../pages/login.php');
         }

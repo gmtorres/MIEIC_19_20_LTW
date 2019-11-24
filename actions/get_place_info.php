@@ -125,4 +125,24 @@ function drawPlaceAmenities($place)
         return $datas;
     }
 
+    function getRents($placeId){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('Select * from Rent where place = :placeid and (accepted = 1 or accepted = 0)');
+        $stmt->bindParam(':placeid',$placeId);
+        $stmt->execute();
+
+        $rents = $stmt->fetchAll();
+        return $rents;
+    }
+
+    function getRentsArray($rents){
+        $datas = array();
+        foreach($rents as $rent){
+            $temp = array($rent['startDate'] , $rent['endDate']);
+            array_push($datas,$temp);
+        }
+        return $datas;
+    }
+
 ?>

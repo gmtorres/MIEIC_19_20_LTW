@@ -8,7 +8,7 @@
     $placeId = -1;
     if(isset($_GET['id']))
         $placeId = $_GET['id'];
-    draw_header();
+    draw_headerArgs(["../css/calendar.css"] , []);
 
     $place = getPlace($placeId);
     if($place == null){
@@ -29,8 +29,11 @@
         drawUser($place);
         drawPlaceAmenities($place);
 
+        $availables = getAvailabitities($placeId);
+        $rents = getRents($placeId);
+
         if(isset($_SESSION['userID'])){
-            drawRentSubmition($placeId,$_SESSION['userID']);
+            drawRentSubmition($placeId,$_SESSION['userID'] , $rents, $availables );
         }
 
         drawComments($placeId);

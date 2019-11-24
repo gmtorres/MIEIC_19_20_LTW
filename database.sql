@@ -37,11 +37,10 @@ CREATE TABLE Rent(
     place integer NOT NULL REFERENCES Place,
     tourist integer REFERENCES User,
     price integer NOT NULL CHECK(price > 0),
-    payed integer,
-    accepted integer,
+    payed integer DEFAULT 1,
+    accepted integer DEFAULT 0,
     startDate date NOT NULL,
-    endDate date NOT NULL,
-    CHECK(endDate >= startDate)
+    endDate date NOT NULL
 );
 
 
@@ -77,17 +76,17 @@ CREATE TABLE Available_Dates(
 
 
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Gustavo", "torresgustam@gmail.com", "$2y$10$sy6xWzj7p3gVAcVNNxRanO53lS8Bsr7E192cu9CdzLbp7Hjlcdvpi", 20, 912345678); /*owner*/
-INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Ricardo", "ricardo@gmail.com", "fhds03ndsklaq1",45,914994618); /*owner*/
-INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Fernando", "fernando@gmail.com", "f5as12g35",19,924324346); /*tourist*/
+INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Francisco", "francisco@gmail.com", "$2y$10$OH2eysuAXm.dIOmOHXa7g.momeoahr.iJQJRxMte/JNnOYAOulEl6",41,914994618); /*owner*/
+INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Rita", "rita@live.pt", "$2y$10$R2usXTENzn2sfEVsvI5qNeFjsgJBnLeznb2/ZbFOCk3Enztolo6OK",29,962774421); /*tourist*/
 
 INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Nice house" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",4, 1, 1, 1, 2, 1);
 INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Cozy house" , "Nice rustic house with a beautiful village nearby and a river great for taking a bath as well for long walks . " , "Rua de Vila Nova", "Bragança",8, 1, 1, 0, 1, 2);
 INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Great Appartment" , "Amazing apartment, many rooms, very big and with a fantastic view to the beach and great acesses" , "Avenida da Praia", "Espinho",6, 0, 1, 1, 2, 1); 
 INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Nice house2" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",6, 0, 0, 0, 3, 1);
 
-INSERT INTO DateAvailable(placeID, startDate, endDate, price) VALUES (2, '12-11-2019','20-12-2019', 50);
+INSERT INTO Available_Dates(placeID, startDate, endDate, price) VALUES (1, '2019-11-01','2019-11-26', 50);
 
-INSERT INTO Rent(place,tourist,price,startDate,endDate) VALUES (1,2,1000,'12-10-2019','20-10-2019');
+INSERT INTO Rent(place,tourist,price,startDate,endDate) VALUES (1,2,1000,'2019-11-04','2019-11-13');
 
 INSERT INTO ExtraRestrictions(restrictionDescription, placeID) VALUES ("No pets allowed", 1);
 
@@ -95,4 +94,5 @@ INSERT INTO ExtraAmenities(amenitiesDescription, placeID) VALUES ("Has elevator"
 
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,2,4,"My stay","could improve");
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,3,5,"Great!","Very Good");
-INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (2,2,5,"Terrible place!","so much to improve ");
+INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (3,3,5,"Great!","Very Good");
+INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (2,3,5,"Terrible place!","so much to improve ");
