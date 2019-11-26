@@ -1,33 +1,5 @@
 <?php
 
-    include_once ('../includes/database.php');
-    include_once ('../actions/user_info.php');
-    include_once ('../actions/get_place_info.php');
-
-    function getRentsByUser($userId){
-
-        $db = Database::instance()->db();
-        $stmt = $db->prepare('Select * from Rent
-                              where Rent.tourist = :userId
-                                ');
-        $stmt->bindParam(':userId', $userId);
-        $stmt->execute();
-        $rents = $stmt->fetchAll();
-        return $rents;
-    }
-
-    function getRentsByOwner($userId){
-
-        $db = Database::instance()->db();
-        $stmt = $db->prepare('Select * from Rent
-                            Inner Join Place on Rent.place = Place.placeID
-                              where Place.placeOwner = :userId
-                                ');
-        $stmt->bindParam(':userId', $userId);
-        $stmt->execute();
-        $rents = $stmt->fetchAll();
-        return $rents;
-    }
 
     function displayReservations($rents){
         ?>
@@ -67,8 +39,11 @@
 
     function displayRequests($rents){
 
+        ?>
+            <div id='rents'>
+        <?php
+
         foreach($rents as $rent){
-            $tourist = getUserInfo($rent['tourist']);
             ?>
                 <div class ='request' id="request<?=$rent['rentID']?>">
 
@@ -76,7 +51,7 @@
                         <h3> <?= $rent['title'] ?> </h3>
                     </a>
                     <a href="./user.php?id=<?= $rent['tourist'] ?> ">
-                        <h3> <?= $tourist['userName'] ?> </h3>
+                        <h3> <?= $rent['userName'] ?> </h3>
                     </a>
 
                     <h3> <?= $rent['startDate'] ?> </h3>
@@ -105,6 +80,9 @@
 
             <?php
         }
+        ?>
+        </div>
+        <?php
     }
 
 

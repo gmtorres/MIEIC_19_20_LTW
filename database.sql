@@ -86,7 +86,7 @@ INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPoo
 
 INSERT INTO Available_Dates(placeID, startDate, endDate, price) VALUES (1, '2019-11-01','2019-11-26', 50);
 
-INSERT INTO Rent(place,tourist,price,startDate,endDate) VALUES (1,2,1000,'2019-11-04','2019-11-13');
+INSERT INTO Rent(place,tourist,price,startDate,endDate) VALUES (1,2,1000,'2019-12-04','2019-12-13');
 
 INSERT INTO ExtraRestrictions(restrictionDescription, placeID) VALUES ("No pets allowed", 1);
 
