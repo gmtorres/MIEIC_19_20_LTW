@@ -30,7 +30,9 @@
     }
 
     function displayReservations($rents){
-
+        ?>
+            <div id='reservations'>
+        <?php
         foreach($rents as $rent){
             //print_r($rent);
             $place = getPlace($rent['place']);
@@ -58,6 +60,9 @@
 
             <?php
         }
+        ?>
+            </div>
+        <?php
     }
 
     function displayRequests($rents){

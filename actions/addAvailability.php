@@ -19,7 +19,7 @@
 
     $dates = getAvailabitities($Id);
 
-    print_r($dates);
+    //print_r($dates);
     foreach($dates as $date){
         if(($startDate < $date['endDate'] && $endDate > $date['endDate']) ||
             ($startDate > $date['startDate'] && $endDate < $date['endDate']) ||
@@ -34,7 +34,9 @@
                             Available_Dates (PlaceId,startDate,endDate,price) VALUES(?,?,?,?)');
     $stmt->execute(array($Id,$startDate,$endDate,$price));
 
-    header('Location: ../pages/manage.php');
+    //header('Location: ../pages/manage.php');
+
+    echo(json_encode([$startDate,$endDate,$price]));
 
 
 ?>

@@ -105,15 +105,21 @@ function drawPlaceAmenities($place)
     }
 
     function drawAvailables($dates){
+        ?>
+            <div id='availables'>
+        <?php
         foreach($dates as $date){
             ?>
-
-                <h3> <?= $date['startDate']?> </h3>
-                <h3> <?= $date['endDate']?> </h3>
-                <h3> <?= $date['price']?> </h3>
-            
+                <div id='available'>
+                    <h3> <?= $date['startDate']?> </h3>
+                    <h3> <?= $date['endDate']?> </h3>
+                    <h3> <?= $date['price']?> </h3>
+                </div>
             <?php
         }
+        ?>
+            </div>
+        <?php
     }
 
     function getAvailabititiesArray($availabities){
