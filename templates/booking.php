@@ -6,7 +6,7 @@
                 <input type = "hidden" name = "PlaceId" value = "<?= $placeId?>" />
                 <input type = "hidden" name = "Tourist" value = "<?= $userId?>" />
                 
-                <myDatePicker id = 'dates'></myDatePicker>
+                <myDatePicker id = 'dates' allowOverlaps='true'></myDatePicker>
                 <script type="text/javascript" src='../js/calendar.js'> </script>
                 <script> createAllCalendars( <?php echo json_encode(getRentsArray($rents)) ?> , <?php echo json_encode(getAvailabititiesArray($availables)) ?> );</script>
                 <span class="error" aria-live="polite"></span>

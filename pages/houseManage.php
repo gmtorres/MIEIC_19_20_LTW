@@ -13,42 +13,49 @@
     $user_places = getUserPlaces($userId);
 
     $houseID = $_GET['id'];
-    $Userplace = NULL;
+    $userplace = NULL;
     foreach($user_places as $place){
         if($place['id'] == $houseID){
-            $Userplace = $place;
+            $userplace = $place;
             break;
         }
     }
-    if($Userplace == NULL)
+    if($userplace == NULL)
         header('Location: ../pages/manage.php');
 
+<<<<<<< HEAD
     draw_headerArgs(["../css/calendar.css"] , []);
+=======
+    
+    draw_headerArgs(["../css/calendar.css"] , [["../js/addAvailables.js","defer"]]);
+>>>>>>> refs/remotes/origin/master
 
     drawPlace($place);
 
-    $availables = getAvailabitities($Userplace['id']);
+    $availables = getAvailabitities($userplace['id']);
 
     drawAvailables($availables);
+
     ?>
         <label> Add availabity </label>
-        <form method="post" action="../actions/addAvailability.php">
-            <input type = "hidden" name = "placeId" value = "<?= $Userplace['id']?>" />
+        <form   >
+            <input type = "hidden" name = "placeId" value = "<?= $userplace['id']?>" />
             
             <myDatePicker id ="dates" allowOverlaps="true" required="required"></myDatePicker>
-            <script type="text/javascript" src='../js/calendar.js'> </script>
-            
-            <script>
-                createAllCalendars( <?php echo json_encode(getAvailabititiesArray($availables)) ?>);
-
-            </script>
+                <script type="text/javascript" src='../js/calendar.js'> </script>
+                <script>
+                    
+                </script>
 
             <label> Price per night </label>
-                <input type="number" name="price" placeholder="" required><br>
+                <input id= 'price' type="number" name="price" placeholder="" required><br>
             <span class="error" aria-live="polite"></span>
             <input type="submit" value="Submit">
+
         </form>
+
         <script>
+            var calendar = createCalendar( <?php echo json_encode(getAvailabititiesArray($availables)) ?>);
             var form  = document.getElementsByTagName('form')[0];
             var dates = document.getElementById('dates');
             var error = document.querySelector('.error');
@@ -62,13 +69,22 @@
 
                 var inicial = document.getElementById('input_0_start');
                 var final = document.getElementById('input_0_end');
+                var price = document.getElementById('price');
                 
-                if( !inicial.validity.valid || !final.validity.valid || inicial.value == "" || final.valid == ""){
+                if( !inicial.validity.valid || !final.validity.valid || inicial.value == "" || final.value == ""){
                     error.innerHTML = "Please fill all fields.";
                     error.className = "error active";
                     event.preventDefault(); 
+                }else{
+                    console.log("a");
+                    //inicial.value = null;
+                    //final.value = "";
+                    addAvailable(<?= $userplace['id'] ?> , inicial.value, final.value, price.value,calendarioRef );
+                    event.preventDefault(); 
                 }
             },false);
+            
+
         </script>
 
     <?php
