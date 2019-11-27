@@ -23,8 +23,6 @@
     if($Userplace == NULL)
         header('Location: ../pages/manage.php');
 
-    
-
     draw_headerArgs(["../css/calendar.css"] , []);
 
     drawPlace($place);
@@ -75,8 +73,6 @@
 
     <?php
     
-
     draw_footer();
-
 
 ?>

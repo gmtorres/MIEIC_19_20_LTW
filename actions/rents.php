@@ -91,7 +91,7 @@
                         }else if($rent['accepted'] == -1){
                             ?> <h3> Declined </h3> <?php
                         }else if($rent['accepted'] == -2){
-                            ?> <h3> Exceded time </h3> <?php
+                            ?> <h3> Exceeded time </h3> <?php
                         }
                          
                     ?>
@@ -101,7 +101,5 @@
             <?php
         }
     }
-
-
 
 ?>

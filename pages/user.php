@@ -35,7 +35,6 @@
         drawUserPlaces($user_places);
     }
 
-
     draw_footer();
 
 ?>

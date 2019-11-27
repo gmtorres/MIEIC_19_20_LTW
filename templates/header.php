@@ -6,19 +6,21 @@
             <head>
                 <title>My Project</title>
                 <meta charset="utf-8">
-
+                <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
             </head>
             <body>
 
-            <?php 
+            <?php
             draw_boby();
     }
-    function draw_headerArgs($cssFile,$jsFiles){  ?>
+
+    function draw_headerArgs($cssFile, $jsFiles){  ?>
         <!DOCTYPE html>
         <html> 
             <head>
                 <title>My Project</title>
                 <meta charset="utf-8">
+                <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
                 
                 <?php
                 foreach($cssFile as $css){
@@ -41,8 +43,6 @@
                     }
                 }
                 ?>
-                
-
 
             </head>
             <body>
@@ -54,11 +54,11 @@
     function draw_boby(){
         ?>
         <body>
-        <a href="../pages/homePage.php"> HOME </a>
+            <div class = "bar">
+            <a href="../pages/homePage.php"> HOME </a>
 
-
-        <?php
-            if( isset($_SESSION['username']) ){
+            <?php
+            if(isset($_SESSION['username']) ){
                 ?>
                     <div id = "login">
                         <a href="user.php"> <?=$_SESSION['username']?> </a>
@@ -71,13 +71,14 @@
                 ?>
                     <div id = "login">
                         <a href="login.php"> Login </a>
-                        <h2> / </h2>
+                        <h2> | </h2>
                         <a href="register.php"> Register </a>
                     </div>
-
                 <?php
             }
-        
+            ?>
+            </div>
+            <?php
     }
 
     function unknownPage(){

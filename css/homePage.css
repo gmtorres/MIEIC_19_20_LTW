@@ -1,0 +1,54 @@
+/* Porto */
+
+#imageContainer  {
+    background-image: url("http://www.liven.pt/wp-content/uploads/2015/05/Lisboa-Portugal.jpg");
+    margin: 0 auto;
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#topPicks {
+    position: relative;
+    z-index: -1;
+}
+
+#booking {
+    font-family: 'Quicksand', sans-serif;
+    display: block;
+    padding: 10px 20px;
+    position: relative; 
+    left: 30px;
+    bottom: -40px;
+    border: 3px solid rgb(122, 200, 245);
+    background: rgba(248, 244, 240, 0.9);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    float: left;
+    width: 25%;
+
+}
+
+#booking input[type=submit] {
+    padding: 10px 10px;
+    float: right;
+    width: 30%;
+    border: 3px solid rgb(122, 200, 245);
+    margin: 10px 2px;
+
+}
+
+#booking label{
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+#booking input{
+    padding: 5px 5px;
+    width: 100%;
+
+}

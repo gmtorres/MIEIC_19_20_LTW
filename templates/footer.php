@@ -2,8 +2,8 @@
 
     function draw_footer(){  ?>
     
-          </body>
-        </html>
+        </body>
+      </html>
   
   <?php }
 ?>

@@ -1,6 +1,5 @@
 <?php
 
-
     include_once ('../includes/session.php');
 
     $db = new PDO('sqlite:../database.db');
@@ -11,7 +10,6 @@
     $description = $_POST['Description'];
     $maxGuests = $_POST['maxGuests'];
     $placeOwner = $_SESSION['userID'];
-
 
     try{
         $stmt = $db->prepare('Insert into 
@@ -27,6 +25,5 @@
         //$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
         header('Location: ../pages/addPlace.php');
     }
-
 
 ?>

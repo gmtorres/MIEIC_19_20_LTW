@@ -10,13 +10,10 @@
 
     draw_headerArgs([],[["../js/requests.js","defer"]]);
 
-
     $requests = getRentsByOwner($_SESSION['userID']);
 
     displayRequests($requests);
 
-
     draw_footer();
-
 
 ?>
