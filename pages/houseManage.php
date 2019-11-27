@@ -23,12 +23,8 @@
     if($userplace == NULL)
         header('Location: ../pages/manage.php');
 
-<<<<<<< HEAD
-    draw_headerArgs(["../css/calendar.css"] , []);
-=======
     
     draw_headerArgs(["../css/calendar.css"] , [["../js/addAvailables.js","defer"]]);
->>>>>>> refs/remotes/origin/master
 
     drawPlace($place);
 
