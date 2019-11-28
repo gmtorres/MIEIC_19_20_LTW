@@ -2,8 +2,6 @@
 
     include_once ('../actions/user_info.php');
 
-    
-
     function draw_manager(){
 
     ?>
@@ -42,8 +40,6 @@
         } 
     }
 
-    
-
     function draw_addPlace(){
 
         ?>
@@ -62,6 +58,4 @@
         <?php
 
     }
-
-
 ?>

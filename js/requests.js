@@ -6,10 +6,8 @@ function acceptOffer(requestId){
     request.open('get', '../actions/changeRentState.php?' + encodeForAjax({'rentId': requestId, 'state':1}) , true);
     request.addEventListener('load', replaceRent);
     request.send();
-
-    
-
 }
+
 function declineOffer(requestId){
     let request = new XMLHttpRequest();
     request.open('get', '../actions/changeRentState.php?' + encodeForAjax({'rentId': requestId, 'state':-1}) , true);
@@ -28,7 +26,7 @@ function replaceRent(){
     }else if(data[1] == -1){
         lastElem.innerText = "Declined";
     }else if(data[1] == -2){
-        lastElem.innerHTML = "Exceded time";
+        lastElem.innerHTML = "Exceeded time";
     }
     console.log(request);
 }

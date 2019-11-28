@@ -25,8 +25,6 @@
     <?php
     
 
-
     draw_footer();
-
 
 ?>

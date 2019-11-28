@@ -22,12 +22,14 @@
       if (NULL == $this->db) 
         throw new Exception("Failed to open database");
     }
+
     /**
      * Returns the database connection.
      */
     public function db() {
       return $this->db;
     }
+
     /**
      * Returns this singleton instance. Creates it if needed.
      */

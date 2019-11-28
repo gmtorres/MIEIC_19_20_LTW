@@ -85,8 +85,6 @@
 
     <?php
     
-
     draw_footer();
-
 
 ?>
