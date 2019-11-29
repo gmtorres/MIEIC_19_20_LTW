@@ -151,4 +151,6 @@ function drawPlaceAmenities($place)
         return $datas;
     }
 
+    
+
 ?>

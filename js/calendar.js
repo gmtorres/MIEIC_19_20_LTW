@@ -4,6 +4,7 @@
  */
 
 let currentDate = new Date();
+let yesterday = new Date();  yesterday.setDate(yesterday.getDate()-1);
 
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
@@ -14,7 +15,7 @@ let daysOfTheMonth = ["S","M","T","W","T","F","S"];
 var calendarioRef = null;
 
 class Calendar {
-    constructor(id,year, month, allowOverlaps, blockedDates, availableDates) {
+    constructor(id,year, month, allowOverlaps, blockedDates, availableDates,allowPast) {
         this.id = id,
         this.year = year,
         this.month = month,
@@ -23,6 +24,10 @@ class Calendar {
         if(allowOverlaps == null || allowOverlaps == "" || allowOverlaps == "false" || allowOverlaps == "0" || allowOverlaps == "-1")
             this.allowOverlaps = false;
         else this.allowOverlaps = true;
+
+        if(allowPast == null || allowPast == "" || allowPast == "false" || allowPast == "0" || allowPast == "-1")
+            this.allowPast = false;
+        else this.allowPast = true;
 
         if(blockedDates == undefined || blockedDates == null)
             this.blockedDates = null;
@@ -152,22 +157,34 @@ class Calendar {
                             if((this.startDate != null && this.overlapsDates(currentDay,currentDay,this.startDate,this.startDate)) || 
                                 (this.endDate != null && this.overlapsDates(currentDay,currentDay,this.startDate,this.endDate))){
                                     cell.setAttribute('id' , 'selected');
-                            }else{
-                                var which = this.whichDateBoundBlocked(currentDay);
-                                if(which == 0){
-                                    cell.setAttribute('id' , 'left_half');
-                                }else if(which == 1){
-                                    cell.setAttribute('id' , 'right_half');
-                                }
-                                else cell.setAttribute('id' , 'half');
-                            } 
-                            
-                            button.addEventListener('click',function(e){
+                                    button.addEventListener('click',function(e){
 
-                                vm.selectDate(e.target.innerHTML);
-                                vm.current(calendarBody,calendarHeader,mainHeader)
-                            
-                            });
+                                        vm.selectDate(e.target.innerHTML);
+                                        vm.current(calendarBody,calendarHeader,mainHeader)
+                                    
+                                    });
+                            }else{
+                                if(this.inAvailables(currentDay,currentDay)){
+                                    var which = this.whichDateBoundBlocked(currentDay);
+                                    if(which == 0){
+                                        cell.setAttribute('id' , 'left_half');
+                                    }else if(which == 1){
+                                        cell.setAttribute('id' , 'right_half');
+                                    }
+                                    else cell.setAttribute('id' , 'half');
+                                    button.addEventListener('click',function(e){
+
+                                        vm.selectDate(e.target.innerHTML);
+                                        vm.current(calendarBody,calendarHeader,mainHeader)
+                                    
+                                    });
+                                }else{
+                                    cell.setAttribute('id' , 'unavailable');
+                                    button.addEventListener('click',function(e){
+                                        e.preventDefault();                                
+                                    });
+                                }
+                            } 
                         }else{
                             cell.setAttribute('id' , 'unavailable');
                             button.addEventListener('click',function(e){
@@ -372,6 +389,11 @@ class Calendar {
     }
 
     available(date){
+        if(this.allowPast == false){
+            if(date < yesterday.getTime()){
+                return false;
+            }
+        }
         if(this.blockedDates != null)
             for(let i = 0; i < this.blockedDates.length ;i++){
                 let inicialString = this.blockedDates[i][0] + 'T00:00:00Z';
@@ -395,7 +417,7 @@ class Calendar {
         return true;
     }
 
-    allAvailable(startDate,endDate){
+    allAvailable(startDate,endDate){ //checks if all days are available
         if(this.availableDates==null)
             return true;
         for(let date = new Date(startDate.getTime()); date.getTime() < endDate.getTime(); date.setDate(date.getDate()+1)){
@@ -411,13 +433,18 @@ class Calendar {
         return true;
     }
     inAvailables(date1,date2){
+        if(this.allowPast == false){
+            if(date1.getTime() < yesterday.getTime() || date2.getTime() < yesterday.getTime()){
+                return false;
+            }
+        }
         if(this.availableDates != null){
             for(let i = 0; i < this.availableDates.length ;i++){
                 let inicialString = this.availableDates[i][0] + 'T00:00:00Z';
                 let finalString = this.availableDates[i][1] + 'T00:00:00Z';
                 let inicial =  new Date(inicialString).getTime();
                 let final =  new Date(finalString).getTime();
-                if(date1 >= inicial && date1 <= final && date2 >= inicial && date2 <= final)
+                if(date1.getTime() >= inicial && date1.getTime() <= final && date2.getTime() >= inicial && date2.getTime() <= final)
                     return true;
             }
             return false;
@@ -480,14 +507,16 @@ function createAllCalendars(blockedDates , availableDates){
     var datePickers = document.getElementsByTagName("myDatePicker");
     for ( var x = 0; x < datePickers.length; x++) {
         var allowOverlaps = datePickers[x].getAttribute('allowOverlaps');
-        let calendar = new Calendar(x, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates);
+        var allowPast = datePickers[x].getAttribute('allowPast');
+        let calendar = new Calendar(x, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast);
         calendar.createPicker(datePickers[x]);
     }
 }
 function createCalendar(blockedDates , availableDates){
     var datePickers = document.getElementsByTagName("myDatePicker");
     var allowOverlaps = datePickers[0].getAttribute('allowOverlaps');
-    let calendario = new Calendar(0, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates);
+    var allowPast = datePickers[0].getAttribute('allowPast');
+    let calendario = new Calendar(0, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast);
     calendario.createPicker(datePickers[0]);
     calendarioRef = calendario;
 }

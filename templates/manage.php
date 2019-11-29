@@ -45,13 +45,30 @@
         ?>
 
         <form method="post" action="../actions/addPlace.php">
-            <input type="text" name="Title" placeholder="Title" required>
-            <input type="text" name="Zone" placeholder="Zone" required>
-            <input type="text" name="Address" placeholder="Address" required>
+            <label> Place Title
+                <input type="text" name="Title" placeholder="Title" required>
+            </label>
+            <label> Zone/City
+                <input type="text" name="Zone" placeholder="Zone" required>
+            </label>
+            <label> Adress
+                <input type="text" name="Address" placeholder="Address" required>
+            </label>
+            <label> Description
+                <br>
+                <textarea name="Description" rows="20" cols="100"></textarea>
+                <br>
+            </label>
+            <label> Maximum Guests
+                <input type="text" name="maxGuests" placeholder="Max Guests" required>
+            </label>
+            <div id='extras'>
+            </div>
+            <button> Add extra </button>
+            <div id='restrictions'>
+            </div>
+            <button> Add restriction </button>
             <br>
-            <textarea name="Description" rows="40" cols="30"></textarea>
-            <br>
-            <input type="text" name="maxGuests" placeholder="Max Guests" required>
             <input type="submit" value="Submit">
         </form>
 
