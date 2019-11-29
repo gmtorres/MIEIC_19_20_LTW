@@ -5,7 +5,7 @@
     include_once ('../templates/footer.php');
     include_once ('../actions/user_info.php');
 
-    draw_header();  
+    draw_headerArgs(["../css/headerBlack.css", "../css/user.css"], []);
 
     if(!isset($_GET['id'])){ //se o Id nao estiver set entao irá mostrar a sua propria pagina
 

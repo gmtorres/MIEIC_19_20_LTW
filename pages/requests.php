@@ -9,7 +9,7 @@
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
 
-    draw_headerArgs([],[["../js/requests.js","defer"]]);
+    draw_headerArgs(["../css/headerBlack.css", "../css/requests.css"],[["../js/requests.js", "defer"]]);
 
     ?>
     <div class="w3-bar w3-black">

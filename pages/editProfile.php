@@ -4,7 +4,7 @@
     include_once ('../templates/footer.php');
     include_once ('../actions/user_info.php');
   
-    draw_header();
+    draw_headerArgs(["../css/headerBlack.css", "../css/editProfile.css"], []);
 
     if(!isset($_GET['id'])){
 

@@ -22,9 +22,8 @@
     }
     if($userplace == NULL)
         header('Location: ../pages/manage.php');
-
     
-    draw_headerArgs(["../css/calendar.css"] , [["../js/addAvailables.js","defer"]]);
+    draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css"], [["../js/addAvailables.js", "defer"]]);
 
     drawPlace($place);
 

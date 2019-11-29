@@ -8,11 +8,8 @@
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
 
-    draw_header();
-
+    draw_headerArgs(["../css/headerBlack.css", "../css/addPlace.css"], []);
     draw_addPlace();
-
     draw_footer();
-
 
 ?>
