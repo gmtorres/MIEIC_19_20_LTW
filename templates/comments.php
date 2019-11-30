@@ -55,9 +55,15 @@
         }
         foreach($comments as $comment){
             $userName = getUserInfo($comment['writer'])['userName'];
+            $profilePic = getProfilePic($comment['writer']);
         ?>  
             <div id='Comment'>
                 <h3> <?= $comment['title'] ?>  </h3>
+                <div id='commentUserPicture'>
+                    <a href="user.php?id=<?=$comment['writer']?>"> 
+                        <img src="../images/profile/<?=$profilePic?>.jpg"> 
+                    </a>
+                </div>
                 <a href="./user.php?id= <?= $comment['writer'] ?> ">
                     <h5> <?= $userName ?> </h5>
                 </a>

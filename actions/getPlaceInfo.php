@@ -41,8 +41,14 @@ function drawPlaceDescription($place)
 }
 
 function drawUser($place)
-{
+{   
+    $profilePic = getProfilePic($place['placeOwner']);
     ?>
+    <div id='userPicture'>
+        <a href="user.php?id=<?=$place['placeOwner']?>"> 
+            <img src="../images/profile/<?=$profilePic?>.jpg"> 
+        </a>
+    </div>
     <a href="./user.php?id= <?= $place['placeOwner'] ?> ">
         <h3> <?= $place['userName'] ?> </h3>
     </a>

@@ -59,8 +59,15 @@
         return $places;
     }
     function drawUserInfo($user){
+
+        $profilePic = getProfilePic($user['userID']);
         ?>
-        <div id='User info'>
+        <div id='UserInfo'>
+            <div id='userPicture'>
+                <a href="user.php?id=<?=$user['userID']?>"> 
+                    <img src="../images/profile/<?=$profilePic?>.jpg"> 
+                </a>
+            </div>
             <h2 id='userName'> <?= $user['userName'] ?> </h2>
             <h4 id='userEmail'> <?= $user['email'] ?> </h4>
             <h4 id='userPhoneNumber'> <?= $user['phoneNumber'] ?> </h4>
