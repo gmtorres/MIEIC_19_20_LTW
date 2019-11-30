@@ -15,40 +15,49 @@
     z-index: -1;
 }
 
+
 #booking {
-    font-family: 'Quicksand', sans-serif;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: block;
     padding: 10px 20px;
     position: relative; 
-    left: 30px;
+    left: 35px;
     bottom: -40px;
-    border: 3px solid rgb(122, 200, 245);
-    background: rgba(248, 244, 240, 0.9);
+    background: rgba(248, 244, 240, 0.85);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(4px);
     border-radius: 10px;
     float: left;
     width: 25%;
+    height: 60%;
+}
 
+h1 {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#booking input[type=date] {
+    float: left;
+    width: 50%;
 }
 
 #booking input[type=submit] {
+    font-size: 14px;
     padding: 10px 10px;
     float: right;
     width: 30%;
-    border: 3px solid rgb(122, 200, 245);
+    border: 0px solid black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
     margin: 10px 2px;
-
 }
 
-#booking label{
+#booking label {
     font-weight: bold;
     font-size: 16px;
-
 }
 
-#booking input{
+#booking input {
     padding: 5px 5px;
     width: 100%;
-
 }

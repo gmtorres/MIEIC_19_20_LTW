@@ -7,6 +7,7 @@
                 <title>My Project</title>
                 <meta charset="utf-8">
                 <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+                <link href="../css/style.css" rel="stylesheet">
             </head>
             <body>
 
@@ -21,6 +22,7 @@
                 <title>My Project</title>
                 <meta charset="utf-8">
                 <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+                <link href="../css/style.css" rel="stylesheet">
                 
                 <?php
                 foreach($cssFile as $css){

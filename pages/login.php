@@ -8,7 +8,7 @@
     if(isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
     
-    draw_headerArgs(["../css/headerBlack.css"] , []);
+    draw_headerArgs(["../css/headerBlack.css", "../css/accountForm.css"], []);
     draw_login();
     draw_footer();
 

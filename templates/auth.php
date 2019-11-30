@@ -3,7 +3,9 @@
     function draw_login(){
     ?>
 
-        <header><h2>Ready for a booking?</h2></header>
+    <div id = formBlock>
+
+        <header><h2>Ready for your first booking?</h2></header>
 
         <?php
             if(isset($_SESSION['login_message'])){
@@ -21,8 +23,10 @@
         </form>
 
         <footer>
-        <p>Don't have an account? Let's create one!</p>  <a href="register.php">Register!</a>
+        <p>Don't have an account? Let's create one! <a href="register.php">Register!</a> </p>
         </footer>
+
+    </div>
 
         <?php
     }
@@ -32,6 +36,7 @@
 
     function draw_register(){
     ?>
+        <div id = formBlock>
 
         <header><h2>Join us!</h2></header>
 
@@ -45,17 +50,19 @@
         ?>
 
         <form method="post" action="../actions/register.php">
-            <input type="text" name="username" placeholder="username" required>
-            <input type="password" name="password" placeholder="password" required>
-            <input type="text" name="phoneNumber" placeholder="phoneNumber" required>
-            <input type="email" name="email" placeholder="email" required>
-            <input type="text" name="age" placeholder="age" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="text" name="age" placeholder="Age" required>
             <input type="submit" value="Register">
         </form>
 
-    <footer>
-      <p>Already have an account? <a href="login.php">Login!</a></p>
-    </footer>
+        <footer>
+        <p>Already have an account? <a href="login.php">Login!</a></p>
+        </footer>
+
+    </div>
 
         <?php
     }
