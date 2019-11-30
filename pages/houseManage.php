@@ -45,7 +45,7 @@
             <label> Price per night </label>
                 <input id= 'price' type="number" name="price" placeholder="" required><br>
             <span class="error" aria-live="polite"></span>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Add dates">
 
         </form>
 

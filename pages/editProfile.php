@@ -3,8 +3,6 @@
     include_once ('../templates/header.php');
     include_once ('../templates/footer.php');
     include_once ('../actions/user_info.php');
-  
-    draw_headerArgs(["../css/headerBlack.css", "../css/editProfile.css"], []);
 
     if(!isset($_GET['id'])){
 
@@ -19,6 +17,9 @@
             header('Location: ../pages/login.php');
         }
     }
+    $_SESSION['username'] = getUserInfo($_SESSION['userID'])['userName'];
+
+    draw_headerArgs(["../css/headerBlack.css", "../css/editProfile.css"], [["../js/editProfile.js","defer"]]);
 
 ?>
 
@@ -33,25 +34,43 @@
 ?>
 
     <div>
-        <form>
-            <label> Change username:
-                <br> <input type = "text" name = "username" placeholder="ex: marianaLima" >
-            </label>
-                <br>
-            <label> Change password:
-                <br> <input type = "text" name = "password" placeholder="ex: 123dzcbl" >
-            </label>
-                <br>
-            <label> Change email:
-                <br> <input type = "text" name = "email" placeholder="ex: marianaL@gmail.com" >
-            </label>
-                <br>
-            <label> Change age:
-                <br> <input type = "text" name = "age" placeholder="ex: 31" >
-            </label>
-                <br>
+        <form id="changeUserName">
+            <h3> Change username </h3>
+            <label> New username:
+                <br> <input type = "text" name = "username" placeholder="ex: marianaLima" required>
+            </label><br>
+            <span></span>
+            <button type='submit'> Change username </button>
         </form>
+        <form id="changePassword">
+            <h3> Change password </h3>
+            <label> Old password:
+                <br> <input type = "password" name = "password" placeholder="ex: 123dzcbl" required>
+            </label><br>
+            <label> New password:
+                <br> <input type = "password" name = "password" placeholder="ex: 123dzcbl" required>
+            </label><br>
+            <label> Repeat new password:
+                <br> <input type = "password" name = "password" placeholder="ex: 123dzcbl" required>
+            </label><br>
+            <span></span>
+            <button type='submit'> Change password </button>
+        </form>
+        <form id='changeEmail'>
+            <h3> Change email </h3>
+            <label> Old email:
+                <br> <input type = "email" name = "email" placeholder="ex: ritaLima@gmail.com" required>
+            </label><br>
+            <label> New email:
+                <br> <input type = "email" name = "email" placeholder="ex: rita_lima@hotmail.com" required>
+            </label><br>
+            <span></span>
+            <button type='submit'> Change email </button>
+        </form>
+
     </div>
+
+
 
 <?php  
 

@@ -19,7 +19,7 @@
         $stmt = $db->prepare('Insert into ExtraAmenities(placeId,amenitiesDescription) values(?,?)');
         $stmt->execute(array($placeId,$description));
 
-        return json_encode(['description' => $description])
+        return json_encode(['description' => $description]);
     }
 
     function addRestriction($placeId,$description){
@@ -27,7 +27,7 @@
         $stmt = $db->prepare('Insert into ExtraRestrictions(placeId,restrictionDescription) values(?,?)');
         $stmt->execute(array($placeId,$description));
 
-        return json_encode(['description' => $description])
+        return json_encode(['description' => $description]);
     }
 
 

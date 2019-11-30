@@ -60,11 +60,11 @@
     }
     function drawUserInfo($user){
         ?>
-
-            <h2> <?= $user['userName'] ?> </h2>
-            <h4> <?= $user['email'] ?> </h4>
-            <h4> <?= $user['phoneNumber'] ?> </h4>
-
+        <div id='User info'>
+            <h2 id='userName'> <?= $user['userName'] ?> </h2>
+            <h4 id='userEmail'> <?= $user['email'] ?> </h4>
+            <h4 id='userPhoneNumber'> <?= $user['phoneNumber'] ?> </h4>
+        </div>
         <?php
     }
     function drawUserPlaces($places){
