@@ -102,6 +102,32 @@ function emailReload() {
 }
 
 
+
+/*document.getElementById('changeProfilePic').addEventListener('submit',function (event) {
+    event.preventDefault();
+
+    let image = document.getElementById('changeProfilePic').getElementsByTagName('input')[0].files[0];
+
+    let request = new XMLHttpRequest();
+    request.open('post', '../actions/changeProfilePicture.php' , true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    request.addEventListener('load', imageReload);
+    request.send(encodeForAjax({'image': image['name'] }));
+
+});
+
+function imageReload() {
+    let data = JSON.parse(this.responseText);
+    let message = document.getElementById('changeProfilePic').getElementsByTagName('span')[0];
+    message.innerHTML = data['message'];
+    if(data["ret"] == 1)
+        location.reload();
+}*/
+
+
+
+
+
 function encodeForAjax(data) {
     return Object.keys(data).map(function(k){
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])

@@ -3,3 +3,30 @@ body {
     background: #F8F4F0;
     font-family: 'Quicksand', sans-serif;
 }
+
+#profilePicture {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    border-bottom: none;
+    margin-right: 15px;
+}
+#profilePicture a{
+    width: 100%;
+    height: auto;
+    border-bottom: 0px solid transparent;
+    padding: 0px;
+}
+#profilePicture a:hover {
+    background-color: transparent;
+    color: transparent;
+}
+
+#profilePicture img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    float: center;
+    padding: 0px;
+    border-bottom: none;
+}

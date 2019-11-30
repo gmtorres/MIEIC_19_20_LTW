@@ -1,4 +1,5 @@
 <?php
+    include_once ('../actions/user_info.php');
 
     function draw_header(){  ?>
         <!DOCTYPE html>
@@ -61,20 +62,26 @@
 
             <?php
             if(isset($_SESSION['username']) ){
+                $profilePic = getProfilePic($_SESSION['userID']);
                 ?>
                     <div id = "login">
-                        <a href="user.php"> <?=$_SESSION['username']?> </a>
+                        <div id='profilePicture'>
+                            <a href="user.php"> 
+                                <img src="../images/profile/<?=$profilePic?>.jpg"> 
+                            </a>
+                        </div>
+                        <a href="user.php" class='barText'> <?=$_SESSION['username']?> </a>
                         <h2> | </h2>
-                        <a href="../actions/logout.php"> Logout </a>
+                        <a href="../actions/logout.php" class='barText'> Logout </a>
                     </div>
 
                 <?php
             }else{
                 ?>
                     <div id = "login">
-                        <a href="login.php"> Login </a>
+                        <a href="login.php" class='barText'> Login </a>
                         <h2> | </h2>
-                        <a href="register.php"> Register </a>
+                        <a href="register.php" class='barText'> Register </a>
                     </div>
                 <?php
             }

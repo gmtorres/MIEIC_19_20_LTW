@@ -107,4 +107,19 @@
         $userId = $_SESSION['userId'];
         drawUserInfo($userId);
     }
+
+    function getProfilePic($userId){
+        $db = Database::instance()->db();
+        $stmt = $db->prepare('Select profilePicture from User 
+                              where User.userId = :userId
+                                ');
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        if($user['profilePicture'] == null)
+            return 'default';
+        else 
+            return $user['profilePicture'];
+    }
+
 ?>

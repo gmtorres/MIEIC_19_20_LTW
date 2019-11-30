@@ -67,6 +67,15 @@
             <span></span>
             <button type='submit'> Change email </button>
         </form>
+        <form id='changeProfilePic' action="../actions/changeProfilePicture.php" method="post" enctype="multipart/form-data">
+            <h3> Change Profile picture </h3>
+            <label> New image:
+                <br> <input type="file" name="image" required>
+            </label><br>
+            <span></span>
+            <button type='submit'> Change picture </button>
+        </form>
+
 
     </div>
 
