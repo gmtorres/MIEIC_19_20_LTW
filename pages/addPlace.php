@@ -8,7 +8,7 @@
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
 
-    draw_header();
+    draw_headerArgs([],[['../js/addPlaceOptions.js','defer']]);
 
     draw_addPlace();
 

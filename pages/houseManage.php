@@ -4,7 +4,7 @@
     include_once ('../templates/header.php');
     include_once ('../templates/footer.php');
     include_once ('../templates/manage.php');
-    include_once ('../actions/get_place_info.php');
+    include_once ('../actions/getPlaceInfo.php');
 
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
@@ -72,7 +72,7 @@
                     error.className = "error active";
                     event.preventDefault(); 
                 }else{
-                    console.log("a");
+                    //console.log("a");
                     //inicial.value = null;
                     //final.value = "";
                     addAvailable(<?= $userplace['id'] ?> , inicial.value, final.value, price.value,calendarioRef );

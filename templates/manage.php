@@ -63,13 +63,17 @@
                 <input type="text" name="maxGuests" placeholder="Max Guests" required>
             </label>
             <div id='extras'>
+                <h3>Extras</h3>
             </div>
-            <button> Add extra </button>
+            <input id='extraDescription' type="text" name="Extra" placeholder="Extra">
+            <button onclick="appendExtra()" type="button"> Add extra </button>
             <div id='restrictions'>
+                <h3>Restrictions</h3>
             </div>
-            <button> Add restriction </button>
+            <input id='restrictionDescription' type="text" name="Restriction" placeholder="Restriction">
+            <button onclick="appendRestriction()" type="button"> Add restriction </button>
             <br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Add Place">
         </form>
 
         <?php

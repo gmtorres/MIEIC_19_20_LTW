@@ -11,13 +11,30 @@
     $maxGuests = $_POST['maxGuests'];
     $placeOwner = $_SESSION['userID'];
 
+    $extras = json_decode($_POST['extrasInput']);
+    $restrictions = json_decode($_POST['restrictionsInput']);
+
+
     try{
         $stmt = $db->prepare('Insert into 
                 Place(title,placeDescription,placeAddress,area,maxGuests,placeOwner) 
                                 values (?,?,?,?,?,?)');
         $stmt->execute(array($title,$description,$address,$zone,$maxGuests,$placeOwner));
 
-        header('Location: ../pages/user.php');
+        $stmt = $db->prepare('Select placeId from Place where title = ? and placeOwner = ? and placeDescription = ?');
+        $stmt->execute(array($title,$placeOwner,$description));
+        $placeId = $stmt->fetch();
+
+        foreach($extras as $extra){
+            $stmt = $db->prepare('Insert into ExtraAmenities(amenitiesDescription,PlaceId) values(?,?)');
+            $stmt->execute(array($extra,$placeId['placeID']));
+        }
+        foreach($restrictions as $restriction){
+            $stmt = $db->prepare('Insert into ExtraRestrictions(restrictionDescription,PlaceId) values(?,?)');
+            $stmt->execute(array($restriction,$placeId['placeID']));
+        }
+
+        header('Location: ../pages/house.php?id='. $placeId['placeID']);
     }
     catch (PDOException $e) {
         die($e->getMessage());

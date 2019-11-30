@@ -1,7 +1,7 @@
 <?php
     include_once ('../includes/database.php');
     include_once ('../actions/user_info.php');
-    include_once ('../actions/get_place_info.php');
+    include_once ('../actions/getPlaceInfo.php');
 
 
     if(isset($_GET['function'])){    

@@ -4,7 +4,6 @@ var calendar = null;
 
 function addAvailable(placeId,start,end,price , calendario){
     calendar = calendario;
-    console.log('b');
     let request = new XMLHttpRequest();
     request.open('post', '../actions/addAvailability.php' , true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')

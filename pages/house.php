@@ -3,7 +3,7 @@
     include_once ('../templates/header.php');
     include_once ('../templates/comments.php');
     include_once ('../templates/booking.php');
-    include_once ('../actions/get_place_info.php');
+    include_once ('../actions/getPlaceInfo.php');
 
     $placeId = -1;
     if(isset($_GET['id']))
@@ -35,6 +35,13 @@
         if(isset($_SESSION['userID'])){
             drawRentSubmition($placeId,$_SESSION['userID'] , $rents, $availables );
         }
+
+        $extras = getExtraAmenities($placeId);
+        $restrictions = getExtraRestrictions($placeId);
+
+        displayExtraAmenities($extras);
+        displayExtraRestrictions($restrictions);
+
 
         drawComments($placeId);
 
