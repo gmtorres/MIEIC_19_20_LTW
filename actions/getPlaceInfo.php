@@ -223,4 +223,31 @@ function drawPlaceAmenities($place)
         <?php
     }
 
+    function getPlaceImages($placeId){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('Select * from PlaceImage where placeId = :placeid');
+        $stmt->bindParam(':placeid',$placeId);
+        $stmt->execute();
+
+        $images = $stmt->fetchAll();
+        return $images;
+    }
+
+    function displayPlaceImages($images){
+        ?> 
+            <div id='placeImages'>
+        <?php
+            foreach($images as $image){
+                ?>
+                <div id='placeImage'>
+                    <img src="<?=$image['imagePath']?>" alt="Image of Place" width="400" height="200">
+                    <h4><?=$image['imageDescription']?></h4>
+                </div>
+                <?php
+            }
+        ?>
+            </div>
+        <?php
+    }
 ?>

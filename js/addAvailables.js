@@ -20,7 +20,7 @@ function reloadAvailable(){
     let available = document.createElement('div');
     available.setAttribute('id','available');
     available.innerHTML = '<h3>' + data[0] + '</h3><h3>' +data[1]+ '</h3><h3>'+data[2]+ '</h3>';
-    reservations.append(available);
+    reservations.prepend(available);
 
     calendar.addBlocked([data[0],data[1]]);
     calendar.resetDates();

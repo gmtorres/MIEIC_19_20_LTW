@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS Comment;
 DROP TABLE IF EXISTS Available_Dates;
 DROP TABLE IF EXISTS ExtraAmenities;
 DROP TABLE IF EXISTS ExtraRestrictions;
+DROP TABLE IF EXISTS PlaceImage;
 
 
 CREATE TABLE User(
@@ -23,13 +24,20 @@ CREATE TABLE Place(
     title text NOT NULL,
     placeDescription text NOT NULL,
     placeAddress text NOT NULL,
-    area real NOT NULL CHECK(area > 0),
+    city text NOT NULL,
     maxGuests INTEGER NOT NULL,
     swimmingPool INTEGER DEFAULT 0,
     wiFi INTEGER DEFAULT 0,
     houseMaid INTEGER DEFAULT 0,
     numberOfBedrooms INTEGER,
     placeOwner integer NOT NULL REFERENCES User
+);
+
+CREATE TABLE PlaceImage(
+    placeImageID integer PRIMARY KEY,
+    placeID integer NOT NULL REFERENCES Place,
+    imagePath text NOT NULL,
+    imageDescription text NOT NULL
 );
 
 
@@ -46,12 +54,14 @@ CREATE TABLE Rent(
 
 
 CREATE TABLE ExtraAmenities(
+    amenitiesID integer PRIMARY KEY,
     amenitiesDescription TEXT NOT NULL,
     placeID integer NOT NULL REFERENCES Place
 );
 
 
 CREATE TABLE ExtraRestrictions(
+    restrictionID integer PRIMARY KEY,
     restrictionDescription TEXT NOT NULL,
     placeID integer NOT NULL REFERENCES Place
 );
@@ -80,10 +90,10 @@ INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Gustavo", "to
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Francisco", "francisco@gmail.com", "$2y$10$OH2eysuAXm.dIOmOHXa7g.momeoahr.iJQJRxMte/JNnOYAOulEl6",41,914994618); /*owner*/
 INSERT INTO User(userName,email,passHash,age,phoneNumber) VALUES ("Rita", "rita@live.pt", "$2y$10$R2usXTENzn2sfEVsvI5qNeFjsgJBnLeznb2/ZbFOCk3Enztolo6OK",29,962774421); /*tourist*/
 
-INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Nice house" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",4, 1, 1, 1, 2, 1);
-INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Cozy house" , "Nice rustic house with a beautiful village nearby and a river great for taking a bath as well for long walks . " , "Rua de Vila Nova", "Bragança",8, 1, 1, 0, 1, 2);
-INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Great Appartment" , "Amazing apartment, many rooms, very big and with a fantastic view to the beach and great acesses" , "Avenida da Praia", "Espinho",6, 0, 1, 1, 2, 1); 
-INSERT INTO Place(title,placeDescription,placeAddress,area,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Nice house2" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",6, 0, 0, 0, 3, 1);
+INSERT INTO Place(title,placeDescription,placeAddress,city,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Nice house" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",4, 1, 1, 1, 2, 1);
+INSERT INTO Place(title,placeDescription,placeAddress,city,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Cozy house" , "Nice rustic house with a beautiful village nearby and a river great for taking a bath as well for long walks . " , "Rua de Vila Nova", "Bragança",8, 1, 1, 0, 1, 2);
+INSERT INTO Place(title,placeDescription,placeAddress,city,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Great Appartment" , "Amazing apartment, many rooms, very big and with a fantastic view to the beach and great acesses" , "Avenida da Praia", "Espinho",6, 0, 1, 1, 2, 1); 
+INSERT INTO Place(title,placeDescription,placeAddress,city,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Nice house2" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",6, 0, 0, 0, 3, 1);
 
 INSERT INTO Available_Dates(placeID, startDate, endDate, price) VALUES (1, '2019-11-01','2019-11-26', 50);
 

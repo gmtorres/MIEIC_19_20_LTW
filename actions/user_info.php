@@ -45,9 +45,9 @@
         if($user1 == false)
             exit;
         $stmt = $db->prepare('Select Place.placeId as id,Place.title, 
-                                Place.area,Place.maxGuests as maxGuests, 
+                                Place.city,Place.maxGuests as maxGuests, 
                                 IFNULL(avg(comment.classification),\'No Reviews yet\') as class,
-                                place.placeDEscription
+                                place.placeDescription ,place.placeAddress
                                 from 
                                     User Join Place on User.userId = Place.placeOwner 
                                     LEFT Join Comment on Place.placeid = comment.placeid 
@@ -91,7 +91,7 @@
                     <div id='UserPlace '>
                         <h3> <?= $place['title']?> </h3>
                         <h4> <?= $place['class']?> </h4>
-                        <h4> <?= $place['area']?> </h4>
+                        <h4> <?= $place['city']?> </h4>
                         <h5> <?= $place['placeDescription']?> </h5>
                     </div>
                 </a>

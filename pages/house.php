@@ -27,6 +27,10 @@
 
         drawPlaceDescription($place);
         drawUser($place);
+
+        $images = getPlaceImages($placeId);
+        displayPlaceImages($images);
+
         drawPlaceAmenities($place);
 
         $availables = getAvailabitities($placeId);

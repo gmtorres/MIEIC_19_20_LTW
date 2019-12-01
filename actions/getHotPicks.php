@@ -5,7 +5,7 @@
     $db = new PDO('sqlite:../database.db');
 
     $stmt = $db->prepare('Select Place.placeId as id, 
-                                Place.title, Place.area,
+                                Place.title, Place.city,
                                 place.placeDescription ,  
                                 avg(comment.classification) as class
                             from place 
@@ -23,7 +23,7 @@
                 <div id='HotPick'>
                     <h3> <?= $place['title']?> </h3>
                     <h4> <?= $place['class']?> </h4>
-                    <h4> <?= $place['area']?> </h4>
+                    <h4> <?= $place['city']?> </h4>
                     <h5> <?= $place['placeDescription']?> </h5>
                 </div>
             </a>

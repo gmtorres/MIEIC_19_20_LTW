@@ -32,7 +32,7 @@
                     <div id='UserPlace '>
                         <h3> <?= $place['title']?> </h3>
                         <h4> <?= $place['class']?> </h4>
-                        <h4> <?= $place['area']?> </h4>
+                        <h4> <?= $place['city']?> </h4>
                         <h5> <?= $place['placeDescription']?> </h5>
                     </div>
                 </a>
@@ -79,4 +79,106 @@
         <?php
 
     }
+
+    function drawPlaceManager($place){
+        ?>
+
+        <form id='changePlaceInfo' method="post" action='../actions/changePlaceInfo.php'>
+            <input type="hidden" id="placeId" name="placeId" value=<?=$place['id']?>>
+            <label> Place Title
+                <input type="text" name="Title" placeholder="Title" value='<?=$place['title']?>' required>
+            </label>
+            <label> Zone/City
+                <input type="text" name="Zone" placeholder="Zone" value='<?=$place['city']?>' required>
+            </label>
+            <label> Adress
+                <input type="text" name="Address" placeholder="Address" value='<?=$place['placeAddress']?>' required>
+            </label>
+            <label> Description
+                <br>
+                <textarea name="Description" rows="20" cols="100"><?= $place['placeDescription'] ?></textarea>
+                <br>
+            </label>
+            <label> Maximum Guests
+                <input type="text" name="maxGuests" placeholder="Max Guests" value='<?=$place['maxGuests']?>' required>
+            </label>
+            <input type="submit" value="Change Place Info">
+        </form>
+
+        <?php
+    }
+
+    function drawAvailablesForm($place){
+        $availables = getAvailabitities($place['id']);
+
+    ?>
+        <label> Add availabity </label>
+        <form  id='AddAvailables' >
+            <input type = "hidden" name = "placeId" value = "<?= $place['id']?>" />
+            
+            <myDatePicker id ="dates" allowOverlaps="true" required="required"></myDatePicker>
+                <script type="text/javascript" src='../js/calendar.js'> </script>
+                <script>
+                    
+                </script>
+
+            <label> Price per night </label>
+                <input id= 'price' type="number" name="price" placeholder="" required><br>
+            <span class="error" aria-live="polite"></span>
+            <input type="submit" value="Add dates">
+
+        </form>
+
+        <script>
+            var calendar = createCalendar( <?php echo json_encode(getAvailabititiesArray($availables)) ?>);
+            var form  = document.getElementById('AddAvailables');
+            var dates = document.getElementById('dates');
+            var error = document.querySelector('.error');
+
+            dates.addEventListener("input", function (event) {
+                error.innerHTML = ""; // Reset the content of the message
+                error.className = "error"; // Reset the visual state of the message
+            },false);
+
+            form.addEventListener("submit" , function(event){
+
+                var inicial = document.getElementById('input_0_start');
+                var final = document.getElementById('input_0_end');
+                var price = document.getElementById('price');
+                
+                if( !inicial.validity.valid || !final.validity.valid || inicial.value == "" || final.value == ""){
+                    error.innerHTML = "Please fill all fields.";
+                    error.className = "error active";
+                    event.preventDefault(); 
+                }else{
+                    //console.log("a");
+                    //inicial.value = null;
+                    //final.value = "";
+                    addAvailable(<?= $place['id'] ?> , inicial.value, final.value, price.value,calendarioRef );
+                    event.preventDefault(); 
+                }
+            },false);
+            
+        </script>
+
+    <?php
+        drawAvailables($availables);
+    }
+
+    function drawAddPictureForm($place){
+        ?>
+            <form id='addPlacePicture' method='post' action='../actions/addPlacePicture.php' enctype="multipart/form-data">
+                <input type="hidden" id="placeId" name="placeId" value=<?=$place['id']?> >
+    
+                <label> Add Picture
+                    <br> <input type="file" name="image" required>
+                </label> <br>
+                <label> Place Description
+                    <br> <input type="text" name="description" required>
+                </label>
+                <input type="submit" value="Add Picture">
+            </form>
+        <?php
+    }
+
 ?>

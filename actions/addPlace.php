@@ -17,7 +17,7 @@
 
     try{
         $stmt = $db->prepare('Insert into 
-                Place(title,placeDescription,placeAddress,area,maxGuests,placeOwner) 
+                Place(title,placeDescription,placeAddress,city,maxGuests,placeOwner) 
                                 values (?,?,?,?,?,?)');
         $stmt->execute(array($title,$description,$address,$zone,$maxGuests,$placeOwner));
 
