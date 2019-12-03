@@ -21,7 +21,7 @@
         <button class="request button" onclick="getAllRents(<?= $_SESSION['userID']?>)">All</button>
         <script>
             window.onload = function(){ 
-                getRentsInFuture(<?= $_SESSION['userID']?>);
+                getRentsForAproval(<?= $_SESSION['userID']?>);
             }
         </script>
     </div> 

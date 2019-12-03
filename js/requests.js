@@ -14,7 +14,7 @@ function declineOffer(requestId){
     request.addEventListener('load', replaceRent);
     request.send();
 }
-function cancellxOffer(requestId){
+function cancellOffer(requestId){
     let request = new XMLHttpRequest();
     request.open('get', '../actions/changeRentState.php?' + encodeForAjax({'rentId': requestId, 'state':-3}) , true);
     request.addEventListener('load', replaceRent);
@@ -23,9 +23,12 @@ function cancellxOffer(requestId){
 
 function replaceRent(){
     let data = JSON.parse(this.responseText);
-    let string = "request" + data[0];
-    let request = document.getElementById(string);
-    request.getElementsByTagName('div')[0].remove();
+    let id = "request" + data[0];
+    let request = document.getElementById(id);
+    let response = request.getElementsByTagName('div')[0];
+    if(response){
+        response.remove();
+    }
     let lastElem = request.lastElementChild;
     if(data[1] == 1){
         lastElem.innerHTML = "Accepted";
@@ -33,6 +36,8 @@ function replaceRent(){
         lastElem.innerText = "Declined";
     }else if(data[1] == -2){
         lastElem.innerHTML = "Exceeded time";
+    }else if(data[1] == -3){
+        lastElem.innerHTML = "Cancelled";
     }
     console.log(request);
 }
@@ -94,12 +99,14 @@ function displayRents(){
             console.log(startDate.getUTCDate());
             console.log(maxLimit.getUTCDate());
             if(startDate.getTime() > maxLimit.getTime() ){
-                rent.innerHTML +="<button onclick=\"cancellOffer(" + data['rentID'] + ")\">Cancell</button> ";
+                rent.innerHTML +=" <div id='cancelation'> <button onclick=\"cancellOffer(" + data['rentID'] + ")\">Cancell</button> </div>";
             }
         }else if(data['accepted'] == -1){
             rent.innerHTML += "<h3> Declined </h3>"
         }else if(data['accepted'] == -2){
             rent.innerHTML += "<h3> Exceded time </h3>"
+        }else if(data['accepted'] == -3){
+            rent.innerHTML += "<h3> Canceled </h3>"
         }
 
 

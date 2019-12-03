@@ -11,12 +11,14 @@ body {
     border-bottom: none;
     margin-right: 15px;
 }
+
 #profilePicture a{
     width: 100%;
     height: auto;
     border-bottom: 0px solid transparent;
     padding: 0px;
 }
+
 #profilePicture a:hover {
     background-color: transparent;
     color: transparent;

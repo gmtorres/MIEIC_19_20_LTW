@@ -17,8 +17,8 @@
         ?>
 
         <form method="post" action="../actions/check_login.php">
-            <input type="text" name="username" placeholder="username" required>
-            <input type="password" name="password" placeholder="password" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
 

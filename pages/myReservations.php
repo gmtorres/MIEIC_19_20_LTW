@@ -9,7 +9,7 @@
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
 
-    draw_headerArgs(["../css/headerBlack.css", "../css/myReservations.css"], []);
+    draw_headerArgs(["../css/headerBlack.css", "../css/myReservations.css"], [["../js/requests.js","defer"]]);
 
     $requests = getRentsByUser($_SESSION['userID']);
 
