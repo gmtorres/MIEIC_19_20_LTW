@@ -1,3 +1,45 @@
+
+h1 {
+    padding: 10px;
+    margin:0px;
+    font-size: 60px;
+}
+
+h3 {
+    padding: 10px 20px;
+    font-size: medium;
+    margin:2px;
+}
+
+#placeImages {
+    padding: 20px;
+    display:grid;
+}
+
+#description{
+    padding: 20px;
+    font-size: large;
+    border-bottom: cadetblue;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-top: cadetblue;
+    border-top-style: solid;
+    border-top-width: 2px;
+}
+
+#amenities {
+    padding: 20px 20px;
+    display:block;
+    border-bottom: cadetblue;
+    border-bottom-style: solid;
+    border-bottom-width: 100px;
+}
+
+#unavailable {
+    color: dimgray;
+    background: #F8F4F0;
+}
+
 #userPicture{
     width: 80px;
     height: 80px;

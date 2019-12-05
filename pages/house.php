@@ -17,20 +17,11 @@
     }
 
     drawPlaceTitle($place);
-    ?>
-
-    <div> 
-        <img src="" alt="">
-    </div>
-
-    <?php
-
-        drawPlaceDescription($place);
-        drawUser($place);
+    drawPlaceCity($place);
 
         $images = getPlaceImages($placeId);
         displayPlaceImages($images);
-
+        drawPlaceDescription($place);
         drawPlaceAmenities($place);
 
         $availables = getAvailabitities($placeId);
@@ -45,8 +36,7 @@
 
         displayExtraAmenities($extras);
         displayExtraRestrictions($restrictions);
-
-
+        drawUser($place);
         drawComments($placeId);
 
         if(isset($_SESSION['userID'])){
