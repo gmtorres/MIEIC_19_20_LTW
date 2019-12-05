@@ -483,6 +483,16 @@ class Calendar {
     addAvailable(dates){
         this.availableDates.push(dates);
     }
+
+    removeBlocked(dates){
+        for(let i = 0; i < this.blockedDates.length;i++){
+            if(this.blockedDates[i][0] == dates[0] && this.blockedDates[i][1] == dates[1]){
+                this.blockedDates.splice(i,1);
+                break;
+            }
+        }
+    }
+
     resetDates(){
         this.startDate = null;
         this.endDate = null;

@@ -108,7 +108,7 @@ function drawPlaceAmenities($place)
 
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('Select * from Available_Dates where PlaceId = :placeid');
+        $stmt = $db->prepare('Select * from Available_Dates where PlaceId = :placeid and endDate >= date(\'now\')');
         $stmt->bindParam(':placeid',$placeId);
         $stmt->execute();
 
@@ -124,11 +124,11 @@ function drawPlaceAmenities($place)
         <?php
         foreach($dates as $date){
             ?>
-                <div id='available'>
-                    <h2>available: 
+                <div id='available <?= $date["Available_DatesID" ]?>' >
                     <h3> <?= $date['startDate']?> </h3>
                     <h3> <?= $date['endDate']?> </h3>
                     <h3> <?= $date['price']?> </h3>
+                    <button type='button' onclick='removeAvailable(<?= $date["Available_DatesID"]?>, calendarioRef)'> Remove </button>
                 </div>
             <?php
         }

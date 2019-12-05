@@ -5,6 +5,10 @@
     $rentId = $_GET['rentId'];
     $state = $_GET['state'];
 
+    if($state == -3){
+        
+    }
+
     $db = Database::instance()->db();
     $stmt = $db->prepare('Update Rent set accepted = :state where rentId = :rentId');
     $stmt->bindParam(':rentId', $rentId);

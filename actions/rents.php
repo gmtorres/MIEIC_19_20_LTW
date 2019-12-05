@@ -21,9 +21,17 @@
                         if($rent['accepted'] == 0){
                             ?> <h3> Waiting for response </h3> <?php
                         }else if($rent['accepted'] == 1){
-                            ?> <h3> Accepted </h3> <?php
+                            ?> <h3> Accepted </h3>
+                            <?php if( strtotime($rent['startDate'] ) > strtotime('+ 10 days') ) { ?>
+                                <div id='cancelation'> <button onclick="cancellOffer(<?= $rent['rentID']?>)">Cancell</button> </div>
+                            <?php } ?>
+                            <?php
                         }else if($rent['accepted'] == -1){
                         ?> <h3> Declined </h3> <?php
+                        }else if($rent['accepted'] == -2){
+                        ?> <h3> Exceeded Time </h3> <?php
+                        }else if($rent['accepted'] == -3){
+                        ?> <h3> Cancelled </h3> <?php
                         }
                          
                     ?>

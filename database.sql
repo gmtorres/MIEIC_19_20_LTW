@@ -78,6 +78,7 @@ CREATE TABLE Comment(
 
 
 CREATE TABLE Available_Dates(
+    Available_DatesID integer PRIMARY KEY,
     placeID integer NOT NULL REFERENCES Place,
     startDate date NOT NULL,
     endDate date NOT NULL,
