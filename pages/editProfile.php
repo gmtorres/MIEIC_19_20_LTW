@@ -2,7 +2,7 @@
     include_once ('../includes/session.php');
     include_once ('../templates/header.php');
     include_once ('../templates/footer.php');
-    include_once ('../actions/user_info.php');
+    include_once ('../actions/getUserInfo.php');
 
     if(!isset($_GET['id'])){
 

@@ -13,7 +13,7 @@
             print_r($userId);
     */
 
-    include_once ('./actions/user_info.php');
+    include_once ('./actions/getUserInfo.php');
     //echo getUserID('Gustavo');
 
     header('Location: ../pages/homePage.php');

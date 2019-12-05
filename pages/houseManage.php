@@ -23,7 +23,7 @@
     if($userplace == NULL)
         header('Location: ../pages/manage.php');
     
-    draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css"], [["../js/editAvailables.js", "defer"],["../js/editPlace.js", "defer"]]);
+    draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css"], [["../js/editAvailables.js", "defer"]]);
 
     drawPlaceManager($place);
 
@@ -33,8 +33,43 @@
     displayPlaceImages($images);
 
     drawAvailablesForm($userplace);
-
+    ?>
+    <div id='teste'>
     
+    </div>
+    <?php
     draw_footer();
+
+    ?>
+
+        <script>
+
+            function testAjax(){
+                let request = new XMLHttpRequest();
+                request.open('post', '../actions/a_test.php' , true);
+                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+                request.addEventListener('load', test);
+                request.send(encodeForAjax({"test" : 1}));
+            }
+
+            function test(){
+                //let data = JSON.parse(this.responseText);
+                console.log(this.responseText);
+                document.getElementById('teste').innerHTML = this.responseText;
+
+            }
+
+            function encodeForAjax(data) {
+                return Object.keys(data).map(function(k){
+                return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+                }).join('&');
+            }
+
+            //testAjax();
+
+        </script>
+
+    <?
+
 
 ?>

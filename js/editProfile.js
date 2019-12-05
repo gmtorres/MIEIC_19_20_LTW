@@ -10,7 +10,7 @@ document.getElementById('changeUserName').addEventListener('submit',function (ev
     let username = document.getElementById('changeUserName').getElementsByTagName('input')[0].value;
 
     let request = new XMLHttpRequest();
-    request.open('post', '../actions/editProfile.php' , true);
+    request.open('post', '../actions/changeProfileInfo.php' , true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     request.addEventListener('load', usernameReload);
     request.send(encodeForAjax({'function' : 'changeUserName' ,'username' : username }));
@@ -54,7 +54,7 @@ document.getElementById('changePassword').addEventListener('submit',function (ev
     }
 
     let request = new XMLHttpRequest();
-    request.open('post', '../actions/editProfile.php' , true);
+    request.open('post', '../actions/changeProfileInfo.php' , true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     request.addEventListener('load', passwordReload);
     request.send(encodeForAjax({'function' : 'changePassword' ,'old' : passwordOld.value,'new' : passwordNew1.value }));
@@ -86,7 +86,7 @@ document.getElementById('changeEmail').addEventListener('submit',function (event
     let emailNew = document.getElementById('changeEmail').getElementsByTagName('input')[1];
 
     let request = new XMLHttpRequest();
-    request.open('post', '../actions/editProfile.php' , true);
+    request.open('post', '../actions/changeProfileInfo.php' , true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     request.addEventListener('load', emailReload);
     request.send(encodeForAjax({'function' : 'changeEmail' ,'old' : emailOld.value,'new' : emailNew.value }));

@@ -15,7 +15,7 @@ let daysOfTheMonth = ["S","M","T","W","T","F","S"];
 var calendarioRef = null;
 
 class Calendar {
-    constructor(id,year, month, allowOverlaps, blockedDates, availableDates,allowPast) {
+    constructor(id,year, month, allowOverlaps, blockedDates, availableDates,allowPast,calcultatePrice) {
         this.id = id,
         this.year = year,
         this.month = month,
@@ -37,11 +37,16 @@ class Calendar {
             this.availableDates = null;
         else this.availableDates = availableDates;
 
+        if(calcultatePrice == null || calcultatePrice == "" || calcultatePrice == "false" || calcultatePrice == "0" || calcultatePrice == "-1")
+            this.calcultatePrice = false;
+        else this.calcultatePrice = true;
+
         this.startDate = null;
         this.endDate = null;
         this.calendarBody=null;
         this.calendarHeader=null;
         this.mainHeader=null;
+        this.price = 0;
     }
     //Go to previous month    
     previous(calendarBody,calendarHeader,mainHeader){
@@ -81,6 +86,8 @@ class Calendar {
             }else{ //se estiver tudo bem
                 this.endDate = newDate;
                 document.getElementById("input_"+ this.id+"_end").value = formatDate(newDate);
+                this.getPrice();
+                document.getElementById("input_price").value = this.price;
             }
         }else if(newDate < this.startDate){
             this.startDate = newDate;
@@ -244,6 +251,21 @@ class Calendar {
         inputEnd.setAttribute("required", "required");
 
         datePicker.appendChild(inputEnd);
+        if(this.calcultatePrice){
+            let priceInput = document.createElement('input');
+            priceInput.setAttribute('type','text');
+            priceInput.setAttribute("id", "input_price");
+            priceInput.setAttribute("name", "price");
+            priceInput.setAttribute("tagName", "input");
+            priceInput.setAttribute("class", "datePickerInput");
+            priceInput.setAttribute("calendar", "calendar_"+vm.id);
+            priceInput.setAttribute("placeholder", "Price");
+            priceInput.setAttribute("readonly", "true");
+            priceInput.setAttribute("required", "required");
+
+            datePicker.appendChild(priceInput);
+        }
+
 
         let calendarHeaderContainer = document.createElement("div");
         calendarHeaderContainer.setAttribute("class","calendarHeaderContainer");
@@ -500,6 +522,21 @@ class Calendar {
         document.getElementById("input_"+ this.id+"_end").value = null;
         this.update(this.calendarBody,this.calendarHeader,this.mainHeader);
     }
+
+    getPrice(){
+        this.price= 0;
+        for(let i = 0; i < this.availableDates.length;i++){
+            let night = this.availableDates[i][2];
+            let inicialA = new Date(this.blockedDates[i][0] + 'T00:00:00Z').getTime();
+            let finalA = new Date(this.blockedDates[i][1] + 'T00:00:00Z').getTime();
+            let inicialS = new Date(this.startDate).getTime();
+            let finalS = new Date(this.endDate).getTime();
+            let days = Math.max(0 , Math.min(finalA,finalS) - Math.max(inicialA,inicialS));
+            days = Math.ceil(days / (1000 * 60 * 60 * 24));
+            this.price += days * night;
+        }
+    }
+
 }
 
 function formatDate(date) {
@@ -518,7 +555,8 @@ function createAllCalendars(blockedDates , availableDates){
     for ( var x = 0; x < datePickers.length; x++) {
         var allowOverlaps = datePickers[x].getAttribute('allowOverlaps');
         var allowPast = datePickers[x].getAttribute('allowPast');
-        let calendar = new Calendar(x, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast);
+        var calcultatePrice = datePickers[x].getAttribute('calcultatePrice');
+        let calendar = new Calendar(x, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast,calcultatePrice);
         calendar.createPicker(datePickers[x]);
     }
 }
@@ -526,7 +564,8 @@ function createCalendar(blockedDates , availableDates){
     var datePickers = document.getElementsByTagName("myDatePicker");
     var allowOverlaps = datePickers[0].getAttribute('allowOverlaps');
     var allowPast = datePickers[0].getAttribute('allowPast');
-    let calendario = new Calendar(0, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast);
+    var calcultatePrice = datePickers[0].getAttribute('calcultatePrice');
+    let calendario = new Calendar(0, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast,calcultatePrice);
     calendario.createPicker(datePickers[0]);
     calendarioRef = calendario;
 }

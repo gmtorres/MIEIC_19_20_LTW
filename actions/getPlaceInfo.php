@@ -132,7 +132,7 @@ function drawPlaceAmenities($place)
     function getAvailabititiesArray($availabities){
         $datas = array();
         foreach($availabities as $available){
-            $temp = array($available['startDate'] , $available['endDate']);
+            $temp = array($available['startDate'] , $available['endDate'] , $available['price']);
             array_push($datas,$temp);
         }
         return $datas;

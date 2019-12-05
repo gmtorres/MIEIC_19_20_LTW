@@ -1,6 +1,6 @@
 <?php
     include_once ('../includes/database.php');
-    include_once ('../actions/user_info.php');
+    include_once ('../actions/getUserInfo.php');
     include_once ('../actions/getPlaceInfo.php');
 
 
