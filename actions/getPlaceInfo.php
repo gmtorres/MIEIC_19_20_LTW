@@ -26,7 +26,7 @@ function drawPlaceTitle($place)
 {
     ?>
 
-    <h2> <?= $place['title'] ?> </h2>
+    <h1> <?= $place['title'] ?> </h1>
 
 <?php
 }
@@ -35,7 +35,16 @@ function drawPlaceDescription($place)
 {
     ?>
 
-    <h2> <?= $place['placeDescription'] ?> </h2>
+    <h2 id = 'description'>  <?= $place['placeDescription'] ?> </h2>
+
+<?php
+}
+
+function drawPlaceCity($place)
+{
+    ?>
+
+    <h3> <?= $place['city'] ?> </h3>
 
 <?php
 }
@@ -57,38 +66,37 @@ function drawUser($place)
 
 function drawPlaceAmenities($place)
 {
-    
     if ($place['swimmingPool'] == 1) {
     ?>
-        <h3> SwimingPoll: yes </h3>
+        <h3 id = 'available' > SwimingPoll </h3>
     <?php
     } else {
     ?>
-        <h3> SwimingPoll: no </h3>
+        <h3 id = 'unavailable'> SwimingPoll </h3>
     <?php
     }
 
     if ($place['wiFi'] == 1) {
     ?>
-        <h3> WiFi: yes </h3>
+        <h3 id = 'available'> WiFi </h3>
     <?php
     } else {
     ?>
-        <h3> Wifi: no </h3>
+        <h3 id = 'unavailable'> Wifi </h3>
     <?php
     }
 
     if ($place['houseMaid'] == 1) {
     ?>
-        <h3> HouseMaid: yes </h3>
+        <h3 id = 'available'> HouseMaid </h3>
     <?php
     } else {
     ?>
-        <h3> HouseMaid: no </h3>
+        <h3 id = 'unavailable'> HouseMaid </h3>
     <?php
     }
     ?>
-    <h3> <?= $place['placeAddress'] ?> </h1>
+    <h3 id = 'available'> <?= $place['placeAddress'] ?> </h1>
     <?php
 }
 
@@ -117,6 +125,7 @@ function drawPlaceAmenities($place)
         foreach($dates as $date){
             ?>
                 <div id='available'>
+                    <h2>available: 
                     <h3> <?= $date['startDate']?> </h3>
                     <h3> <?= $date['endDate']?> </h3>
                     <h3> <?= $date['price']?> </h3>

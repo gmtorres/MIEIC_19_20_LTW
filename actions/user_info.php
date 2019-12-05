@@ -2,7 +2,6 @@
 
     include_once ('../includes/database.php');
 
-
     function getUserInfo($userId){
         $db = Database::instance()->db();
         $stmt = $db->prepare('Select * from User 
@@ -58,22 +57,26 @@
         $places = $stmt->fetchAll();
         return $places;
     }
+
     function drawUserInfo($user){
 
         $profilePic = getProfilePic($user['userID']);
         ?>
-        <div id='UserInfo'>
+        <div id='userInfo'>
             <div id='userPicture'>
                 <a href="user.php?id=<?=$user['userID']?>"> 
                     <img src="../images/profile/<?=$profilePic?>.jpg"> 
                 </a>
             </div>
-            <h2 id='userName'> <?= $user['userName'] ?> </h2>
-            <h4 id='userEmail'> <?= $user['email'] ?> </h4>
-            <h4 id='userPhoneNumber'> <?= $user['phoneNumber'] ?> </h4>
+                <div id='userDetails'>
+                <h2 id='userName'> <?= $user['userName'] ?> </h2>
+                <h4 id='userEmail'> <?= $user['email'] ?> </h4>
+                <h4 id='userPhoneNumber'> <?= $user['phoneNumber'] ?> </h4>
+            </div>
         </div>
         <?php
     }
+
     function drawUserPlaces($places){
         if(count($places) == 0){
             ?>
@@ -87,15 +90,15 @@
 
     function drawPlace($place){
         ?>  
-                <a href="./house.php?id=<?= $place['id']?>" >
-                    <div id='UserPlace '>
-                        <h3> <?= $place['title']?> </h3>
-                        <h4> <?= $place['class']?> </h4>
-                        <h4> <?= $place['city']?> </h4>
-                        <h5> <?= $place['placeDescription']?> </h5>
-                    </div>
-                </a>
-            <?php
+            <a href="./house.php?id=<?= $place['id']?>" >
+                <div id='UserPlace '>
+                    <h3> <?= $place['title']?> </h3>
+                    <h4> <?= $place['class']?> </h4>
+                    <h4> <?= $place['city']?> </h4>
+                    <h5> <?= $place['placeDescription']?> </h5>
+                </div>
+            </a>
+        <?php
     }
 
     function drawMainUserMenu(){
@@ -105,7 +108,6 @@
             <li> <a href="manage.php" > Manage Places </a> </li>
             <li> <a href="requests.php" > Requests </a> </li>
             <li> <a href="myReservations.php" > My reservations </a> </li>
-
         </ul>
 
     <?php

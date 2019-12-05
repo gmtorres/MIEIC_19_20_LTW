@@ -1,20 +1,72 @@
-* {
-    padding: 10px 10px;
-}
-
 .box {
-    margin:10px 10px;
+    margin: 20px 20px;
     display: grid;
     left: 35px;
     bottom: -40px;
-    background: rgba(248, 244, 240, 0.85);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    width: 70%;
-    height: 60%;
+    width: 50%;
+    max-width: 500px;
+    min-width: 300px;
 }
 
+.box label {
+    padding: 3px 10px;
+}
 
-input {
-    width: 60%;
+.box h3 {
+    padding: 10px;
+    margin: 0px 0px;
+}
+
+.box input {
+    font-size: 14px;
+    margin: 0.20px 0.5em;
+    padding: 0.25em 0.25em;
+    width: auto;
+}
+
+h1 {
+    margin: 20px 20px;
+}
+
+#userPicture img {
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+#userInfo {
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#userDetails {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#userDetails h2 {
+    font-size: 36px;
+    margin-bottom: 0.5em;
+}
+
+#userDetails h4 {
+    margin-bottom: 0.5em;
+}
+
+#userDetails * {
+    margin-top: 0px;
+}
+
+.box button {
+    margin: 15px auto;
+    margin-top: 5px;
+    padding: 0.5em;
+    font-size: 14px;
+    width: 30%;
+    border: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
 }
