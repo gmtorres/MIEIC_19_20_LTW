@@ -8,7 +8,7 @@
     $placeId = -1;
     if(isset($_GET['id']))
         $placeId = $_GET['id'];
-    draw_headerArgs(["../css/calendar.css", "../css/header.css", "../css/house.css"] , []);
+    draw_headerArgs(["../css/calendar.css", "../css/header.css", "../css/house.css","../css/slideshow.css"] , [["../js/slideshow.js","defer"]]);
 
     $place = getPlace($placeId);
     if($place == null){

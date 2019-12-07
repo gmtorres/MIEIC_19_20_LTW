@@ -1,68 +1,68 @@
 <?php
 
 
-include_once ('../includes/database.php');
+    include_once ('../includes/database.php');
 
-function getPlace($place_id)
-{
-    $db = Database::instance()->db();
+    function getPlace($place_id)
+    {
+        $db = Database::instance()->db();
 
-    $stmt = $db->prepare('Select * from Place 
-                            JOIN User 
-                            where user.userid = place.placeOwner 
-                            and placeid = :place_id');
-    $stmt->bindParam(':place_id', $place_id);
-    $stmt->execute();
-    $place = $stmt->fetch();
+        $stmt = $db->prepare('Select * from Place 
+                                JOIN User 
+                                where user.userid = place.placeOwner 
+                                and placeid = :place_id');
+        $stmt->bindParam(':place_id', $place_id);
+        $stmt->execute();
+        $place = $stmt->fetch();
 
-    if ($place !== false) {
-        return $place;
-    } else
-        return null;
-}
+        if ($place !== false) {
+            return $place;
+        } else
+            return null;
+    }
 
 
-function drawPlaceTitle($place)
-{
-    ?>
+    function drawPlaceTitle($place)
+    {
+        ?>
 
-    <h1> <?= $place['title'] ?> </h1>
+        <h1> <?= $place['title'] ?> </h1>
 
-<?php
-}
+    <?php
+    }
 
-function drawPlaceDescription($place)
-{
-    ?>
+    function drawPlaceDescription($place)
+    {
+        ?>
 
-    <h2 id = 'description'>  <?= $place['placeDescription'] ?> </h2>
+        <h2 id = 'description'>  <?= $place['placeDescription'] ?> </h2>
 
-<?php
-}
+    <?php
+    }
 
-function drawPlaceCity($place)
-{
-    ?>
+    function drawPlaceCity($place)
+    {
+        ?>
 
-    <h3> <?= $place['city'] ?> </h3>
+        <h3> <?= $place['city'] ?> </h3>
 
-<?php
-}
+    <?php
+    }
 
-function drawUser($place)
-{   
-    $profilePic = getProfilePic($place['placeOwner']);
-    ?>
-    <div id='userPicture'>
-        <a href="user.php?id=<?=$place['placeOwner']?>"> 
-            <img src="../images/profile/<?=$profilePic?>.jpg"> 
+    function drawUser($place)
+    {   
+        $profilePic = getProfilePic($place['placeOwner']);
+        ?>
+        <div id='userPicture'>
+            <a href="user.php?id=<?=$place['placeOwner']?>"> 
+                <img src="../images/profile/<?=$profilePic?>.jpg"> 
+            </a>
+        </div>
+        <a href="./user.php?id= <?= $place['placeOwner'] ?> ">
+            <h3> <?= $place['userName'] ?> </h3>
         </a>
-    </div>
-    <a href="./user.php?id= <?= $place['placeOwner'] ?> ">
-        <h3> <?= $place['userName'] ?> </h3>
-    </a>
-<?php
-}
+    <?php
+    }
 
 function drawPlaceAmenities($place)
 {
@@ -246,16 +246,37 @@ function drawPlaceAmenities($place)
     function displayPlaceImages($images){
         ?> 
             <div id='placeImages'>
+                <div id='image_slideshow'>
         <?php
             foreach($images as $image){
                 ?>
-                <div id='placeImage'>
-                    <img src="<?=$image['imagePath']?>" alt="Image of Place" width="400" height="200">
+                <div class='slideImage fade'>
+                    <img src="<?=$image['imagePath']?>" alt="Image of Place" > 
                     <h4><?=$image['imageDescription']?></h4>
                 </div>
                 <?php
             }
-        ?>
+        ?>  
+                </div>
+            </div>
+        <?php
+    }
+    function displayPlaceImagesRemove($images){
+        ?> 
+            <div id='placeImages'>
+                <div id='image_slideshow'>
+        <?php
+            foreach($images as $image){
+                ?>
+                <div id="image<?=$image['placeImageID']?>" class='slideImage fade'>
+                    <img src="<?=$image['imagePath']?>" alt="Image of Place" > 
+                    <h4><?=$image['imageDescription']?></h4>
+                    <button class="removeImage" type='button' onclick="removeImage(<?=$image['placeImageID']?>)"> Delete Picture </button>
+                </div>
+                <?php
+            }
+        ?>  
+                </div>
             </div>
         <?php
     }

@@ -23,14 +23,14 @@
     if($userplace == NULL)
         header('Location: ../pages/manage.php');
     
-    draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css"], [["../js/editAvailables.js", "defer"]]);
+    draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css","../css/slideshow.css"], [["../js/editAvailables.js", "defer"],['../js/slideshow.js','defer'],['../js/removeImage.js','defer']]);
 
     drawPlaceManager($place);
 
     drawAddPictureForm($userplace);
 
     $images = getPlaceImages($userplace['id']);
-    displayPlaceImages($images);
+    displayPlaceImagesRemove($images);
 
     drawAvailablesForm($userplace);
     ?>

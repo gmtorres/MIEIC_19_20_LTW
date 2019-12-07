@@ -70,7 +70,7 @@ function getRentsInFuture(userId){
 }
 
 function displayRents(){
-    console.log(this.responseText);
+    //console.log(this.responseText);
     let rents = JSON.parse(this.responseText);
     let rentDiv = document.getElementById('rents');
     rentDiv.innerHTML=" ";
