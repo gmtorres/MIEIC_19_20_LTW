@@ -8,7 +8,7 @@
     $placeId = -1;
     if(isset($_GET['id']))
         $placeId = $_GET['id'];
-    draw_headerArgs(["../css/calendar.css", "../css/header.css", "../css/house.css","../css/slideshow.css"] , [["../js/slideshow.js","defer"]]);
+    draw_headerArgs(["../css/header.css", "../css/house.css","../css/slideshow.css","../css/calendar.css"] , [["../js/slideshow.js","defer"]]);
 
     $place = getPlace($placeId);
     if($place == null){
@@ -27,9 +27,9 @@
         $availables = getAvailabitities($placeId);
         $rents = getRents($placeId);
 
-        if(isset($_SESSION['userID'])){
-            drawRentSubmition($placeId,$_SESSION['userID'] , $rents, $availables );
-        }
+        if(isset($_SESSION['userId'])){
+            drawRentSubmition($placeId,$_SESSION['userId'] , $rents, $availables );
+        }   
 
         $extras = getExtraAmenities($placeId);
         $restrictions = getExtraRestrictions($placeId);
@@ -39,8 +39,8 @@
         drawUser($place);
         drawComments($placeId);
 
-        if(isset($_SESSION['userID'])){
-            drawCommentsSubmition($placeId,$_SESSION['userID']);
+        if(isset($_SESSION['userId'])){
+            drawCommentsSubmition($placeId,$_SESSION['userId']);
         }
     ?>
 

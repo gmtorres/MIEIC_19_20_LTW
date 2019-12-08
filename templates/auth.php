@@ -49,17 +49,19 @@
             }
         ?>
 
-        <form method="post" action="../actions/register.php">
+        <form id='register' method="post" action="../actions/register.php">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="password" placeholder="Confirm password" required>
             <input type="text" name="phoneNumber" placeholder="Phone Number" required>
             <input type="email" name="email" placeholder="E-mail" required>
             <input type="text" name="age" placeholder="Age" required>
-            <input type="submit" value="Register">
+            <input type="submit" value="Register"><br>
+            <span></span>
         </form>
 
         <footer>
-        <p>Already have an account? <a href="login.php">Login!</a></p>
+            <p>Already have an account? <a href="login.php">Login!</a></p>
         </footer>
 
     </div>

@@ -16,7 +16,7 @@
     //if($user !== false && password_verify($password , $user['password'])){
     if($user !== false && password_verify($password, $user['passHash'])){
         $_SESSION['username'] = $username;
-        $_SESSION['userID'] = $user['userID'];
+        $_SESSION['userId'] = $user['userID'];
         $_SESSION['login_message'] = "Sucessful login.";
 
         if(isset($_SESSION['redirect'])){

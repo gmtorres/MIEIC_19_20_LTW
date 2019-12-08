@@ -9,7 +9,7 @@
         
     <?php
 
-    draw_headerArgs(["../css/header.css", "../css/homePage.css"], []);
+    draw_headerArgs(["../css/header.css", "../css/homePage.css" , "../css/calendar.css"], []);
 
     ?>
         <div id = booking>
@@ -24,7 +24,11 @@
                 </label>
                 <br>
                 <label>When
-                    <br><br> <input type="date" name="startDate"> <input type="date" name="endDate">
+                    <myDatePicker id = 'dates' allowOverlaps='true' calcultatePrice='false'></myDatePicker>
+                    <script type="text/javascript" src='../js/calendar.js'> </script>
+                    <script>
+                        createAllCalendars();</script>
+                    <span class="error" aria-live="polite"></span>
                 </label>
                 <br><br>
                 <label>Guests

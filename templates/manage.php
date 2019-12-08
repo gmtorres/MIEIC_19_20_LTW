@@ -14,7 +14,7 @@
 
         
     <?php
-        $userId = $_SESSION['userID'];
+        $userId = $_SESSION['userId'];
         $user_places = getUserPlaces($userId);
         drawUserPlacesManager($user_places);
 

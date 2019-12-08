@@ -11,7 +11,7 @@
 
         if(isset($_SESSION['username'])){
 
-            $userId = $_SESSION['userID'];
+            $userId = $_SESSION['userId'];
 
             $user_info = getUserInfo($userId);
             //drawUserInfo($user_info);

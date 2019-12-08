@@ -8,6 +8,11 @@
     $startDate = $_POST['startDate'];
     $endDate = $_POST['endDate'];
 
+    if($tourist != $_SESSION['userId']){
+        header("Location: ../pages/homePage.php");
+        exit;
+    }
+
     $db = Database::instance()->db();
 
     $stmt = $db->prepare('INSERT INTO 
@@ -15,7 +20,7 @@
                         VALUES (?,?,?,?,?)');
     $stmt->execute(array($placeId,$tourist,100,$startDate,$endDate));
 
-    header('Location: ../pages/homePage.php');
+    header('Location: ../pages/myReservations.php');
 
 
 ?>

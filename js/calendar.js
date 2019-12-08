@@ -83,17 +83,27 @@ class Calendar {
                 this.endDate = null;
                 document.getElementById("input_"+ this.id+"_start").value = formatDate(newDate);
                 document.getElementById("input_"+ this.id+"_end").value = null;
+                if(this.calcultatePrice){
+                    this.price = null;
+                    document.getElementById("input_price").value = this.price;
+                }
             }else{ //se estiver tudo bem
                 this.endDate = newDate;
                 document.getElementById("input_"+ this.id+"_end").value = formatDate(newDate);
-                this.getPrice();
-                document.getElementById("input_price").value = this.price;
+                if(this.calcultatePrice){
+                    this.getPrice();
+                    document.getElementById("input_price").value = this.price;
+                }
             }
         }else if(newDate < this.startDate){
             this.startDate = newDate;
             this.endDate = null;
             document.getElementById("input_"+ this.id+"_start").value = formatDate(newDate);
             document.getElementById("input_"+ this.id+"_end").value = null;
+            if(this.calcultatePrice){
+                this.price = null;
+                document.getElementById("input_price").value = this.price;
+            }
         }
 
     }
@@ -186,14 +196,14 @@ class Calendar {
                                     
                                     });
                                 }else{
-                                    cell.setAttribute('id' , 'unavailable');
+                                    cell.setAttribute('id' , 'unavailable_dates');
                                     button.addEventListener('click',function(e){
                                         e.preventDefault();                                
                                     });
                                 }
                             } 
                         }else{
-                            cell.setAttribute('id' , 'unavailable');
+                            cell.setAttribute('id' , 'unavailable_dates');
                             button.addEventListener('click',function(e){
                                 e.preventDefault();                                
                             });
@@ -251,6 +261,7 @@ class Calendar {
         inputEnd.setAttribute("required", "required");
 
         datePicker.appendChild(inputEnd);
+        
         if(this.calcultatePrice){
             let priceInput = document.createElement('input');
             priceInput.setAttribute('type','text');

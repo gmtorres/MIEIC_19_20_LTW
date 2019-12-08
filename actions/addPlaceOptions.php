@@ -1,21 +1,32 @@
 <?php
 
     include_once ('../includes/database.php');
+    $db = Database::instance()->db();
 
     if(isset($_GET['function'])){    
         $function = $_GET['function'];
 
+
+        $placeId = $_POST['placeId'];
+        $description = $_POST['description'];
+
+        $stmt = $db->prepare('Select * from Place where placeId = ? and placeOwner = ?');
+        $stmt->execute(array($placeId,$_SESSION['userId']));
+        if($stmt->fecth() == FALSE){
+            return json_encode(['error' => 'do not match']);
+        }
+
         if($function == 'addExtra'){
-            $value = addExtra($_POST['placeId'],$_POST['description']);         
+            $value = addExtra($placeId,$description);         
         }else if($function == 'addRestriction'){
-            $value = addRestriction($_POST['placeId'],$_POST['description']);      
+            $value = addRestriction($placeId,$description);      
         }
         echo $value;
         exit;
     }
 
     function addExtra($placeId,$description){
-        $db = Database::instance()->db();
+        
         $stmt = $db->prepare('Insert into ExtraAmenities(placeId,amenitiesDescription) values(?,?)');
         $stmt->execute(array($placeId,$description));
 
@@ -23,7 +34,7 @@
     }
 
     function addRestriction($placeId,$description){
-        $db = Database::instance()->db();
+
         $stmt = $db->prepare('Insert into ExtraRestrictions(placeId,restrictionDescription) values(?,?)');
         $stmt->execute(array($placeId,$description));
 

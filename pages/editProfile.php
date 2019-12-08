@@ -8,7 +8,7 @@
 
         if(isset($_SESSION['username'])){
         
-            $userId = $_SESSION['userID'];
+            $userId = $_SESSION['userId'];
         
             $user_info = getUserInfo($userId);
         
@@ -17,7 +17,7 @@
             header('Location: ../pages/login.php');
         }
     }
-    $_SESSION['username'] = getUserInfo($_SESSION['userID'])['userName'];
+    $_SESSION['username'] = getUserInfo($_SESSION['userId'])['userName'];
 
     draw_headerArgs(["../css/headerBlack.css", "../css/editProfile.css"], [["../js/editProfile.js","defer"]]);
 

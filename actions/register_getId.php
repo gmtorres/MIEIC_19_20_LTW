@@ -8,7 +8,7 @@
             $stmt3->execute();
             $userId = $stmt3->fetchAll();
 
-            $_SESSION['userID'] = $userId['Id'];
+            $_SESSION['userId'] = $userId['Id'];
 
             print_r($userId);
     */

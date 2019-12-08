@@ -52,7 +52,7 @@
             $stmt3->execute();
             $userId = $stmt3->fetch();
 
-            $_SESSION['userID'] = $userId['userID'];
+            $_SESSION['userId'] = $userId['userID'];
 
             //print_r($userId);
 

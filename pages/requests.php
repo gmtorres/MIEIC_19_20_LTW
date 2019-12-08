@@ -13,15 +13,15 @@
 
     ?>
     <div class="w3-bar w3-black">
-        <button class="request button" onclick="getRentsInFuture(<?= $_SESSION['userID']?>)">In Future</button>
-        <button class="request button" onclick="getRentsForAproval(<?= $_SESSION['userID']?>)">To approve</button>
-        <button class="request button" onclick="getRentsInNextTimes(<?= $_SESSION['userID']?>,1)">Today</button>
-        <button class="request button" onclick="getRentsInNextTimes(<?= $_SESSION['userID']?>,7)">1 week to go</button>
-        <button class="request button" onclick="getRentsInNextTimes(<?= $_SESSION['userID']?>,31)">1 month to go</button>
-        <button class="request button" onclick="getAllRents(<?= $_SESSION['userID']?>)">All</button>
+        <button class="request button" onclick="getRentsInFuture(<?= $_SESSION['userId']?>)">In Future</button>
+        <button class="request button" onclick="getRentsForAproval(<?= $_SESSION['userId']?>)">To approve</button>
+        <button class="request button" onclick="getRentsInNextTimes(<?= $_SESSION['userId']?>,1)">Today</button>
+        <button class="request button" onclick="getRentsInNextTimes(<?= $_SESSION['userId']?>,7)">1 week to go</button>
+        <button class="request button" onclick="getRentsInNextTimes(<?= $_SESSION['userId']?>,31)">1 month to go</button>
+        <button class="request button" onclick="getAllRents(<?= $_SESSION['userId']?>)">All</button>
         <script>
             window.onload = function(){ 
-                getRentsForAproval(<?= $_SESSION['userID']?>);
+                getRentsForAproval(<?= $_SESSION['userId']?>);
             }
         </script>
     </div> 

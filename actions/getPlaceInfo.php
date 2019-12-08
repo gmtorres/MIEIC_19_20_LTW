@@ -128,7 +128,7 @@ function drawPlaceAmenities($place)
                     <h3> <?= $date['startDate']?> </h3>
                     <h3> <?= $date['endDate']?> </h3>
                     <h3> <?= $date['price']?> </h3>
-                    <button type='button' onclick='removeAvailable(<?= $date["Available_DatesID"]?>, calendarioRef)'> Remove </button>
+                    <button type='button' onclick='removeAvailable(<?= $date["Available_DatesID"]?> , calendarioRef)'> Remove </button>
                 </div>
             <?php
         }

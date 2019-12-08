@@ -3,6 +3,7 @@
     background: gainsboro;
     border-radius: 5px;
     margin: 2px;
+    position: absolute;
 }
 
 .calendarHeaderContainer {
@@ -41,7 +42,7 @@
     text-align: center;
 }
 
-#unavailable{
+#unavailable_dates{
     background-color: darkgrey;
 }
 

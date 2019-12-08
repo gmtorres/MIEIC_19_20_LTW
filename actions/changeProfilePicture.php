@@ -5,20 +5,20 @@
     $db = Database::instance()->db();
 
     $stmt = $db->prepare("Select profilePicture from User where userId = ?");
-    $stmt->execute(array($_SESSION['userID']));
+    $stmt->execute(array($_SESSION['userId']));
     $pic = $stmt->fetch();
 
     if($pic !== FALSE || $pic['profilePicture'] !== null ){
-        if(file_exists('../images/profile/'. $_SESSION['userID'] . '.jpg'))
-            unlink('../images/profile/'. $_SESSION['userID'] . '.jpg');
+        if(file_exists('../images/profile/'. $_SESSION['userId'] . '.jpg'))
+            unlink('../images/profile/'. $_SESSION['userId'] . '.jpg');
     }
 
     // Insert image data into database
     $stmt = $db->prepare("Update User set profilePicture = 1 where userId = ? ");
-    $stmt->execute(array($_SESSION['userID']));
+    $stmt->execute(array($_SESSION['userId']));
 
     //if(exif_imagetype($_FILES['image']['tmp_name']) == IMAGETYPE_JPEG)
-        $originalFileName = '../images/profile/'. $_SESSION['userID'] . '.jpg';
+        $originalFileName = '../images/profile/'. $_SESSION['userId'] . '.jpg';
     
 
     // Move the uploaded file to its final destination

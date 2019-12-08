@@ -8,7 +8,10 @@
                 
                 <myDatePicker id = 'dates' allowOverlaps='true' calcultatePrice='true'></myDatePicker>
                 <script type="text/javascript" src='../js/calendar.js'> </script>
-                <script> createAllCalendars( <?php echo json_encode(getRentsArray($rents)) ?> , <?php echo json_encode(getAvailabititiesArray($availables)) ?> );</script>
+                <script>
+                    let blocked = (<?php echo json_encode(getRentsArray($rents)) ?>) ;
+                    let avail = <?php echo json_encode(getAvailabititiesArray($availables)) ?>;
+                    createAllCalendars( blocked , avail );</script>
                 <span class="error" aria-live="polite"></span>
                 <input type="submit" value="Rent">
             </form>

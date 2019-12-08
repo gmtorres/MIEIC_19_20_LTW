@@ -9,7 +9,7 @@
     $address = $_POST['Address'];
     $description = $_POST['Description'];
     $maxGuests = $_POST['maxGuests'];
-    $placeOwner = $_SESSION['userID'];
+    $placeOwner = $_SESSION['userId'];
 
     $extras = json_decode($_POST['extrasInput']);
     $restrictions = json_decode($_POST['restrictionsInput']);

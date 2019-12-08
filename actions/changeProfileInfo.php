@@ -33,7 +33,7 @@
         }
 
         $stmt = $db->prepare('Update User set userName = ? where userId = ?');
-        $stmt->execute(array($username,$_SESSION['userID']));
+        $stmt->execute(array($username,$_SESSION['userId']));
 
         return json_encode(["ret" => 1,"message" => "Username changed with sucess"]);
     }
@@ -42,7 +42,7 @@
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('Select * from User where userId = :userId');
-        $stmt->bindParam(':userId',$_SESSION['userID']);
+        $stmt->bindParam(':userId',$_SESSION['userId']);
         $stmt->execute();
         $user = $stmt->fetch();
 
@@ -51,7 +51,7 @@
         }
 
         $stmt = $db->prepare('Update User set passHash = ? where userId = ?');
-        $stmt->execute(array(password_hash($new,PASSWORD_DEFAULT),$_SESSION['userID']));
+        $stmt->execute(array(password_hash($new,PASSWORD_DEFAULT),$_SESSION['userId']));
 
         return json_encode(["ret" => 1,"message" => "New password set with sucess"]);
     }
@@ -60,7 +60,7 @@
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('Select * from User where userId = :userId');
-        $stmt->bindParam(':userId',$_SESSION['userID']);
+        $stmt->bindParam(':userId',$_SESSION['userId']);
         $stmt->execute();
         $user = $stmt->fetch();
 
@@ -69,7 +69,7 @@
         }
 
         $stmt = $db->prepare('Update User set email = ? where userId = ?');
-        $stmt->execute(array($new,$_SESSION['userID']));
+        $stmt->execute(array($new,$_SESSION['userId']));
 
         return json_encode(["ret" => 1,"message" => "New email set with sucess"]);
     }

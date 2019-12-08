@@ -11,7 +11,7 @@
 
     draw_headerArgs(["../css/headerBlack.css", "../css/myReservations.css"], [["../js/requests.js","defer"]]);
 
-    $requests = getRentsByUser($_SESSION['userID']);
+    $requests = getRentsByUser($_SESSION['userId']);
 
     displayReservations($requests);
 

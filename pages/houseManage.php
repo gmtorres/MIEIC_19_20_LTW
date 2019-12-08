@@ -9,7 +9,7 @@
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
 
-    $userId = $_SESSION['userID'];
+    $userId = $_SESSION['userId'];
     $user_places = getUserPlaces($userId);
 
     $houseID = $_GET['id'];

@@ -73,7 +73,8 @@ CREATE TABLE Comment(
     writer integer NOT NULL REFERENCES User,
     classification integer NOT NULL CHECK (classification >= 1 AND classification <= 5),
     title text NOT NULL,
-    comment text NOT NULL
+    comment text NOT NULL,
+    commentDate Date DEFAULT CURRENT_DATE
 );
 
 
@@ -96,7 +97,9 @@ INSERT INTO Place(title,placeDescription,placeAddress,city,maxGuests,swimmingPoo
 INSERT INTO Place(title,placeDescription,placeAddress,city,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Great Appartment" , "Amazing apartment, many rooms, very big and with a fantastic view to the beach and great acesses" , "Avenida da Praia", "Espinho",6, 0, 1, 1, 2, 1); 
 INSERT INTO Place(title,placeDescription,placeAddress,city,maxGuests,swimmingPool,wiFi,houseMaid,numberOfBedrooms,placeOwner) VALUES ("Nice house2" , "Very good house, with a nice view of the beach and good acess to everywhere, transportation near and supermarket 5minutes away by foot. Good neighbourhood and nice people. " , "Rua dfs", "Porto",6, 0, 0, 0, 3, 1);
 
-INSERT INTO Available_Dates(placeID, startDate, endDate, price) VALUES (1, '2019-11-01','2019-11-26', 50);
+INSERT INTO Available_Dates(placeID, startDate, endDate, price) VALUES (1, '2019-11-22','2019-11-25', 13);
+INSERT INTO Available_Dates(placeID, startDate, endDate, price) VALUES (1, '2019-11-25','2019-11-28', 22);
+INSERT INTO Available_Dates(placeID, startDate, endDate, price) VALUES (1, '2019-11-28','2019-11-29', 5);
 
 INSERT INTO Rent(place,tourist,price,startDate,endDate) VALUES (1,2,1000,'2019-12-04','2019-12-13');
 
@@ -108,3 +111,10 @@ INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,2,4,"
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,3,5,"Great!","Very Good");
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (3,3,5,"Great!","Very Good");
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (2,3,5,"Terrible place!","so much to improve ");
+
+
+
+/*Select *, 
+max(0,julianday(min(endDate,'2019-11-30')) - julianday(max(startDate,'2019-11-25'))) * price 
+from Available_Dates 
+where placeId = 1 and endDate > '2019-11-25' and startDate < '2019-11-30';*/

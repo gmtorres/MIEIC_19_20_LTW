@@ -62,7 +62,7 @@
 
             <?php
             if(isset($_SESSION['username']) ){
-                $profilePic = getProfilePic($_SESSION['userID']);
+                $profilePic = getProfilePic($_SESSION['userId']);
                 ?>
                     <div id = "login">
                         <div id='profilePicture'>
