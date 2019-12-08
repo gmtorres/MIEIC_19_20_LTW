@@ -4,6 +4,7 @@
     include_once ('../templates/header.php');
     include_once ('../templates/footer.php');
     include_once ('../actions/getUserInfo.php');
+    include_once ('../actions/getRents.php');
 
     draw_headerArgs(["../css/headerBlack.css", "../css/user.css"], []);
 

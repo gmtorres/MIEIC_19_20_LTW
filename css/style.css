@@ -1,7 +1,9 @@
+
 body {
     margin: 0;
     background: #F8F4F0;
     font-family: 'Quicksand', sans-serif;
+
 }
 
 #profilePicture {
@@ -55,4 +57,24 @@ body {
     height: auto;
     border-radius: 50%;
     float: center;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+#content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: steelblue;
+    color: white;
+}
+footer p{
+    margin: 0px;
 }

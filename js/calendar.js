@@ -538,8 +538,8 @@ class Calendar {
         this.price= 0;
         for(let i = 0; i < this.availableDates.length;i++){
             let night = this.availableDates[i][2];
-            let inicialA = new Date(this.blockedDates[i][0] + 'T00:00:00Z').getTime();
-            let finalA = new Date(this.blockedDates[i][1] + 'T00:00:00Z').getTime();
+            let inicialA = new Date(this.availableDates[i][0] + 'T00:00:00Z').getTime();
+            let finalA = new Date(this.availableDates[i][1] + 'T00:00:00Z').getTime();
             let inicialS = new Date(this.startDate).getTime();
             let finalS = new Date(this.endDate).getTime();
             let days = Math.max(0 , Math.min(finalA,finalS) - Math.max(inicialA,inicialS));

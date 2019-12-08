@@ -57,6 +57,8 @@
     function draw_body(){
         ?>
         <body>
+        <div id="page-container">
+        <div id="content-wrap">
             <div class = "bar">
             <a href="../pages/homePage.php"> HOME </a>
 

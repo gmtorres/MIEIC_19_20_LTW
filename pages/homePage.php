@@ -3,13 +3,15 @@
     include_once ('../templates/header.php');
     include_once ('../templates/footer.php');
     include_once ('../actions/getHotPicks.php');
+
+    draw_headerArgs(["../css/header.css", "../css/homePage.css" , "../css/calendar.css"], []);
+
     ?>
+    
 
     <div id = imageContainer>
         
     <?php
-
-    draw_headerArgs(["../css/header.css", "../css/homePage.css" , "../css/calendar.css"], []);
 
     ?>
         <div id = booking>

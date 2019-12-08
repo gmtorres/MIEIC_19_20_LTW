@@ -106,11 +106,17 @@
     }
 
     function drawMainUserMenu(){
+        $number = count(getRentsByOwnerForApproval($_SESSION['userId']));
+        if($number > 9) $number = "+9";
     ?>
         <ul>
             <li> <a href="editProfile.php" > Edit Profile </a> </li>
             <li> <a href="manage.php" > Manage Places </a> </li>
-            <li> <a href="requests.php" > Requests </a> </li>
+            <li> <a href="requests.php" > Requests
+                <?php if($number != 0){ ?>
+                    <span id='numberRequest'> <?=$number?> </span> 
+                <?php }?>
+                </a> </li>
             <li> <a href="myReservations.php" > My reservations </a> </li>
 
         </ul>
