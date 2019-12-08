@@ -1,7 +1,7 @@
 <?php
 
     include_once ('../includes/database.php');
-
+    include_once ('../actions/getPlaceInfo.php');
 
     function getUserInfo($userId){
         $db = Database::instance()->db();
@@ -58,22 +58,26 @@
         $places = $stmt->fetchAll();
         return $places;
     }
+    
     function drawUserInfo($user){
 
         $profilePic = getProfilePic($user['userID']);
         ?>
-        <div id='UserInfo'>
+        <div id='userInfo'>
             <div id='userPicture'>
                 <a href="user.php?id=<?=$user['userID']?>"> 
                     <img src="../images/profile/<?=$profilePic?>.jpg"> 
                 </a>
             </div>
-            <h2 id='userName'> <?= $user['userName'] ?> </h2>
-            <h4 id='userEmail'> <?= $user['email'] ?> </h4>
-            <h4 id='userPhoneNumber'> <?= $user['phoneNumber'] ?> </h4>
+                <div id='userDetails'>
+                <h2 id='userName'> <?= $user['userName'] ?> </h2>
+                <h4 id='userEmail'> <?= $user['email'] ?> </h4>
+                <h4 id='userPhoneNumber'> <?= $user['phoneNumber'] ?> </h4>
+            </div>
         </div>
         <?php
     }
+
     function drawUserPlaces($places){
         if(count($places) == 0){
             ?>
@@ -88,11 +92,14 @@
     function drawPlace($place){
         ?>  
                 <a href="./house.php?id=<?= $place['id']?>" >
-                    <div id='UserPlace '>
-                        <h3> <?= $place['title']?> </h3>
-                        <h4> <?= $place['class']?> </h4>
-                        <h4> <?= $place['city']?> </h4>
-                        <h5> <?= $place['placeDescription']?> </h5>
+                <div id='userPlace'><?php
+                    $images = getPlaceImages($place['id']);
+                    displayPlaceImage($images);?>
+                    <div id='userPlaceInfo'>
+                        <h2> <?= $place['title']?> </h2>
+                        <h3> <?= $place['class']?> </h3>
+                        <h3> <?= $place['city']?> </h3>
+                    </div>
                     </div>
                 </a>
             <?php

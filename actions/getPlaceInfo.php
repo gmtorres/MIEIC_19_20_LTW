@@ -261,6 +261,7 @@ function drawPlaceAmenities($place)
             </div>
         <?php
     }
+    
     function displayPlaceImagesRemove($images){
         ?> 
             <div id='placeImages'>
@@ -278,6 +279,25 @@ function drawPlaceAmenities($place)
         ?>  
                 </div>
             </div>
+        <?php
+    }
+
+    function displayPlaceImage($images){
+        ?> 
+            <div id='placeImage'>
+                <?php
+                    if (empty($images)) {?>
+                        <img src="http://www.liven.pt/wp-content/uploads/2015/05/Lisboa-Portugal.jpg" alt="Stock Image of Place">
+                    <?php 
+                    }
+                    if (!empty($images)) {
+                    $image = $images[0];
+                    ?>
+                    <img src="<?=$image['imagePath']?>" alt="Image of Place">
+                <?php
+                }
+                ?>
+        </div>
         <?php
     }
 ?>

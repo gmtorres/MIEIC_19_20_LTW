@@ -36,15 +36,15 @@
     <div>
         
         <form class = "box" id = "changeUserName">
-            <h3> Change username </h3>
+            <h3> Change Username </h3>
             <label> New username:
                 <input type = "text" name = "username" placeholder="ex: marianaLima" required>
             </label><br>
             <span></span>
-            <button type='submit'> Change username </button>
+            <button type='submit'> Change Username </button>
         </form>
         <form class = "box" id="changePassword">
-            <h3> Change password </h3>
+            <h3> Change Password </h3>
             <label> Old password:
                 <input type = "password" name = "password" placeholder="ex: 123dzcbl" required>
             </label><br>
@@ -55,10 +55,10 @@
                 <input type = "password" name = "password" placeholder="ex: 123dzcbl" required>
             </label><br>
             <span></span>
-            <button type='submit'> Change password </button>
+            <button type='submit'> Change Password </button>
         </form>
         <form class = "box" id='changeEmail'>
-            <h3> Change email </h3>
+            <h3> Change Email </h3>
             <label> Old email:
                 <input type = "email" name = "email" placeholder="ex: ritaLima@gmail.com" required>
             </label><br>
@@ -66,21 +66,18 @@
                 <input type = "email" name = "email" placeholder="ex: rita_lima@hotmail.com" required>
             </label><br>
             <span></span>
-            <button type='submit'> Change email </button>
+            <button type='submit'> Change Email </button>
         </form>
         <form class = "box" id='changeProfilePic' action="../actions/changeProfilePicture.php" method="post" enctype="multipart/form-data">
-            <h3> Change Profile picture </h3>
+            <h3> Change Profile Picture </h3>
             <label> New image:
                 <input type="file" name="image" required>
             </label><br>
             <span></span>
-            <button type='submit'> Change picture </button>
+            <button type='submit'> Change Picture </button>
         </form>
 
-
     </div>
-
-
 
 <?php  
 

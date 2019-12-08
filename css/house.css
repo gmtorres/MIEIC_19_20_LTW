@@ -1,8 +1,7 @@
-
 h1 {
-    padding: 10px;
+    padding: 0px 10px;
     margin:0px;
-    font-size: 60px;
+    font-size: 50px;
 }
 
 h3 {
@@ -12,54 +11,99 @@ h3 {
 }
 
 #placeImages {
-    padding: 20px;
+    padding: 20px 10px;
+    padding-block-end: 0px;
     display:grid;
 }
 
 #description{
-    padding: 20px;
+    padding: 20px 20px;
+    margin: 0px;
     font-size: large;
-    border-bottom: cadetblue;
+    border-bottom: orange;
     border-bottom-style: solid;
     border-bottom-width: 2px;
-    border-top: cadetblue;
-    border-top-style: solid;
-    border-top-width: 2px;
 }
 
 #amenities {
     padding: 20px 20px;
     display:block;
-    border-bottom: cadetblue;
+    border-bottom: orange;
     border-bottom-style: solid;
-    border-bottom-width: 100px;
+    border-bottom-width: 2px;
+}
+
+#Restrictions {
+    padding: 20px 20px;
+    display:block;
+    border-bottom: orange;
+    border-bottom-style: solid;
+    border-bottom-width: 2px; 
 }
 
 #unavailable {
     color: dimgray;
-    background: #F8F4F0;
+    background: white;
 }
 
-#userPicture{
+.amenities {
+    padding:20px 20px;
+
+}
+
+#userPicture {
+    padding: 30px 10px;
     width: 80px;
     height: 80px;
 }
 
-#userPicture img{
+#userPicture img {
     width: 100%;
     height: auto;
     border-radius: 50%;
     float: center;
 }
 
-#commentUserPicture{
+#commentUserPicture {
     width: 60px;
     height: 60px;
 }
 
-#commentUserPicture img{
+#commentUserPicture img {
     width: 100%;
     height: auto;
     border-radius: 50%;
     float: center;
+}
+
+#book {
+    display:block;
+    text-align: center;
+    float:right;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px 20px;
+    margin:10px 10px;
+    left: 35px;
+    bottom: -40px;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 30%;
+    max-width: 300px;
+    min-width: 250px;
+}
+
+#input_0_start {
+    display:grid;
+    width: -20%;
+    height: 20px;
+    margin: 10px 0px;
+
+}
+
+#input_0_end {
+    display:grid;
+    width: -20%;
+    height: 20px;
+    margin: 10px 0px;
 }

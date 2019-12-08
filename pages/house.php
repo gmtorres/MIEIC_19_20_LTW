@@ -22,7 +22,8 @@
         $images = getPlaceImages($placeId);
         displayPlaceImages($images);
         drawPlaceDescription($place);
-        drawPlaceAmenities($place);
+
+        drawUser($place);
 
         $availables = getAvailabitities($placeId);
         $rents = getRents($placeId);
@@ -31,12 +32,14 @@
             drawRentSubmition($placeId,$_SESSION['userId'] , $rents, $availables );
         }   
 
+        drawPlaceAmenities($place);
+
         $extras = getExtraAmenities($placeId);
         $restrictions = getExtraRestrictions($placeId);
 
         displayExtraAmenities($extras);
         displayExtraRestrictions($restrictions);
-        drawUser($place);
+        
         drawComments($placeId);
 
         if(isset($_SESSION['userId'])){

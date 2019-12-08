@@ -40,9 +40,11 @@
     </div>
     <div id = topPicks>
         <h1>Top Picks</h1>
-        <?php
-            drawHotPicks();
-        ?>
+        <div id = topPicksT>
+            <?php
+                drawHotPicks();
+            ?>
+        </div>
     </div>
     <div id = categories>
         <h1>Categories</h1>

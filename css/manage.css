@@ -1,3 +1,51 @@
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: auto auto;
+}
+
 li {
-    padding: 10px 10px;
+    margin: 10px;
+    padding: 15px 10px;
+    list-style-type: none;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 20%;
+    min-width: 150px;
+    max-width: 250px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+#userPlace img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#userPlace #placeImage {
+    margin: auto 0px;
+    width: 30%;
+    min-width: 250px;
+    margin-right: 20px;
+}
+
+#userPlace {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px 15px;
+}
+
+#userPlaceInfo h2 {
+    margin-top: 0px;
+}
+
+#userPlaceInfo h3 {
+    margin: 7px 0px;
 }

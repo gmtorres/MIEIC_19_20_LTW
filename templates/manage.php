@@ -1,6 +1,7 @@
 <?php
 
     include_once ('../actions/getUserInfo.php');
+    include_once ('../actions/getPlaceInfo.php');
 
     function draw_manager(){
 
@@ -29,11 +30,14 @@
         foreach($places as $place){
             ?>  
                 <a href="./houseManage.php?id=<?= $place['id']?>" >
-                    <div id='UserPlace '>
-                        <h3> <?= $place['title']?> </h3>
-                        <h4> <?= $place['class']?> </h4>
-                        <h4> <?= $place['city']?> </h4>
-                        <h5> <?= $place['placeDescription']?> </h5>
+                <div id='userPlace'><?php
+                        $images = getPlaceImages($place['id']);
+                        displayPlaceImage($images);?>
+                        <div id='userPlaceInfo'>
+                            <h2> <?= $place['title']?> </h2>
+                            <h3> <?= $place['class']?> </h3>
+                            <h3> <?= $place['city']?> </h3>
+                        </div>
                     </div>
                 </a>
             <?php

@@ -1,0 +1,44 @@
+input[type=text]{
+    width: 40%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#addP {
+    padding: 20px 20px;
+}
+
+#addP h3 {
+    margin: 0px 0px;
+}
+
+/* Style the label to display next to the inputs */
+label {
+    font-weight: bold;
+    padding: 12px 12px 12px 0;
+    display:inline-table;
+}
+
+/* Style the submit button */
+input[type=submit] {
+    background-color:orange;
+    color: white;
+    padding: 12px 20px;
+    margin: 20px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+button {
+    background-color:orange;
+    font-size: 12px;
+    color: white;
+    padding: 10px 15px;
+    margin:10px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
