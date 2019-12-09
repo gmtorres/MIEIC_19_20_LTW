@@ -15,7 +15,8 @@
     $stmt = $db->prepare('Delete from PlaceImage where placeImageID = ?');
     $stmt->execute(array($imageId));
 
-    unlink("$path");
+    if(file_exists("$path"))
+        unlink("$path");
     
     echo json_encode(['imageId' => $imageId]);
 ?>

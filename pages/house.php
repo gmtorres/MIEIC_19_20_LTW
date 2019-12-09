@@ -1,6 +1,7 @@
 <?php
     include_once ('../includes/session.php');
     include_once ('../templates/header.php');
+    include_once ('../templates/footer.php');
     include_once ('../templates/comments.php');
     include_once ('../templates/booking.php');
     include_once ('../actions/getPlaceInfo.php');
@@ -18,35 +19,41 @@
 
     drawPlaceTitle($place);
     drawPlaceCity($place);
+    drawPlaceLocation($place);
 
-        $images = getPlaceImages($placeId);
-        displayPlaceImages($images);
-        drawPlaceDescription($place);
+    $images = getPlaceImages($placeId);
+    displayPlaceImages($images);
+    drawPlaceDescription($place);
 
-        drawUser($place);
+    ?>
+        <section id='generalInfoRentContainer'>
+    <?php
+    drawUser($place);
 
+
+    drawPlaceAmenities($place);
+
+    $extras = getExtraAmenities($placeId);
+    $restrictions = getExtraRestrictions($placeId);
+
+    displayExtraAmenities($extras);
+    displayExtraRestrictions($restrictions);
+
+
+    if(isset($_SESSION['userId'])){
         $availables = getAvailabitities($placeId);
         $rents = getRents($placeId);
-
-        if(isset($_SESSION['userId'])){
-            drawRentSubmition($placeId,$_SESSION['userId'] , $rents, $availables );
-        }   
-
-        drawPlaceAmenities($place);
-
-        $extras = getExtraAmenities($placeId);
-        $restrictions = getExtraRestrictions($placeId);
-
-        displayExtraAmenities($extras);
-        displayExtraRestrictions($restrictions);
-        
-        drawComments($placeId);
-
-        if(isset($_SESSION['userId'])){
-            drawCommentsSubmition($placeId,$_SESSION['userId']);
-        }
+        drawRentSubmition($placeId,$_SESSION['userId'] , $rents, $availables );
+    }
     ?>
+        </section>
+    <?php   
+    
+    drawComments($placeId);
 
-    </body>
-
-</html>
+    if(isset($_SESSION['userId'])){
+        drawCommentsSubmition($placeId,$_SESSION['userId']);
+    }
+    
+    draw_footer();
+?>

@@ -2,7 +2,7 @@
 
     function drawRentSubmition($placeId,$userId,$rents , $availables){
         ?>
-            <form method="post" action = '../actions/addBooking.php' >
+            <form id='rentForm' method="post" action = '../actions/addBooking.php' >
                 <input type = "hidden" name = "PlaceId" value = "<?= $placeId?>" />
                 <input type = "hidden" name = "Tourist" value = "<?= $userId?>" />
                 
@@ -13,7 +13,7 @@
                     let avail = <?php echo json_encode(getAvailabititiesArray($availables)) ?>;
                     createAllCalendars( blocked , avail );</script>
                 <span class="error" aria-live="polite"></span>
-                <input type="submit" value="Rent">
+                <input id="rentSubmission" type="submit" value="Rent">
             </form>
 
             <script>

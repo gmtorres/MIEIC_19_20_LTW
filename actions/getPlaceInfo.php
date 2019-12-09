@@ -34,25 +34,29 @@
     function drawPlaceDescription($place)
     {
         ?>
-
-        <h2 id = 'description'>  <?= $place['placeDescription'] ?> </h2>
-
-    <?php
+            <h2 id = 'description'>  <?= $place['placeDescription'] ?> </h2>
+        <?php
     }
 
     function drawPlaceCity($place)
     {
         ?>
-
-        <h3> <?= $place['city'] ?> </h3>
-
-    <?php
+            <h3> <?= $place['city'] ?> </h3>
+        <?php
     }
+    function drawPlaceLocation($place)
+    {
+        ?>
+            <h5> <?= $place['placeAddress'] ?> </h5>
+        <?php
+    }
+
 
     function drawUser($place)
     {   
         $profilePic = getProfilePic($place['placeOwner']);
         ?>
+        <div id='userInformations'>
         <div id='userPicture'>
             <a href="user.php?id=<?=$place['placeOwner']?>"> 
                 <img src="../images/profile/<?=$profilePic?>.jpg"> 
@@ -61,11 +65,15 @@
         <a href="./user.php?id= <?= $place['placeOwner'] ?> ">
             <h3> <?= $place['userName'] ?> </h3>
         </a>
+        </div>
     <?php
     }
 
 function drawPlaceAmenities($place)
-{
+{   
+    ?>
+       <div id='amenities'>
+    <?php
     if ($place['swimmingPool'] == 1) {
     ?>
         <h3 id = 'available' > SwimingPoll </h3>
@@ -96,7 +104,7 @@ function drawPlaceAmenities($place)
     <?php
     }
     ?>
-    <h3 id = 'available'> <?= $place['placeAddress'] ?> </h1>
+    </div>
     <?php
 }
 
@@ -191,12 +199,12 @@ function drawPlaceAmenities($place)
     
     function displayExtraAmenities($extras){
         ?>
-            <div id='Amenities'>
-                <h3>Extra Amenities</h3> 
+            <div id='extraAmenities'>
+                <h4>Extra Amenities</h4> 
         <?php
         if(count($extras) == 0){
             ?>
-                <h4>No extra amenities</h4> 
+                <h3>No extra amenities</h3> 
             <?php
         }
         foreach($extras as $extra){
@@ -212,12 +220,12 @@ function drawPlaceAmenities($place)
     }
     function displayExtraRestrictions($extras){
         ?>
-            <div id='Restrictions'>
-                <h3>Extra Restrictions</h3> 
+            <div id='extraRestrictions'>
+                <h4>Extra Restrictions</h4> 
         <?php
         if(count($extras) == 0){
             ?>
-                <h4>No extra restrictions</h4> 
+                <h3>No extra restrictions</h3> 
             <?php
         }
         foreach($extras as $extra){

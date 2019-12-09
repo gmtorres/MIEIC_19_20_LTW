@@ -6,19 +6,15 @@
 
     function drawCommentsSubmition($place, $writer){
     ?>
-        <form method="post" action = '../actions/addComment.php' >
+        <form id='commentForm' method="post" action = '../actions/addComment.php' >
             <input type = "hidden" name = "PlaceId" value = "<?= $place?>" />
             <input type = "hidden" name = "WriterId" value = "<?= $writer?>" />
-            <label>Title:
-                <input type = "text" name = "Title" required = "required" placeholder="ex: My Stay"><br>
-            </label>
-            <label>Comment:
-                <textarea name="Comment" rows="20" cols="80"></textarea><br>
-            </label>
+                <input type = "text" name = "Title" required = "required" placeholder="Title"><br>
+                <textarea name="Comment" rows="10" cols="40"></textarea><br>
             <label>Classification:
-                <input type = "number" name = "Classification" required = "required" placeholder="3"><br>
+                <input type = "number" min='1' max='5' name = "Classification" required = "required" placeholder="3"><br>
             </label>
-            <input type="submit" value="Submit">
+            <input id="submitComment" type="submit" value="Add comment">
         </form>
 
 
@@ -69,7 +65,10 @@
                     <h3> <?= $comment['classification'] ?>  </h3>
                 </div>
                 <div class='commentText'>
-                    <h3> <?= $comment['title'] ?>  </h3>
+                    <div class='commentHeader'>
+                        <h3 class='commentTitle'> <?= $comment['title'] ?>  </h3>
+                        <h3 class='commentDate'> <?= $comment['commentDate'] ?>  </h3>
+                    </div>
                     <h4 > <?= $comment['comment'] ?>  </h4>
                 </div> 
             </div>
