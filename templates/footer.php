@@ -4,7 +4,7 @@
 
             </div>
           <footer id='footer'>
-            <p>&copy; Ltw, 2019</p>
+            <p>&copy; Ltw  Gustavo Torres |  Mafalda Santos | Diogo Silva 2019</p>
           </footer>
         </div>
         </body>

@@ -2,7 +2,8 @@
 
 
     function displayReservations($rents){
-        ?>
+        ?>  
+            <h3 id='title'> My Reservations </h3>
             <div id='reservations'>
         <?php
         foreach($rents as $rent){
@@ -14,27 +15,28 @@
                     <a href="./house.php?id=<?= $place['placeID'] ?> ">
                     <h3> <?= $place['title'] ?> </h3>
                     </a>
-                    <h3> <?= $rent['startDate'] ?> </h3>
-                    <h3> <?= $rent['endDate'] ?> </h3>
-
+                    <h3> From: <?= $rent['startDate'] ?> </h3>
+                    <h3> To: <?= $rent['endDate'] ?> </h3>
+                    <h3> Status:
                     <?php 
+                        
                         if($rent['accepted'] == 0){
-                            ?> <h3> Waiting for response </h3> 
+                            ?>  Waiting for response </h3> 
                             <div id='cancelation'> <button onclick="cancellOffer(<?= $rent['rentID']?>)">Cancell</button> </div>
                             <?php
                             
                         }else if($rent['accepted'] == 1){
-                            ?> <h3> Accepted </h3>
+                            ?>  Accepted </h3>
                             <?php if( strtotime($rent['startDate'] ) > strtotime('+ 10 days') ) { ?>
                                 <div id='cancelation'> <button onclick="cancellOffer(<?= $rent['rentID']?>)">Cancell</button> </div>
                             <?php } ?>
                             <?php
                         }else if($rent['accepted'] == -1){
-                        ?> <h3> Declined </h3> <?php
+                        ?>  Declined </h3> <?php
                         }else if($rent['accepted'] == -2){
-                        ?> <h3> Exceeded Time </h3> <?php
+                        ?>  Exceeded Time </h3> <?php
                         }else if($rent['accepted'] == -3){
-                        ?> <h3> Cancelled </h3> <?php
+                        ?>  Cancelled </h3> <?php
                         }
                          
                     ?>

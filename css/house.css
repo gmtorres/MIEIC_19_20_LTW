@@ -107,3 +107,75 @@ h3 {
     height: 20px;
     margin: 10px 0px;
 }
+
+.comment{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 50px;
+}
+
+.commentInfo{
+    width: 150px;
+    text-align: center;
+}
+
+.commentInfo a{
+    text-decoration: none;
+    color:black;
+}
+
+.commentInfo #commentUserPicture{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.commentText{
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    width: 80%;
+    height: auto;
+
+    background-color:  rgb(216, 228, 233);
+
+    display: inline-block;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px transparent;
+
+    transition-duration: 0.6s;
+
+}
+.commentText:before {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    border-style: solid;
+    transition-duration: 0.6s;
+    transition-property: left;
+    top: calc(10%);
+    left: 0;
+    border-width: 20px 20px 20px 0;
+    border-color: transparent transparent transparent transparent;
+}
+.commentText:hover:before {
+    left: -20px;
+    border-color: transparent rgb(216, 228, 233) transparent transparent;
+}
+
+.commentText h3{
+    padding: 0px;
+    margin-left: 2%;
+    margin-right: 5%;
+    margin-top: 5px;
+    border-bottom: 2px solid orange;
+}
+
+.commentText h4{
+    padding: 0px;
+    margin-left: 5%;
+    margin-right: 5%;
+}

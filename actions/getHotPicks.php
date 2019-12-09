@@ -22,7 +22,7 @@
     foreach($places as $place){
         ?>
             <a href="./house.php?id=<?= $place['id']?>" >
-                <div id='HotPick'>
+                <div class='HotPick'>
                     <?php
                         $placeId = $place['id'];
                         $images = getPlaceImages($placeId);

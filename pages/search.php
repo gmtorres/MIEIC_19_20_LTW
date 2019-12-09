@@ -4,7 +4,7 @@
     include_once ('../templates/footer.php');
     include_once ('../actions/search.php');
 
-    draw_header();
+    draw_headerArgs([],[]);
 
     search();
 

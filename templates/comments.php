@@ -26,7 +26,6 @@
     }
 
     function drawComments($placeId){
-
         $comments = getComments($placeId);
         displayComments($comments);
 
@@ -45,7 +44,7 @@
 
     function displayComments($comments){
         ?>
-            <div id='Comments'>
+            <section id='Comments'>
             <h2>Comments </h2>
         <?php
         if(count($comments) == 0){
@@ -57,24 +56,27 @@
             $userName = getUserInfo($comment['writer'])['userName'];
             $profilePic = getProfilePic($comment['writer']);
         ?>  
-            <div id='Comment'>
-                <h3> <?= $comment['title'] ?>  </h3>
-                <div id='commentUserPicture'>
-                    <a href="user.php?id=<?=$comment['writer']?>"> 
-                        <img src="../images/profile/<?=$profilePic?>.jpg"> 
+            <div class='comment'>
+                <div class='commentInfo'>
+                    <div id='commentUserPicture'>
+                        <a href="user.php?id=<?=$comment['writer']?>"> 
+                            <img src="../images/profile/<?=$profilePic?>.jpg"> 
+                        </a>
+                    </div>
+                    <a href="./user.php?id= <?= $comment['writer'] ?> ">
+                        <h5> <?= $userName ?> </h5>
                     </a>
+                    <h3> <?= $comment['classification'] ?>  </h3>
                 </div>
-                <a href="./user.php?id= <?= $comment['writer'] ?> ">
-                    <h5> <?= $userName ?> </h5>
-                </a>
-                <h3> <?= $comment['classification'] ?>  </h3>
-                <h4> <?= $comment['comment'] ?>  </h4>
-
+                <div class='commentText'>
+                    <h3> <?= $comment['title'] ?>  </h3>
+                    <h4 > <?= $comment['comment'] ?>  </h4>
+                </div> 
             </div>
         <?php   
         }
         ?>
-            </div>
+            </section>
         <?php
 
     }

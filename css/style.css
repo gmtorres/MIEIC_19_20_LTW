@@ -72,8 +72,8 @@ body {
     bottom: 0;
     width: 100%;
     text-align: center;
-    background-color: steelblue;
-    color: white;
+    background-color: transparent;
+    color: black;
 }
 footer p{
     margin: 0px;

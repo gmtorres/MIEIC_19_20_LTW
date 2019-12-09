@@ -284,7 +284,7 @@ function drawPlaceAmenities($place)
 
     function displayPlaceImage($images){
         ?> 
-            <div id='placeImage'>
+            <div class='placeImage'>
                 <?php
                     if (empty($images)) {?>
                         <img src="http://www.liven.pt/wp-content/uploads/2015/05/Lisboa-Portugal.jpg" alt="Stock Image of Place">

@@ -22,6 +22,9 @@
     }
 
     function drawUserPlacesManager($places){
+        ?>
+            <section id='placesSection'>
+        <?php
         if(count($places) == 0){
             ?>
             <h3> This user has no places to rent. </h3>
@@ -30,18 +33,30 @@
         foreach($places as $place){
             ?>  
                 <a href="./houseManage.php?id=<?= $place['id']?>" >
-                <div id='userPlace'><?php
+                <div class='userPlace'><?php
                         $images = getPlaceImages($place['id']);
                         displayPlaceImage($images);?>
-                        <div id='userPlaceInfo'>
-                            <h2> <?= $place['title']?> </h2>
-                            <h3> <?= $place['class']?> </h3>
+                        <div class='userPlaceInfo'>
+                            <h2>Click to Manage: <?= $place['title']?> </h2>
+                            <h3>
+                            <?php
+                                if($place['class'] != 'No Reviews yet'){
+                            ?>
+                                Classification 
+                            <?php
+                                }   
+                            ?>
+                            <?= $place['class']?> </h3>
                             <h3> <?= $place['city']?> </h3>
+                            <p> <?= $place['placeDescription']?> </p>
                         </div>
                     </div>
                 </a>
             <?php
         } 
+        ?>
+            </section>
+        <?php
     }
 
     function draw_addPlace(){
