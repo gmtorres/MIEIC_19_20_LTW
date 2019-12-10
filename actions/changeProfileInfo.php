@@ -3,17 +3,19 @@
     include_once ('../includes/database.php');
     include_once ('../includes/session.php');
 
+    checkCSRF();
+
     if(isset($_POST['function'])){    
         $function = $_POST['function'];
 
         if($function == 'changeUserName'){
-            $value = changeUserName($_POST['username']);         
+            $value = changeUserName(validate_input($_POST['username']));         
         }
         else if($function == 'changePassword'){
-            $value = changePassword($_POST['old'],$_POST['new']);      
+            $value = changePassword(validate_input($_POST['old']),validate_input($_POST['new']));      
         }
         else if($function == 'changeEmail'){
-            $value = changeEmail($_POST['old'],$_POST['new']);      
+            $value = changeEmail(validate_input($_POST['old']),validate_input($_POST['new']));      
         }
         echo $value;
         exit;
@@ -72,6 +74,13 @@
         $stmt->execute(array($new,$_SESSION['userId']));
 
         return json_encode(["ret" => 1,"message" => "New email set with sucess"]);
+    }
+
+    function validate_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
 ?>

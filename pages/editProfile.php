@@ -41,6 +41,7 @@
                 <input type = "text" name = "username" placeholder="ex: marianaLima" required>
             </label><br>
             <span></span>
+            <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <button type='submit'> Change Username </button>
         </form>
         <form class = "box" id="changePassword">
@@ -55,6 +56,7 @@
                 <input type = "password" name = "password" placeholder="ex: 123dzcbl" required>
             </label><br>
             <span></span>
+            <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <button type='submit'> Change Password </button>
         </form>
         <form class = "box" id='changeEmail'>
@@ -66,6 +68,7 @@
                 <input type = "email" name = "email" placeholder="ex: rita_lima@hotmail.com" required>
             </label><br>
             <span></span>
+            <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <button type='submit'> Change Email </button>
         </form>
         <form class = "box" id='changeProfilePic' action="../actions/changeProfilePicture.php" method="post" enctype="multipart/form-data">
@@ -74,6 +77,7 @@
                 <input type="file" name="image" required>
             </label><br>
             <span></span>
+            <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <button type='submit'> Change Picture </button>
         </form>
 

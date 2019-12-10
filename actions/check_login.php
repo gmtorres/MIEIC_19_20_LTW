@@ -29,4 +29,7 @@
         $_SESSION['login_message'] = "Wrong username or password, try again."; 
         header('Location: ../pages/homePage.php');
     }
+
+    
+
 ?>

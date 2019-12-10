@@ -1,7 +1,10 @@
 <?php
+    include_once ('../includes/session.php');
+    include_once ('../includes/database.php');
+
 
     function search(){
-        $db = new PDO('sqlite:../database.db');
+        $db = Database::instance()->db();
         $query = null;
 
         $query1 = 'Select Place.placeId as id,Place.title, Place.city,Place.maxGuests as maxGuests, 

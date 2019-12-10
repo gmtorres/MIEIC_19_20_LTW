@@ -5,11 +5,11 @@
 
     $db = Database::instance()->db();
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $email = $_POST['email'];
-    $age = $_POST['age'];
+    $username = validate_input($_POST['username']);
+    $password = validate_input($_POST['password']);
+    $phoneNumber = validate_input($_POST['phoneNumber']);
+    $email = validate_input($_POST['email']);
+    $age = validate_input($_POST['age']);
 
     if(strlen((string)$phoneNumber) !==  9){
         $_SESSION['register_message'] = "Phone number must be 9 digits.";
@@ -65,4 +65,13 @@
             header('Location: ../pages/homePage.php');
         }
     }
+
+
+    function validate_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
 ?>

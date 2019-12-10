@@ -42,7 +42,7 @@ h3 {
     
 }
 
-#unavailable {
+.unavailable {
     color: dimgray;
     background: white;
 }
@@ -52,25 +52,25 @@ h3 {
 
 }
 
-#userPicture {
+.userPicture {
     padding: 30px 10px;
     width: 80px;
     height: 80px;
 }
 
-#userPicture img {
+.userPicture img {
     width: 100%;
     height: auto;
     border-radius: 50%;
     float: center;
 }
 
-#commentUserPicture {
+.commentUserPicture {
     width: 60px;
     height: 60px;
 }
 
-#commentUserPicture img {
+.commentUserPicture img {
     width: 100%;
     height: auto;
     border-radius: 50%;
@@ -116,7 +116,7 @@ h3 {
 .comment{
     display: flex;
     flex-direction: row;
-    margin: 10px 5px;
+    margin: 20px 5px;
 
 }
 
@@ -130,7 +130,7 @@ h3 {
     color:black;
 }
 
-.commentInfo #commentUserPicture{
+.commentInfo .commentUserPicture{
     display: block;
     margin-left: auto;
     margin-right: auto;

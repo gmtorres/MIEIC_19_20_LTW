@@ -4,12 +4,12 @@
 
     $db = new PDO('sqlite:../database.db');
 
-    $title = $_POST['Title'];
-    $zone = $_POST['Zone'];
-    $address = $_POST['Address'];
-    $description = $_POST['Description'];
-    $maxGuests = $_POST['maxGuests'];
-    $placeOwner = $_SESSION['userId'];
+    $title = validate_input($_POST['Title']);
+    $zone = validate_input($_POST['Zone']);
+    $address = validate_input($_POST['Address']);
+    $description = validate_input($_POST['Description']);
+    $maxGuests = validate_input($_POST['maxGuests']);
+    $placeOwner = validate_input($_SESSION['userId']);
 
     $extras = json_decode($_POST['extrasInput']);
     $restrictions = json_decode($_POST['restrictionsInput']);
@@ -27,11 +27,11 @@
 
         foreach($extras as $extra){
             $stmt = $db->prepare('Insert into ExtraAmenities(amenitiesDescription,PlaceId) values(?,?)');
-            $stmt->execute(array($extra,$placeId['placeID']));
+            $stmt->execute(array(validate_input($extra),$placeId['placeID']));
         }
         foreach($restrictions as $restriction){
             $stmt = $db->prepare('Insert into ExtraRestrictions(restrictionDescription,PlaceId) values(?,?)');
-            $stmt->execute(array($restriction,$placeId['placeID']));
+            $stmt->execute(array(validate_input($restriction),$placeId['placeID']));
         }
 
         header('Location: ../pages/house.php?id='. $placeId['placeID']);
@@ -41,6 +41,13 @@
         $_SESSION['error'] = "Failed to add a place try again.";
         //$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
         header('Location: ../pages/addPlace.php');
+    }
+
+    function validate_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
 ?>

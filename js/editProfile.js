@@ -8,12 +8,13 @@ document.getElementById('changeUserName').addEventListener('input',function (eve
 document.getElementById('changeUserName').addEventListener('submit',function (event) {
     
     let username = document.getElementById('changeUserName').getElementsByTagName('input')[0].value;
+    let csrf = document.getElementById('changeUserName').getElementsByClassName('csrf')[0].value;
 
     let request = new XMLHttpRequest();
     request.open('post', '../actions/changeProfileInfo.php' , true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     request.addEventListener('load', usernameReload);
-    request.send(encodeForAjax({'function' : 'changeUserName' ,'username' : username }));
+    request.send(encodeForAjax({'function' : 'changeUserName' ,'username' : username,'csrf' : csrf}));
 
     event.preventDefault();
 });
@@ -37,6 +38,7 @@ document.getElementById('changePassword').addEventListener('submit',function (ev
     let passwordOld = document.getElementById('changePassword').getElementsByTagName('input')[0];
     let passwordNew1 = document.getElementById('changePassword').getElementsByTagName('input')[1];
     let passwordNew2 = document.getElementById('changePassword').getElementsByTagName('input')[2];
+    let csrf = document.getElementById('changeUserName').getElementsByClassName('csrf')[0].value;
 
     let message = document.getElementById('changePassword').getElementsByTagName('span')[0];
 
@@ -57,7 +59,7 @@ document.getElementById('changePassword').addEventListener('submit',function (ev
     request.open('post', '../actions/changeProfileInfo.php' , true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     request.addEventListener('load', passwordReload);
-    request.send(encodeForAjax({'function' : 'changePassword' ,'old' : passwordOld.value,'new' : passwordNew1.value }));
+    request.send(encodeForAjax({'function' : 'changePassword' ,'old' : passwordOld.value,'new' : passwordNew1.value,'csrf' : csrf}));
 
 });
 
@@ -84,12 +86,13 @@ document.getElementById('changeEmail').addEventListener('submit',function (event
 
     let emailOld = document.getElementById('changeEmail').getElementsByTagName('input')[0];
     let emailNew = document.getElementById('changeEmail').getElementsByTagName('input')[1];
+    let csrf = document.getElementById('changeUserName').getElementsByClassName('csrf')[0].value;
 
     let request = new XMLHttpRequest();
     request.open('post', '../actions/changeProfileInfo.php' , true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     request.addEventListener('load', emailReload);
-    request.send(encodeForAjax({'function' : 'changeEmail' ,'old' : emailOld.value,'new' : emailNew.value }));
+    request.send(encodeForAjax({'function' : 'changeEmail' ,'old' : emailOld.value,'new' : emailNew.value,'csrf' : csrf }));
 
 });
 

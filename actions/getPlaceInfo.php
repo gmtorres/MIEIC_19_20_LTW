@@ -59,10 +59,10 @@
         <div id='userInformations'>
         <div id='userPicture'>
             <a href="user.php?id=<?=$place['placeOwner']?>"> 
-                <img src="../images/profile/<?=$profilePic?>.jpg"> 
+                <img src="../images/profile/<?=$profilePic?>.jpg" alt='userPicture'> 
             </a>
         </div>
-        <a href="./user.php?id= <?= $place['placeOwner'] ?> ">
+        <a href="./user.php?id=<?= $place['placeOwner'] ?> ">
             <h3> <?= $place['userName'] ?> </h3>
         </a>
         </div>
@@ -76,31 +76,31 @@ function drawPlaceAmenities($place)
     <?php
     if ($place['swimmingPool'] == 1) {
     ?>
-        <h3 id = 'available' > SwimingPoll </h3>
+        <h3 class = 'available' > SwimingPoll </h3>
     <?php
     } else {
     ?>
-        <h3 id = 'unavailable'> SwimingPoll </h3>
+        <h3 class = 'unavailable'> SwimingPoll </h3>
     <?php
     }
 
     if ($place['wiFi'] == 1) {
     ?>
-        <h3 id = 'available'> WiFi </h3>
+        <h3 class = 'available'> WiFi </h3>
     <?php
     } else {
     ?>
-        <h3 id = 'unavailable'> Wifi </h3>
+        <h3 class = 'unavailable'> Wifi </h3>
     <?php
     }
 
     if ($place['houseMaid'] == 1) {
     ?>
-        <h3 id = 'available'> HouseMaid </h3>
+        <h3 class = 'available'> HouseMaid </h3>
     <?php
     } else {
     ?>
-        <h3 id = 'unavailable'> HouseMaid </h3>
+        <h3 class = 'unavailable'> HouseMaid </h3>
     <?php
     }
     ?>

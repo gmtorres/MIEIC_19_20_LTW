@@ -29,7 +29,7 @@
                         displayPlaceImage($images);
                     ?>
                     <h3> <?= $place['title']?> </h3>
-                    <div id='otherInfo'>
+                    <div class='otherInfo'>
                         <h4> <?= $place['class']?> </h4>
                         <h4> <?= $place['city']?> </h4>
                     </div>

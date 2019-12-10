@@ -3,11 +3,11 @@
     include_once ('../includes/session.php');
     include_once ('../includes/database.php');
 
-    $placeId = $_POST['placeId'];
-    $writerId = $_POST['writerId'];
-    $title = $_POST['title'];
-    $comment = $_POST['comment'];
-    $classification = $_POST['classification'];
+    $placeId = validate_input($_POST['placeId']);
+    $writerId = validate_input($_POST['writerId']);
+    $title = validate_input($_POST['title']);
+    $comment = validate_input($_POST['comment']);
+    $classification = validate_input($_POST['classification']);
 
     if($writerId != $_SESSION['userId']){
         echo json_encode(["message" => "error"]);
@@ -28,5 +28,12 @@
 
     //header("Location: ../pages/house.php?id=$placeId");
     echo json_encode(["writerId" => $writerId , "title" => $title , "comment" => $comment , "classification" => $classification,"pic" => $pic['profilePicture'],"username" => $pic['userName']]);
+
+    function validate_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
 ?>

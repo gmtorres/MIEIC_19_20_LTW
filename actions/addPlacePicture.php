@@ -3,7 +3,7 @@
     include_once ('../includes/database.php');
     include_once ('../includes/session.php');
 
-    $description = $_POST['description'];
+    $description =  validate_input($_POST['description']);
     $placeId = $_POST['placeId'];
 
     $db = Database::instance()->db();
@@ -26,6 +26,11 @@
     
     header('Location: ../pages/houseManage.php?id='.$placeId);
 
-
+    function validate_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
 ?>

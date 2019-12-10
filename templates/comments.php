@@ -54,12 +54,12 @@
         ?>  
             <div class='comment'>
                 <div class='commentInfo'>
-                    <div id='commentUserPicture'>
+                    <div class='commentUserPicture'>
                         <a href="user.php?id=<?=$comment['writer']?>"> 
-                            <img src="../images/profile/<?=$profilePic?>.jpg"> 
+                            <img src="../images/profile/<?=$profilePic?>.jpg" alt='profilePicture'> 
                         </a>
                     </div>
-                    <a href="./user.php?id= <?= $comment['writer'] ?> ">
+                    <a href="./user.php?id=<?= $comment['writer'] ?>">
                         <h5> <?= $userName ?> </h5>
                     </a>
                     <h3> <?= $comment['classification'] ?>  </h3>
