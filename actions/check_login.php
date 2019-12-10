@@ -27,6 +27,6 @@
             header('Location: ../pages/homePage.php');
     }else{
         $_SESSION['login_message'] = "Wrong username or password, try again."; 
-        header('Location: ../pages/login.php');
+        header('Location: ../pages/homePage.php');
     }
 ?>
