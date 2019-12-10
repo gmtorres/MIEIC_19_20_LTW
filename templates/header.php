@@ -119,5 +119,39 @@ function draw_header()
     <?php
 
     }
+    function drawSearchForm(){
+        $Destiny = null; if(isset($_GET['Destiny']) && !empty($_GET['Destiny'])) $Destiny = $_GET['Destiny'];
+        $startDate = null; if(isset($_GET['startDate']) && !empty($_GET['startDate'])) $startDate = $_GET['startDate'];
+        $endDate = null; if(isset($_GET['endDate']) && !empty($_GET['endDate'])) $endDate = $_GET['endDate'];
+        $PriceRange = null; if(isset($_GET['PriceRange']) && !empty($_GET['PriceRange'])) $PriceRange = $_GET['PriceRange'];
+        $guests = null; if(isset($_GET['guests']) && !empty($_GET['guests'])) $guests = $_GET['guests'];
+        ?>
+        <div id = booking>
+            <form method="get" action="../pages/search.php">
+                    <h1>Book Now</h1>
+                    <label>Where:
+                        <br><br> <input type = "text" name = "Destiny" required = "required" placeholder="ex: Porto" value=<?=$Destiny?>>
+                    </label>
+                    <br><br>
+                    <label>Price
+                        <br><br> <input type="range" name = 'PriceRange' min="0" max="2000" value="500" class="slider" id="PriceRange" value=<?=$PriceRange?>>
+                    </label>
+                    <br>
+                    <label>When
+                        <myDatePicker id = 'dates' allowOverlaps='true' calcultatePrice='false' startDate='<?=$startDate?>' endDate='<?=$endDate?>'></myDatePicker>
+                        <script type="text/javascript" src='../js/calendar.js'> </script>
+                        <script>
+                            createAllCalendars();</script>
+                        <span class="error" aria-live="polite"></span>
+                    </label>
+                    <br><br>
+                    <label>Guests
+                        <br><br> <input type = "text" name = "guests" placeholder="ex: 1" value=<?=$guests?>> 
+                    </label>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+            <?php
+    }
 
-    ?>
+?>

@@ -11,34 +11,10 @@
 
     <div id = imageContainer>
         
-    <?php
-
-    ?>
-        <div id = booking>
-            <form method="get" action="../pages/search.php">
-                <h1>Book Now</h1>
-                <label>Where:
-                    <br><br> <input type = "text" name = "Destiny" required = "required" placeholder="ex: Porto">
-                </label>
-                <br><br>
-                <label>Price
-                    <br><br> <input type="range" name = 'PriceRange' min="0" max="2000" value="500" class="slider" id="PriceRange">
-                </label>
-                <br>
-                <label>When
-                    <myDatePicker id = 'dates' allowOverlaps='true' calcultatePrice='false'></myDatePicker>
-                    <script type="text/javascript" src='../js/calendar.js'> </script>
-                    <script>
-                        createAllCalendars();</script>
-                    <span class="error" aria-live="polite"></span>
-                </label>
-                <br><br>
-                <label>Guests
-                    <br><br> <input type = "text" name = "guests" placeholder="ex: 1"> 
-                </label>
-                <input type="submit" value="Search">
-            </form>
-        </div>    
+            <?php
+                drawSearchForm();
+            ?> 
+    
     </div>
     <div id = topPicks>
         <h1>Top Picks</h1>

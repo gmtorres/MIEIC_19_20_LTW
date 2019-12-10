@@ -547,6 +547,18 @@ class Calendar {
             this.price += days * night;
         }
     }
+    setStartDate(date){
+        if(date == null || date == "") return;
+        this.startDate = new Date(date);
+        document.getElementById("input_"+ this.id+"_start").value = formatDate(this.startDate);
+        this.update(this.calendarBody,this.calendarHeader,this.mainHeader);
+    }
+    setEndDate(date){
+        if(date == null || date == "") return;
+        this.endDate = new Date(date);
+        document.getElementById("input_"+ this.id+"_end").value = formatDate(this.endDate);
+        this.update(this.calendarBody,this.calendarHeader,this.mainHeader);
+    }
 
 }
 
@@ -569,6 +581,10 @@ function createAllCalendars(blockedDates , availableDates){
         var calcultatePrice = datePickers[x].getAttribute('calcultatePrice');
         let calendar = new Calendar(x, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast,calcultatePrice);
         calendar.createPicker(datePickers[x]);
+        let start = datePickers[x].getAttribute('startDate');
+        let end = datePickers[x].getAttribute('endDate');
+        calendar.setStartDate(start);
+        calendar.setEndDate(end);
     }
 }
 function createCalendar(blockedDates , availableDates){
@@ -578,5 +594,9 @@ function createCalendar(blockedDates , availableDates){
     var calcultatePrice = datePickers[0].getAttribute('calcultatePrice');
     let calendario = new Calendar(0, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast,calcultatePrice);
     calendario.createPicker(datePickers[0]);
+    let start = datePickers[x].getAttribute('startDate');
+    let end = datePickers[x].getAttribute('endDate');
+    calendar.setStartDate(start);
+    calendar.setEndDate(end);
     calendarioRef = calendario;
 }

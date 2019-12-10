@@ -1,0 +1,156 @@
+#pageContent{
+    
+    display: grid;
+    grid-template-columns: 15% auto; 
+}
+
+#content-wrap{
+    padding-bottom: 0px;
+}
+
+#booking{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-content: center;
+}
+
+
+
+#booking {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: block;
+    padding: 10px 20px;
+    position: relative; 
+    left: 35px;
+    background: rgb(216, 228, 233);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    float: left;
+    width: 30%;
+    max-width: 300px;
+    min-width: 250px;
+}
+
+#booking h1 {
+   margin-left: 0; 
+}
+
+h1 {
+    margin: 15px;
+}
+
+#booking input[type=date] {
+    float: left;
+    width: 50%;
+}
+
+
+#booking input[type=submit] {
+    background-color:orange;
+    color: white;
+    padding: 10px 15px;
+    width: 30%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float:right;
+    font-size: 14px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 10px 2px;
+}
+
+#booking input[type=submit]:hover {
+    background-color: rgb(250, 226, 201);
+}
+
+#booking label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#booking input {
+    padding: 5px 5px;
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+#searchSection{
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+
+}
+
+#searchSection a {
+    text-decoration: none;
+    color:black;
+}
+
+
+
+.searchplace  {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 10%;
+    border-bottom: orange solid 2px;
+    border-top: transparent solid 2px;
+    border-left: transparent solid 2px;
+    border-right: transparent solid 2px;
+    border-radius: 0px;
+    transition-duration: 0.5s;
+    
+
+}
+
+.searchplace:hover {
+    transition-duration: 0.5s;
+    background-color: white;
+    border: orange solid 2px;
+    border-radius: 5px;
+}
+
+
+.searchplace  img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+    margin: 10px;
+    height: 200px
+}
+
+.searchplace  .placeImage {
+    margin: auto 0px;
+    width: 30%;
+    min-width: 400px;
+    max-width: 400px;
+    margin-right: 20px;
+}
+
+
+.searchplace .userPlaceInfo *{
+    text-decoration: none;
+    color: black;
+}
+
+.userPlaceInfo h2 {
+    margin-top: 0px;
+}
+
+.userPlaceInfo h3 {
+    margin: 7px 0px;
+}
+.userPlaceInfo p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

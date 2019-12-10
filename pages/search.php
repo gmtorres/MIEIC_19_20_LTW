@@ -4,9 +4,13 @@
     include_once ('../templates/footer.php');
     include_once ('../actions/search.php');
 
-    draw_headerArgs([],[]);
+    draw_headerArgs(["../css/header.css","../css/calendar.css","../css/search.css"],[]);
 
-    search();
+    drawSearchForm();
+
+    $places = search();
+
+    displaySearch($places);
 
     draw_footer();
 

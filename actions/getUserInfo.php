@@ -93,7 +93,7 @@
 
     function drawPlace($place){
         ?>  
-                <a href="./house.php?id=<?= $place['id']?>" >
+            <a href="./house.php?id=<?= $place['id']?>" >
                 <div class='userPlace'><?php
                     $images = getPlaceImages($place['id']);
                     displayPlaceImage($images);?>
@@ -111,9 +111,9 @@
                         <h3> <?= $place['city']?> </h3>
                         <p> <?= $place['placeDescription']?> </p>
                     </div>
-                    </div>
-                </a>
-            <?php
+                </div>
+            </a>
+        <?php
     }
 
     function drawMainUserMenu(){
