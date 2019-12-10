@@ -15,7 +15,7 @@ CREATE TABLE User(
     passHash text NOT NULL,
     age date NOT NULL,
     phoneNumber text NOT NULL CHECK(length(phoneNumber) = 9),
-    profilePicture INTEGER DEFAULT NULL
+    profilePicture TEXT DEFAULT "default"
 );
 
 

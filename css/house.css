@@ -337,11 +337,12 @@ h3 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
+    transition-duration: 0.5s;
 }
 
 
 #rentForm #rentSubmission:hover {
     background-color: rgb(253, 219, 155);
     color:black;
+    transition-duration: 0.5s;  
 }

@@ -4,14 +4,23 @@
     include_once ('../actions/getPlaceInfo.php');
 
     function draw_manager(){
-
+        $number = count(getRentsByOwnerForApproval($_SESSION['userId']));
+        if($number > 9) $number = "+9";
     ?>
 
+        <div id="userMenu">
         <ul>
-            <li> <a href="../pages/addPlace.php" > Add place </a> </li>
-            <li> <a href="" > Settings </a> </li>
+            <li> <a href="../pages/editProfile.php" > Edit Profile </a> </li>
+            <li> <a href="../pages/addPlace.php" > Add Place </a> </li>
+            <li> <a href="../pages/requests.php" > Requests
+                <?php if($number != 0){ ?>
+                    <span id='numberRequest'> <?=$number?> </span> 
+                <?php }?>
+                </a> </li>
+            <li> <a href="../pages/myReservations.php" > My reservations </a> </li>
 
         </ul>
+    </div>
 
         
     <?php
@@ -24,6 +33,7 @@
     function drawUserPlacesManager($places){
         ?>
             <section id='placesSection'>
+                <h3> Manage your places </h3>
         <?php
         if(count($places) == 0){
             ?>
@@ -37,7 +47,7 @@
                         $images = getPlaceImages($place['id']);
                         displayPlaceImage($images);?>
                         <div class='userPlaceInfo'>
-                            <h2>Click to Manage: <?= $place['title']?> </h2>
+                            <h2> <?= $place['title']?> </h2>
                             <h3>
                             <?php
                                 if($place['class'] != 'No Reviews yet'){

@@ -42,32 +42,84 @@ function replaceRent(){
     console.log(request);
 }
 
-function getAllRents(userId){
+function getAllRents(userId,id){
     let request = new XMLHttpRequest();
     request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getAllRentsByOwner' ,'userId': userId}) , true);
     request.addEventListener('load', displayRents);
     request.send();
+    selectTab(id);
 }
 
-function getRentsForAproval(userId){
+function getRentsForAproval(userId,id){
     let request = new XMLHttpRequest();
     request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getRentsByOwnerForApproval' ,'userId': userId}) , true);
     request.addEventListener('load', displayRents);
     request.send();
+    selectTab(id);
 }
 
-function getRentsInNextTimes(userId,time){
+function getRentsInNextTimes(userId,time,id){
     let request = new XMLHttpRequest();
     request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getRentsByOwnerIntTheNextTimes' ,'userId': userId,'time':time}) , true);
     request.addEventListener('load', displayRents);
     request.send();
+    selectTab(id);
 }
-function getRentsInFuture(userId){
+function getRentsInFuture(userId,id){
     let request = new XMLHttpRequest();
     request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getRentsByOwnerIntTheNextTimes' ,'userId': userId,'time':30000000}) , true);
     request.addEventListener('load', displayRents);
     request.send();
+    selectTab(id);
 }
+
+function selectTab(id){
+    let tabs = document.getElementsByClassName("request_button");
+    for(let a  = 0; a < tabs.length;a++){
+        tabs[a].setAttribute('id','tabNotSelected');
+    }
+    tabs[id].setAttribute('id','tabSelected');
+}
+
+
+
+function getRentsByUserInPast(userId,id){
+    let request = new XMLHttpRequest();
+    request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getRentsByUserInPast' ,'userId': userId}) , true);
+    request.addEventListener('load', displayReservations);
+    request.send();
+    selectTab(id);
+}
+function getRentsByUserAproved(userId,id){
+    let request = new XMLHttpRequest();
+    request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getRentsByUserAproved' ,'userId': userId}) , true);
+    request.addEventListener('load', displayReservations);
+    request.send();
+    selectTab(id);
+}
+function getRentsByUserWaiting(userId,id){
+    let request = new XMLHttpRequest();
+    request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getRentsByUserWaiting' ,'userId': userId}) , true);
+    request.addEventListener('load', displayReservations);
+    request.send();
+    selectTab(id);
+}
+function getRentsByUser(userId,id){
+    let request = new XMLHttpRequest();
+    request.open('get', '../actions/getRents.php?' + encodeForAjax({function : 'getRentsByUser' ,'userId': userId}) , true);
+    request.addEventListener('load', displayReservations);
+    request.send();
+    selectTab(id);
+}
+
+
+
+
+
+
+
+
+
 
 function displayRents(){
     //console.log(this.responseText);
@@ -75,25 +127,32 @@ function displayRents(){
     let rentDiv = document.getElementById('rents');
     rentDiv.innerHTML=" ";
 
-    
 
     rents.forEach(function(data){
         let rent = document.createElement('div');
         rent.setAttribute('class','request');
         rent.setAttribute('id','request' + data['rentID']);
-        rent.innerHTML = "<a href=\"../pages/house.php?id=" + data['place'] + 
-        "\"> <h3>" + data['title'] + "</h3> </a>" +
+        rent.innerHTML = 
+        "<div id='userInfo'> <a href=\"../pages/user.php?id=" + data['tourist'] + 
+        "\"> <img class='requestProfilePicture' src=\"../images/profile/"+ data['profilePicture'] +".jpg\" </a>"+
         "<a href=\"../pages/user.php?id=" + data['tourist'] + 
-        "\"> <h3>" + data['userName'] + "</h3> </a>"+
-        "<h3>" + data['startDate'] + "</h3>"+
-        "<h3>" + data['endDate'] + "</h3>";
+        "\"> <h3>" + data['userName'] + "</h3> </a> </div>"+
+        "<a href=\"../pages/house.php?id=" + data['place'] + 
+        "\"> <h3>" + data['title'] + "</h3> </a>"+
+        "<div id='dates'><h3 id='from'>From: " + data['startDate'] + "</h3>"+
+        "<h3 id='to'>To: " + data['endDate'] + "</h3> </div>";
+        let startDate = new Date(data['startDate']).getTime();
+        let currentDate = new Date().getTime();
+        if(startDate < currentDate ){
+            data['accepted'] = -2;
+        }
         if(data['accepted'] == 0){
-            rent.innerHTML += "<h3> Waiting for response </h3> <div id='response'> " +
-             "<button onclick=\"acceptOffer(" + data['rentID'] + ")\">Accept</button> "+
-             "<button onclick=\"declineOffer(" + data['rentID'] + ")\">Decline</button> "+
+            rent.innerHTML += "<h3>Status: Waiting for response </h3> <div id='response'> " +
+             "<button id='buttonChangeOffer' onclick=\"acceptOffer(" + data['rentID'] + ")\">Accept</button> "+
+             "<button id='buttonChangeOffer' onclick=\"declineOffer(" + data['rentID'] + ")\">Decline</button> "+
              "</div>"
         }else if(data['accepted'] == 1){
-            rent.innerHTML += "<h3> Accepted </h3>"
+            rent.innerHTML += "<h3>Status: Accepted </h3>"
             let maxLimit = new Date();  maxLimit.setDate(maxLimit.getDate()+10); //maximo sao 10 dias
             let startDate = new Date(data['startDate']);
             console.log(startDate.getUTCDate());
@@ -102,11 +161,61 @@ function displayRents(){
                 rent.innerHTML +=" <div id='cancelation'> <button onclick=\"cancellOffer(" + data['rentID'] + ")\">Cancell</button> </div>";
             }
         }else if(data['accepted'] == -1){
-            rent.innerHTML += "<h3> Declined </h3>"
+            rent.innerHTML += "<h3>Status: Declined </h3>"
         }else if(data['accepted'] == -2){
-            rent.innerHTML += "<h3> Exceded time </h3>"
+            rent.innerHTML += "<h3>Status: Exceded time </h3>"
         }else if(data['accepted'] == -3){
-            rent.innerHTML += "<h3> Canceled </h3>"
+            rent.innerHTML += "<h3>Status: Canceled </h3>"
+        }
+
+
+        rentDiv.append(rent);
+    });
+
+}
+
+function displayReservations(){
+    //console.log(this.responseText);
+    let rents = JSON.parse(this.responseText);
+    let rentDiv = document.getElementById('rents');
+    rentDiv.innerHTML=" ";
+
+
+    rents.forEach(function(data){
+        let rent = document.createElement('div');
+        rent.setAttribute('class','request');
+        rent.setAttribute('id','request' + data['rentID']);
+        rent.innerHTML = 
+        "<div id='userInfo'> <a href=\"../pages/user.php?id=" + data['tourist'] + 
+        "\"> <img class='requestProfilePicture' src=\"../images/profile/"+ data['profilePicture'] +".jpg\" </a>"+
+        "<a href=\"../pages/user.php?id=" + data['tourist'] + 
+        "\"> <h3>" + data['userName'] + "</h3> </a> </div>"+
+        "<a href=\"../pages/house.php?id=" + data['place'] + 
+        "\"> <h3>" + data['title'] + "</h3> </a>"+
+        "<div id='dates'><h3 id='from'>From: " + data['startDate'] + "</h3>"+
+        "<h3 id='to'>To: " + data['endDate'] + "</h3> </div>";
+        let startDate = new Date(data['startDate']).getTime();
+        let currentDate = new Date().getTime();
+        if(startDate < currentDate ){
+            data['accepted'] = -2;
+        }
+        if(data['accepted'] == 0){
+            rent.innerHTML += "<h3>Status: Waiting for response </h3>";
+        }else if(data['accepted'] == 1){
+            rent.innerHTML += "<h3>Status: Accepted </h3>"
+            let maxLimit = new Date();  maxLimit.setDate(maxLimit.getDate()+10); //maximo sao 10 dias
+            let startDate = new Date(data['startDate']);
+            console.log(startDate.getUTCDate());
+            console.log(maxLimit.getUTCDate());
+            if(startDate.getTime() > maxLimit.getTime() ){
+                rent.innerHTML +=" <div id='cancelation'> <button onclick=\"cancellOffer(" + data['rentID'] + ")\">Cancell</button> </div>";
+            }
+        }else if(data['accepted'] == -1){
+            rent.innerHTML += "<h3>Status: Declined </h3>"
+        }else if(data['accepted'] == -2){
+            rent.innerHTML += "<h3>Status: Exceded time </h3>"
+        }else if(data['accepted'] == -3){
+            rent.innerHTML += "<h3>Status: Canceled </h3>"
         }
 
 

@@ -79,9 +79,7 @@
     }
 
     function drawUserPlaces($places){
-        ?>
-            <section id='placesSection'>
-        <?php
+
         if(count($places) == 0){
             ?>
             <h3> This user has no places to rent. </h3>
@@ -90,9 +88,7 @@
         foreach($places as $place){
             drawPlace($place);
         }
-        ?>
-            </section>
-        <?php
+        
     }
 
     function drawPlace($place){
@@ -123,7 +119,8 @@
     function drawMainUserMenu(){
         $number = count(getRentsByOwnerForApproval($_SESSION['userId']));
         if($number > 9) $number = "+9";
-    ?>
+    ?>  
+    <div id="userMenu">
         <ul>
             <li> <a href="editProfile.php" > Edit Profile </a> </li>
             <li> <a href="manage.php" > Manage Places </a> </li>
@@ -135,6 +132,7 @@
             <li> <a href="myReservations.php" > My reservations </a> </li>
 
         </ul>
+    </div>
 
     <?php
     }
@@ -151,10 +149,7 @@
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         $user = $stmt->fetch();
-        if($user['profilePicture'] == null)
-            return 'default';
-        else 
-            return $user['profilePicture'];
+        return $user['profilePicture'];
     }
 
 ?>

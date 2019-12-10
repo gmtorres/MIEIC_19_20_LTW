@@ -1,41 +1,116 @@
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    margin: auto auto;
+#pageContent{
+    
+    display: grid;
+    grid-template-columns: 15% auto; 
 }
 
-li {
-    margin: 10px;
-    padding: 15px 10px;
+#content-wrap{
+    padding-bottom: 0px;
+}
+
+#userMenu{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    align-content: center;
+}
+
+#userInfo{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    align-content: center;
+}
+
+#userInfo #userPicture{
+    margin-right: 25%;
+    margin-left: 50px;
+}
+#userInfo #userDetails{
+    margin-right: 25%;
+    margin-left: 50px;
+}
+
+#userMenu ul{
+    background-color: orange;
+    border-radius:5px;
+    padding-left: 0px;
     list-style-type: none;
-    background: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    width: 20%;
-    min-width: 150px;
-    max-width: 250px;
+    margin: 0;
+    position: relative;
+
+    margin-top: 25%;
+    margin-left: 50px;
+
+}
+#userMenu li{
+    padding: 25px 40px;
     text-align: center;
 }
 
-a {
+#userMenu li:hover{
+    background-color:  rgb(255, 180, 42);
+    border-radius:5px;
+
+}
+
+#userMenu li a{
+    height: auto;
+    text-decoration: none;
+    color: black;
+    border-bottom: transparent;
+    transition-duration: 0.5s;
+}
+
+#userMenu li a:hover{
+    transition-duration: 0.5s;
+    border-bottom: white solid 1px;
+}
+
+#placesSection{
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+}
+
+
+#placesSection a {
     text-decoration: none;
     color:black;
+}
+
+#placesSection > h3 {
+    margin-left: 10%;
 }
 
 .userPlace {
     display: flex;
     flex-direction: row;
-    margin: 15px 150px;
-    border-style: solid;
-    border-width: 1px ;
-    border-radius: 5px;
-    border-color: rgb(211, 209, 209);
+    margin: 30px 10%;
+    border-bottom: orange solid 2px;
+    border-top: transparent solid 2px;
+    border-left: transparent solid 2px;
+    border-right: transparent solid 2px;
+    border-radius: 0px;
+    transition-duration: 0.5s;
+    
+
 }
 
 .userPlace:hover {
-    background-color: ghostwhite;
+    transition-duration: 0.5s;
+    background-color: white;
+    border: orange solid 2px;
+    border-radius: 5px;
 }
+
 
 .userPlace img {
     object-fit: cover;
@@ -53,7 +128,6 @@ a {
     margin-right: 20px;
 }
 
-
 .userPlaceInfo h2 {
     margin-top: 0px;
 }
@@ -61,11 +135,20 @@ a {
 .userPlaceInfo h3 {
     margin: 7px 0px;
 }
-
 .userPlaceInfo p {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+#numberRequest{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: steelblue;
+    text-align: center;
+    color: white;
 }

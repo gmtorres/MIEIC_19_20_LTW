@@ -18,9 +18,15 @@
             //drawUserInfo($user_info);
 
             drawMainUserMenu();
-            
+            ?>
+            <section id='placesSection'>
+            <h3> Your places </h3>
+            <?php
             $user_places = getUserPlaces($userId);
             drawUserPlaces($user_places);
+            ?>
+            </section>
+            <?php
 
         }else{ //se a sessao nao esta iniciada ira fazer redirect
             $_SESSION['redirect'] = '../pages/user.php';
@@ -31,9 +37,15 @@
 
         $user_info = getUserInfo($userId);
         drawUserInfo($user_info);
-
+        ?>
+        <section id='placesSection'>
+        <h3> <?=$user_info['userName']?>'s places </h3>
+        <?php
         $user_places = getUserPlaces($userId);
         drawUserPlaces($user_places);
+        ?>
+            </section>
+        <?php
     }
 
     draw_footer();

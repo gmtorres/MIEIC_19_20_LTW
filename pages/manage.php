@@ -4,6 +4,7 @@
     include_once ('../templates/header.php');
     include_once ('../templates/footer.php');
     include_once ('../templates/manage.php');
+    include_once ('../actions/getRents.php');
 
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');

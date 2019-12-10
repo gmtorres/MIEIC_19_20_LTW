@@ -11,9 +11,26 @@
 
     draw_headerArgs(["../css/headerBlack.css", "../css/myReservations.css"], [["../js/requests.js","defer"]]);
 
-    $requests = getRentsByUser($_SESSION['userId']);
+    ?>
+        <div id="options">
+        <ul>
+        <li class="request_button" onclick="getRentsByUserInPast(<?= $_SESSION['userId']?>,0)"> <a>Past rents</a></li>
+        <li class="request_button" onclick="getRentsByUserAproved(<?= $_SESSION['userId']?>,1)"><a>Next stays</a></li>
+        <li class="request_button" onclick="getRentsByUserWaiting(<?= $_SESSION['userId']?>,2)"><a>Waiting for answer</a></li>
+        <li class="request_button" onclick="getRentsByUser(<?= $_SESSION['userId']?>,3)"><a>All</a></li>
+        <script>
+            window.onload = function(){ 
+                getRentsByUserAproved(<?= $_SESSION['userId']?>,1);
+            }
+        </script>
+    </div> 
+    <section id='requests'>
+        <h3 id='title'> My Requests </h3>
+        <section id='rents'>
+        </section>
+    </section>
+    <?php
 
-    displayReservations($requests);
 
     draw_footer();
 
