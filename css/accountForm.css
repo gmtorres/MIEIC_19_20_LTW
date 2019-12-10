@@ -12,15 +12,15 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-p {
+#formBlock p {
     text-align: center;
 }
 
-h2 {
+#formBlock h2 {
     text-align: center;
 }
 
-input {
+#formBlock input {
     margin: 2%;
     padding: 5px;
 }
