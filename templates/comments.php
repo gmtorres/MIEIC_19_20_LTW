@@ -6,15 +6,15 @@
 
     function drawCommentsSubmition($place, $writer){
     ?>
-        <form id='commentForm' method="post" action = '../actions/addComment.php' >
-            <input type = "hidden" name = "PlaceId" value = "<?= $place?>" />
-            <input type = "hidden" name = "WriterId" value = "<?= $writer?>" />
-                <input type = "text" name = "Title" required = "required" placeholder="Title"><br>
-                <textarea name="Comment" rows="10" cols="40"></textarea><br>
+        <form id='commentForm' method="post" >
+            <input id="placeIdForm" type = "hidden" name = "PlaceId" value = "<?= $place?>" />
+            <input id="writerIdForm" type = "hidden" name = "WriterId" value = "<?= $writer?>" />
+                <input id="titleForm" type = "text" name = "Title" required = "required" placeholder="Title"><br>
+                <textarea id="commentTextForm" name="Comment" rows="10" cols="40"></textarea><br>
             <label>Classification:
-                <input type = "number" min='1' max='5' name = "Classification" required = "required" placeholder="3"><br>
+                <input id="classificationForm" type = "number" min='1' max='5' name = "Classification" required = "required" placeholder="3"><br>
             </label>
-            <input id="submitComment" type="submit" value="Add comment">
+            <input id="submitComment" type="submit" value="Add comment" onclick="addComment">
         </form>
 
 

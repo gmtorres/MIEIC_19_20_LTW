@@ -100,12 +100,20 @@ h1 {
 }
 
 .HotPick {
-    padding: 15px;
-    border-style: solid;
-    border-width: 1px ;
-    border-radius: 5px;
-    border-color: rgb(211, 209, 209);
+    padding: 10px;
+    border-radius: 0px;
+    border-bottom: solid 2px orange;
+    border-top: solid 2px transparent;
+    border-left: solid 2px transparent;
+    border-right: solid 2px transparent;
+    transition-duration: 0.5s;
     width: auto;
+}
+.HotPick:hover{
+    background-color: white;
+    border-radius: 5px;
+    border: solid 2px orange;
+    transition-duration: 0.5s;
 }
 
 .HotPick h3 {
@@ -122,7 +130,7 @@ h1 {
 .HotPick img {
     border-radius: 5px;
     object-fit: cover;
-    width: 200px;
+    width: 300px;
     height: 200px;
     display: block;
     margin-left: auto;

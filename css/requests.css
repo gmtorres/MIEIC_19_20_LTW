@@ -175,3 +175,24 @@
     margin: 0;
     margin-left: 20px;
 }
+
+
+
+#cancelation button{
+    background-color: orange;
+    color: white;
+    padding: 10px 15px;
+    width: 200px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    margin-left: 20%
+}
+
+#cancelation button:hover {
+    background-color: rgb(253, 219, 155);
+    color:black;
+    transition-duration: 0.5s;
+}

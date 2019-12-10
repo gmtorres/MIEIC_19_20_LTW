@@ -78,6 +78,8 @@
     grid-row-start: 1;
     grid-row-end: 2;
 
+    margin-right: 10%;
+
 }
 
 
@@ -88,12 +90,13 @@
 
 #placesSection > h3 {
     margin-left: 10%;
+    border-bottom: orange solid 2px;
 }
 
 .userPlace {
     display: flex;
     flex-direction: row;
-    margin: 30px 10%;
+    margin: 20px 10%;
     border-bottom: orange solid 2px;
     border-top: transparent solid 2px;
     border-left: transparent solid 2px;

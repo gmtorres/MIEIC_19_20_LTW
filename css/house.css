@@ -11,6 +11,11 @@ h3 {
     font-size: medium;
 }
 
+#placeTitle{
+    border-bottom: orange solid 2px;
+}
+
+
 #placeImages {
     padding: 20px 10px;
     padding-block-end: 0px;
