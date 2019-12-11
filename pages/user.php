@@ -6,12 +6,12 @@
     include_once ('../actions/getUserInfo.php');
     include_once ('../actions/getRents.php');
 
-    draw_headerArgs(["../css/headerBlack.css", "../css/user.css"], []);
 
     if(!isset($_GET['id'])){ //se o Id nao estiver set entao irá mostrar a sua propria pagina
 
         if(isset($_SESSION['username'])){
 
+            draw_headerArgs(["../css/headerBlack.css", "../css/user.css"], []);
             $userId = $_SESSION['userId'];
 
             $user_info = getUserInfo($userId);
@@ -30,9 +30,11 @@
 
         }else{ //se a sessao nao esta iniciada ira fazer redirect
             $_SESSION['redirect'] = '../pages/user.php';
-            header('Location: ../pages/login.php');
+            header('Location: ../pages/homePage.php');
+            exit;
         }
     }else{
+        draw_headerArgs(["../css/headerBlack.css", "../css/user.css"], []);
         $userId = $_GET['id'];
 
         $user_info = getUserInfo($userId);

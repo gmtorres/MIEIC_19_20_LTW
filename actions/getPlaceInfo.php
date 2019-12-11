@@ -157,7 +157,7 @@ function drawPlaceAmenities($place)
     function getRents($placeId){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('Select * from Rent where place = :placeid and (accepted = 1 or accepted = 0)');
+        $stmt = $db->prepare('Select * from Rent where place = :placeid and (accepted = 1 or accepted = 0) and startDate >= date(\'now\')');
         $stmt->bindParam(':placeid',$placeId);
         $stmt->execute();
 
@@ -295,7 +295,7 @@ function drawPlaceAmenities($place)
             <div class='placeImage'>
                 <?php
                     if (empty($images)) {?>
-                        <img src="http://www.liven.pt/wp-content/uploads/2015/05/Lisboa-Portugal.jpg" alt="Stock Image of Place">
+                        <img src="https://www.liven.pt/wp-content/uploads/2015/05/Lisboa-Portugal.jpg" alt="Stock Image of Place">
                     <?php 
                     }
                     if (!empty($images)) {

@@ -129,12 +129,13 @@ function displayRents(){
 
 
     rents.forEach(function(data){
+        let rent_container = document.createElement('a');
+        rent_container.setAttribute("href","../pages/rent.php?id="+data['rentID']);
         let rent = document.createElement('div');
         rent.setAttribute('class','request');
         rent.setAttribute('id','request' + data['rentID']);
         rent.innerHTML = 
-        "<div id='userInfo'> <a href=\"../pages/user.php?id=" + data['tourist'] + 
-        "\"> <img class='requestProfilePicture' src=\"../images/profile/"+ data['profilePicture'] +".jpg\" </a>"+
+        "<div id='userInfo'>  <img class='requestProfilePicture' src=\"../images/profile/"+ data['profilePicture'] +".jpg\""+
         "<a href=\"../pages/user.php?id=" + data['tourist'] + 
         "\"> <h3>" + data['userName'] + "</h3> </a> </div>"+
         "<a href=\"../pages/house.php?id=" + data['place'] + 
@@ -168,8 +169,8 @@ function displayRents(){
             rent.innerHTML += "<h3>Status: Canceled </h3>"
         }
 
-
-        rentDiv.append(rent);
+        rent_container.append(rent);
+        rentDiv.append(rent_container);
     });
 
 }
@@ -182,12 +183,13 @@ function displayReservations(){
 
 
     rents.forEach(function(data){
+        let rent_container = document.createElement('a');
+        rent_container.setAttribute("href","../pages/rent.php?id="+data['rentID']);
         let rent = document.createElement('div');
         rent.setAttribute('class','request');
         rent.setAttribute('id','request' + data['rentID']);
         rent.innerHTML = 
-        "<div id='userInfo'> <a href=\"../pages/user.php?id=" + data['tourist'] + 
-        "\"> <img class='requestProfilePicture' src=\"../images/profile/"+ data['profilePicture'] +".jpg\" </a>"+
+        "<div id='userInfo'> <img class='requestProfilePicture' src=\"../images/profile/"+ data['profilePicture'] +".jpg\" "+
         "<a href=\"../pages/user.php?id=" + data['tourist'] + 
         "\"> <h3>" + data['userName'] + "</h3> </a> </div>"+
         "<a href=\"../pages/house.php?id=" + data['place'] + 
@@ -218,8 +220,8 @@ function displayReservations(){
             rent.innerHTML += "<h3>Status: Canceled </h3>"
         }
 
-
-        rentDiv.append(rent);
+        rent_container.append(rent);
+        rentDiv.append(rent_container);
     });
 
 }

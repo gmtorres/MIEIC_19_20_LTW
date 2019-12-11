@@ -594,9 +594,9 @@ function createCalendar(blockedDates , availableDates){
     var calcultatePrice = datePickers[0].getAttribute('calcultatePrice');
     let calendario = new Calendar(0, currentYear, currentMonth ,allowOverlaps, blockedDates , availableDates,allowPast,calcultatePrice);
     calendario.createPicker(datePickers[0]);
-    let start = datePickers[x].getAttribute('startDate');
-    let end = datePickers[x].getAttribute('endDate');
-    calendar.setStartDate(start);
-    calendar.setEndDate(end);
+    let start = datePickers[0].getAttribute('startDate');
+    let end = datePickers[0].getAttribute('endDate');
+    calendario.setStartDate(start);
+    calendario.setEndDate(end);
     calendarioRef = calendario;
 }

@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS Available_Dates;
 DROP TABLE IF EXISTS ExtraAmenities;
 DROP TABLE IF EXISTS ExtraRestrictions;
 DROP TABLE IF EXISTS PlaceImage;
-
+DROP TABLE IF EXISTS RentMessage;
 
 CREATE TABLE User(
     userID integer PRIMARY KEY,
@@ -50,6 +50,14 @@ CREATE TABLE Rent(
     accepted integer DEFAULT 0,
     startDate date NOT NULL,
     endDate date NOT NULL
+);
+
+CREATE TABLE RentMessage(
+    rentMessageID integer PRIMARY KEY,
+    rentID integer NOT NULL REFERENCES Rent,
+    userID integer NOT NULL REFERENCES User,
+    comment text NOT NULL,
+    commentDate Date NOT NULL
 );
 
 
@@ -111,6 +119,8 @@ INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,2,4,"
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (1,3,5,"Great!","Very Good");
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (3,3,5,"Great!","Very Good");
 INSERT INTO Comment(placeID,writer,classification,title,comment) VALUES (2,3,5,"Terrible place!","so much to improve ");
+
+INSERT INTO RentMessage(rentID,userId,comment,commentDate) VALUES (1, 1, "Vamos a isso", Date('now'));
 
 
 

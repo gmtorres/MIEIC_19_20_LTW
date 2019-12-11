@@ -92,6 +92,11 @@
         
 }
 
+#rents > a{
+    text-decoration: none;
+    color: black;
+}
+
 #title{
     margin-left: 5%;
     margin-right: 5%;
