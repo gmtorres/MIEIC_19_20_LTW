@@ -34,7 +34,7 @@
         else if($userw !== FALSE)
             $_SESSION['register_message'] = "Email already in use, try another one.";
 
-        header('Location: ../pages/homePage.php');
+        header('Location: ../pages/register.php');
     }else{
 
         try{
@@ -62,7 +62,7 @@
             die($e->getMessage());
             $_SESSION['register_message'] = "Failed to register try again.";
             //$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
-            header('Location: ../pages/homePage.php');
+            header('Location: ../pages/register.php');
         }
     }
 

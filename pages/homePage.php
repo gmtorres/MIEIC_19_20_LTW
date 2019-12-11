@@ -4,7 +4,7 @@
     include_once ('../templates/footer.php');
     include_once ('../actions/getHotPicks.php');
 
-    draw_headerArgs(["../css/header.css", "../css/homePage.css" , "../css/calendar.css"], ["../js/popup.js"]);
+    draw_headerArgs(["../css/header.css", "../css/homePage.css" , "../css/calendar.css"], [["../js/slider.js","defer"]]);
 
     ?>
     

@@ -1,15 +1,31 @@
 #formBlock {
-    display: block;
+    margin: 10%;
+    display: flex;
+    flex-direction: column;
     padding: 10px 20px;
     position: relative;
-    background: rgba(248, 244, 240, 0.85);
+    background: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
-    height: 50%;
+    width: 50%;
+    height: 100%;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input[type=text]{
+    width: 40%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the label to display next to the inputs */
+label {
+    font-weight: bold;
+    padding: 12px 12px 12px 0;
+    display:inline-table;
 }
 
 #formBlock p {
@@ -35,4 +51,26 @@
     cursor: pointer;
     background-color: orange;
     color: white;
+}
+
+button {
+    background-color:orange;
+    font-size: 12px;
+    color: white;
+    padding: 10px 15px;
+    margin:10px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#content-wrap{
+    background-image: url("https://www.liven.pt/wp-content/uploads/2015/05/Lisboa-Portugal.jpg");
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+
 }
