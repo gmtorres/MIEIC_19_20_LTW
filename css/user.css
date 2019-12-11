@@ -1,61 +1,86 @@
-#pageContent{
+@media only screen and (max-width: 600px) {
+    div#userMenu {
+        align-content: center;
+    }
+
+    div#userMenu ul {
+        margin: 0px 0px;
+    }
+
+    div#userMenu li {
+        padding: 13px 10px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #pageContent {
+        display: grid;
+        grid-template-columns: 15% auto; 
+    }
+
+    #userMenu {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
     
-    display: grid;
-    grid-template-columns: 15% auto; 
+        align-content: center;
+        min-width: 160px;
+    }
+    
+    #userInfo {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    
+        align-content: center;
+    }
+
+    #placesSection {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    
+        margin-right: 10%;
+    }
 }
 
 #content-wrap{
     padding-bottom: 0px;
 }
 
-#userMenu{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-    align-content: center;
-}
-
-#userInfo{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-    align-content: center;
-}
-
 #userInfo #userPicture{
     margin-right: 25%;
     margin-left: 50px;
 }
+
 #userInfo #userDetails{
     margin-right: 25%;
     margin-left: 50px;
 }
 
-#userMenu ul{
+#userMenu ul {
     background-color: orange;
     border-radius:5px;
     padding-left: 0px;
     list-style-type: none;
     margin: 0;
     position: relative;
-
+    
     margin-top: 25%;
     margin-left: 50px;
-
 }
-#userMenu li{
-    padding: 25px 40px;
+
+#userMenu li {
+    padding: 25px 5px;
     text-align: center;
 }
 
 #userMenu li:hover{
     background-color:  rgb(255, 180, 42);
-    border-radius:5px;
-
+    border-radius: 5px;
 }
 
 #userMenu li a{
@@ -71,40 +96,29 @@
     border-bottom: white solid 1px;
 }
 
-#placesSection{
-
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-    margin-right: 10%;
-
-}
-
-
 #placesSection a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
 
 #placesSection > h3 {
     margin-left: 10%;
     border-bottom: orange solid 2px;
+    font-size: 24px;
+    padding-bottom: 10px;
 }
 
 .userPlace {
     display: flex;
     flex-direction: row;
-    margin: 20px 10%;
+    margin: 20px 5%;
+    margin-left: 10%;
     border-bottom: orange solid 2px;
     border-top: transparent solid 2px;
     border-left: transparent solid 2px;
     border-right: transparent solid 2px;
     border-radius: 0px;
     transition-duration: 0.5s;
-    
-
 }
 
 .userPlace:hover {
@@ -114,21 +128,24 @@
     border-radius: 5px;
 }
 
-
 .userPlace img {
     object-fit: cover;
     width: 100%;
     border-radius: 5px;
     margin: 10px;
-    height: 200px
+    height: 200px;
 }
 
 .userPlace .placeImage {
     margin: auto 0px;
-    width: 30%;
+    width: 35%;
     min-width: 400px;
     max-width: 400px;
     margin-right: 20px;
+}
+
+div.userPlaceInfo {
+    padding-left: 5px;
 }
 
 .userPlaceInfo h2 {
@@ -138,6 +155,7 @@
 .userPlaceInfo h3 {
     margin: 7px 0px;
 }
+
 .userPlaceInfo p {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -146,7 +164,7 @@
     text-overflow: ellipsis;
 }
 
-#numberRequest{
+#numberRequest {
     display: inline-block;
     width: 20px;
     height: 20px;

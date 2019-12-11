@@ -1,5 +1,21 @@
 /* Porto */
 
+@media only screen and (max-width: 600px) {
+    div#booking {
+        width: 75%;
+        left: 0px;
+        margin: 0 auto;
+        top: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    div#topPicksT {
+        margin: 20px auto;
+        justify-content: center;
+    }
+}
+
 #imageContainer  {
     background-image: url("https://www.liven.pt/wp-content/uploads/2015/05/Lisboa-Portugal.jpg");
     margin: 0 auto;
@@ -48,7 +64,6 @@ h1 {
     width: 50%;
 }
 
-
 #booking input[type=submit] {
     background-color:orange;
     color: white;
@@ -89,14 +104,13 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0px 200px;
+    margin: 20px 150px;
 }
 
 #topPicksT a {
     text-decoration: none;
     color:black;
     padding: 0px;
-
 }
 
 .HotPick {
@@ -108,7 +122,9 @@ h1 {
     border-right: solid 2px transparent;
     transition-duration: 0.5s;
     width: auto;
+    margin-bottom: 10px;
 }
+
 .HotPick:hover{
     background-color: white;
     border-radius: 5px;
@@ -141,7 +157,6 @@ h1 {
     margin: 0px;
 }
 
-
 .slider {
     -webkit-appearance: none;
     width: 100%;
@@ -153,13 +168,13 @@ h1 {
     -webkit-transition: .2s;
     transition: opacity .2s;
     padding: 0px;
-  }
-  
-  .slider:hover {
+}
+
+.slider:hover {
     opacity: 1;
-  }
-  
-  .slider::-webkit-slider-thumb {
+}
+
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -167,12 +182,12 @@ h1 {
     border-radius: 50%;
     background: orange;
     cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
+}
+
+.slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     background: orange;
     cursor: pointer;
-  }
+}

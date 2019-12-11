@@ -62,10 +62,10 @@
         <form class = "box" id='changeEmail'>
             <h3> Change Email </h3>
             <label> Old email:
-                <input type = "email" name = "email" placeholder="ex: ritaLima@gmail.com" required>
+                <input type = "email" name = "email" placeholder="ex: ritaLima@hotmail.com" required>
             </label><br>
             <label> New email:
-                <input type = "email" name = "email" placeholder="ex: rita_lima@hotmail.com" required>
+                <input type = "email" name = "email" placeholder="ex: rita_lima@gmail.com" required>
             </label><br>
             <span></span>
             <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
