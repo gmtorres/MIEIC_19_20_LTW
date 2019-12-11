@@ -24,10 +24,10 @@
             unset($_SESSION['redirect']);
             header('Location: ' . $redirect);
         }else
-            header('Location: ../pages/homePage.php');
+            header('Location: ../pages/login.php');
     }else{
         $_SESSION['login_message'] = "Wrong username or password, try again."; 
-        header('Location: ../pages/homePage.php');
+        header('Location: ../pages/login.php');
     }
 
     

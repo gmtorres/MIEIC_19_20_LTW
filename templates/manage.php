@@ -203,7 +203,7 @@
                     <br> <input type="file" name="image" required>
                 </label> <br>
                 <label> Place Description
-                    <br> <input type="text" name="description" required>
+                    <br> <input type="text" name="description" >
                 </label>
                 <input type="submit" value="Add Picture">
             </form>
