@@ -5,8 +5,8 @@
 
     $db = Database::instance()->db();
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = validate_input($_POST['username']);
+    $password = validate_input($_POST['password']);
 
     $stmt = $db->prepare('Select * from User where userName = :username');
     $stmt->bindParam(':username',$username);
@@ -30,6 +30,11 @@
         header('Location: ../pages/login.php');
     }
 
-    
+    function validate_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
 ?>

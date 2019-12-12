@@ -94,7 +94,7 @@
         ?>    
         <form id='chatForm' method='post'>
             <textarea id="chatTextForm" name="Comment" rows="10" cols="40" required="required"></textarea><br>
-            <input id="submitMessage" type="submit" value="Add comment">
+            <input id="submitMessage" type="submit" value="Add message">
         </form>
         <?php
     }

@@ -115,22 +115,24 @@
         <form id='changePlaceInfo' method="post" action='../actions/changePlaceInfo.php'>
             <input type="hidden" id="placeId" name="placeId" value=<?=$place['id']?>>
             <label> Place Title
+                <br>
                 <input type="text" name="Title" placeholder="Title" value='<?=$place['title']?>' required>
-            </label>
+            </label><br>
             <label> Zone/City
+                <br>
                 <input type="text" name="Zone" placeholder="Zone" value='<?=$place['city']?>' required>
-            </label>
+            </label><br>
             <label> Adress
+                <br>
                 <input type="text" name="Address" placeholder="Address" value='<?=$place['placeAddress']?>' required>
-            </label>
+            </label><br>
             <label> Description
                 <br>
                 <textarea name="Description" rows="20" cols="100"><?= $place['placeDescription'] ?></textarea>
-                <br>
-            </label>
-            <label> Maximum Guests
+            </label><br>
+            <label> Maximum Guests<br>
                 <input type="text" name="maxGuests" placeholder="Max Guests" value='<?=$place['maxGuests']?>' required>
-            </label>
+            </label><br>    
             <input type="submit" value="Change Place Info">
         </form>
 
@@ -150,8 +152,8 @@
                 <script>
                     
                 </script>
-
-            <label> Price per night </label>
+            <br>
+            <label> Price per night </label><br>
                 <input id= 'price' type="number" name="price" placeholder="" required><br>
             <span class="error" aria-live="polite"></span>
             <input type="submit" value="Add dates">
@@ -202,9 +204,9 @@
                 <label> Add Picture
                     <br> <input type="file" name="image" required>
                 </label> <br>
-                <label> Place Description
+                <label> Picture Description
                     <br> <input type="text" name="description" >
-                </label>
+                </label><br>
                 <input type="submit" value="Add Picture">
             </form>
         <?php

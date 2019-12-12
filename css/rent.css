@@ -17,6 +17,7 @@
     grid-row-start: 1;
     grid-row-end: 2;
     align-content: center;
+
     
 }
 .userInfo{
@@ -54,6 +55,31 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #pageContent{
+    
+        display: grid;
+        grid-template-columns: auto; 
+    
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    #chat{
+
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+}
+
+#chat > h3 {
+    border-bottom : orange solid 2px;
 }
 
 .message{

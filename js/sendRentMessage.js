@@ -34,7 +34,7 @@ function refresh() {
 function messagesReceived() {
     let lines = JSON.parse(this.responseText);
     let chat = document.getElementById('rentChat');
-    console.log(this.responseText);
+    //console.log(this.responseText);
     lines.forEach(function(data){
         let line = document.createElement('div');
         line.setAttribute('class','message');

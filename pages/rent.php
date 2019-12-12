@@ -25,6 +25,7 @@
 
     ?>
         <section id='chat'>
+            <h3> Chat </h3>
     <?php
     chatForm();
     
