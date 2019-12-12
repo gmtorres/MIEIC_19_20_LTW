@@ -62,7 +62,7 @@
         <div id="page-container">
         <div id="content-wrap">
             <div class = "bar">
-            <a href="../pages/homePage.php"> HOME </a>
+            <a href="../pages/homePage.php"> Home </a>
 
             <?php
             if(isset($_SESSION['username']) ){
@@ -124,6 +124,7 @@
                     </label>
                     <br>
                     <label>When
+                        <br><br>
                         <myDatePicker id = 'dates' allowOverlaps='true' calcultatePrice='false' startDate='<?=$startDate?>' endDate='<?=$endDate?>'></myDatePicker>
                         <script type="text/javascript" src='../js/calendar.js'> </script>
                         <script>

@@ -18,6 +18,7 @@
     div.userPlace {
         display: block;
         width: 80%;
+        padding: 10px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 2px;
@@ -71,13 +72,17 @@
         grid-template-columns: 15% auto; 
     }
 
+    div#userDetails h4 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
     #userMenu {
         grid-column-start: 1;
         grid-column-end: 2;
         grid-row-start: 1;
         grid-row-end: 2;
     
-        align-content: center;
         min-width: 160px;
     }
     
@@ -130,13 +135,13 @@
     }
 }
 
-#content-wrap{
+#content-wrap {
     padding-bottom: 0px;
 }
 
 #userMenu ul {
     background-color: orange;
-    border-radius:5px;
+    border-radius: 5px;
     padding-left: 0px;
     list-style-type: none;
     margin: 0;
@@ -156,7 +161,7 @@
     border-radius: 5px;
 }
 
-#userMenu li a{
+#userMenu li a {
     height: auto;
     text-decoration: none;
     color: black;
@@ -204,6 +209,7 @@
 .userPlace img {
     object-fit: cover;
     width: 100%;
+    max-height: 250px;
     border-radius: 5px;
 }
 
@@ -225,6 +231,7 @@ div.userPlaceInfo {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-right: 10px;
 }
 
 #numberRequest {

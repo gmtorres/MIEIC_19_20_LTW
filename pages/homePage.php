@@ -11,9 +11,9 @@
 
     <div id = imageContainer>
         
-            <?php
-                drawSearchForm();
-            ?> 
+    <?php
+        drawSearchForm();
+    ?> 
     
     </div>
     <div id = topPicks>
