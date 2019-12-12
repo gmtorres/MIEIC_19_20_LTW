@@ -9,7 +9,7 @@
     $placeId = -1;
     if(isset($_GET['id']))
         $placeId = $_GET['id'];
-    draw_headerArgs(["../css/header.css", "../css/house.css","../css/slideshow.css","../css/calendar.css"] , 
+    draw_headerArgs(["../css/headerBlack.css", "../css/house.css","../css/slideshow.css","../css/calendar.css"] , 
                     [["../js/slideshow.js","defer"],["../js/addComment.js","defer"]]);
 
     $place = getPlace($placeId);

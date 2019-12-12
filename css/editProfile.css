@@ -19,6 +19,8 @@
     padding: 0.25em 0.25em;
     width: auto;
     text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 h1 {
@@ -65,6 +67,10 @@ h1 {
 
 #userDetails * {
     margin-top: 0px;
+}
+
+form#changeProfilePic.box input {
+    border-width: 0px;
 }
 
 .box button {

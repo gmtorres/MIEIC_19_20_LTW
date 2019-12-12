@@ -1,4 +1,4 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     div#userMenu {
         align-content: center;
     }
@@ -10,9 +10,62 @@
     div#userMenu li {
         padding: 13px 10px;
     }
+
+    div#userMenu li {
+        padding: 13px 10px;
+    }
+
+    div.userPlace {
+        display: block;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2px;
+        margin-bottom: 35px;
+    }
+
+    section#placesSection {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.placeImage {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .userPlaceInfo h2 {
+        margin-bottom: 10px;
+    }
+
+    .userPlaceInfo h3 {
+        font-size: 16px;
+    }
+
+    div#userInfo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    div#userPicture {
+        width: 125px;
+        margin: auto 3%;
+    }
+
+    div#userDetails h4 {
+        font-size: 14px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+    
+    div#userDetails h2 {
+        margin-bottom: 10px;
+    }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
     #pageContent {
         display: grid;
         grid-template-columns: 15% auto; 
@@ -34,7 +87,10 @@
         grid-row-start: 1;
         grid-row-end: 2;
     
-        align-content: center;
+        min-width: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
 
     #placesSection {
@@ -45,20 +101,37 @@
     
         margin-right: 10%;
     }
+
+    div.placeImage {
+        margin: 10px 0px;
+        min-width: 400px;
+        max-width: 400px;
+        margin-right: 20px;
+        margin-left: 15px;
+    }
+
+    h3:first-child {
+        width: 85%;
+    }
+
+    #userInfo #userPicture{
+        margin-top: 25%;
+        margin-right: 0px;
+        margin-left: 50px;
+        width: 70%;
+        max-width: 150px;
+    }
+    
+    #userInfo #userDetails{
+        word-break: break-all;
+        margin-right: 0px;
+        margin-left: 50px;
+        text-align: right;
+    }
 }
 
 #content-wrap{
     padding-bottom: 0px;
-}
-
-#userInfo #userPicture{
-    margin-right: 25%;
-    margin-left: 50px;
-}
-
-#userInfo #userDetails{
-    margin-right: 25%;
-    margin-left: 50px;
 }
 
 #userMenu ul {
@@ -132,16 +205,6 @@
     object-fit: cover;
     width: 100%;
     border-radius: 5px;
-    margin: 10px;
-    height: 200px;
-}
-
-.userPlace .placeImage {
-    margin: auto 0px;
-    width: 35%;
-    min-width: 400px;
-    max-width: 400px;
-    margin-right: 20px;
 }
 
 div.userPlaceInfo {
@@ -149,7 +212,7 @@ div.userPlaceInfo {
 }
 
 .userPlaceInfo h2 {
-    margin-top: 0px;
+    margin-top: 5px;
 }
 
 .userPlaceInfo h3 {

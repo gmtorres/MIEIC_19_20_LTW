@@ -9,7 +9,7 @@
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
 
-    draw_headerArgs(["../css/headerBlack.css", "../css/manage.css"], []);
+    draw_headerArgs(["../css/headerBlack.css", "../css/user.css"], []);
     draw_manager();
     draw_footer();
 
