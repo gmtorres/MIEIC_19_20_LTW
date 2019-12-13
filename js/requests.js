@@ -31,13 +31,13 @@ function replaceRent(){
     }
     let lastElem = request.lastElementChild;
     if(data[1] == 1){
-        lastElem.innerHTML = "Accepted";
+        lastElem.innerHTML = "<h3>Accepted</h3>";
     }else if(data[1] == -1){
-        lastElem.innerText = "Declined";
+        lastElem.innerText = "<h3>Declined</h3>";
     }else if(data[1] == -2){
-        lastElem.innerHTML = "Exceeded time";
+        lastElem.innerHTML = "<h3>Exceeded time</h3>";
     }else if(data[1] == -3){
-        lastElem.innerHTML = "Cancelled";
+        lastElem.innerHTML = "<h3>Cancelled</h3>";
     }
     console.log(request);
 }
@@ -127,10 +127,13 @@ function displayRents(){
     let rentDiv = document.getElementById('rents');
     rentDiv.innerHTML=" ";
 
+    if(rents.length == 0){
+        rentDiv.innerHTML="<h4>No requests match this parameters</h4>";
+    }
 
     rents.forEach(function(data){
-        let rent_container = document.createElement('a');
-        rent_container.setAttribute("href","../pages/rent.php?id="+data['rentID']);
+        //let rent_container = document.createElement('a');
+        //rent_container.setAttribute("href","../pages/rent.php?id="+data['rentID']);
         let rent = document.createElement('div');
         rent.setAttribute('class','request');
         rent.setAttribute('id','request' + data['rentID']);
@@ -148,12 +151,14 @@ function displayRents(){
             data['accepted'] = -2;
         }
         if(data['accepted'] == 0){
-            rent.innerHTML += "<h3>Status: Waiting for response </h3> <div id='response'> " +
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Waiting for response </h3> </a> <div id='response'> " +
              "<button id='buttonChangeOffer' onclick=\"acceptOffer(" + data['rentID'] + ")\">Accept</button> "+
              "<button id='buttonChangeOffer' onclick=\"declineOffer(" + data['rentID'] + ")\">Decline</button> "+
              "</div>"
         }else if(data['accepted'] == 1){
-            rent.innerHTML += "<h3>Status: Accepted </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Accepted </h3> </a>"
             let maxLimit = new Date();  maxLimit.setDate(maxLimit.getDate()+10); //maximo sao 10 dias
             let startDate = new Date(data['startDate']);
             console.log(startDate.getUTCDate());
@@ -162,15 +167,18 @@ function displayRents(){
                 rent.innerHTML +=" <div id='cancelation'> <button onclick=\"cancellOffer(" + data['rentID'] + ")\">Cancell</button> </div>";
             }
         }else if(data['accepted'] == -1){
-            rent.innerHTML += "<h3>Status: Declined </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Declined </h3> </a>"
         }else if(data['accepted'] == -2){
-            rent.innerHTML += "<h3>Status: Exceded time </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Exceded time </h3> </a>"
         }else if(data['accepted'] == -3){
-            rent.innerHTML += "<h3>Status: Canceled </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Canceled </h3> </a>"
         }
 
-        rent_container.append(rent);
-        rentDiv.append(rent_container);
+        //rent_container.append(rent);
+        rentDiv.append(rent);
     });
 
 }
@@ -181,6 +189,9 @@ function displayReservations(){
     let rentDiv = document.getElementById('rents');
     rentDiv.innerHTML=" ";
 
+    if(rents.length == 0){
+        rentDiv.innerHTML="<h4>No reservations match this parameters</h4>";
+    }
 
     rents.forEach(function(data){
         let rent_container = document.createElement('a');

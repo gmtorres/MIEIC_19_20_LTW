@@ -184,3 +184,29 @@ input[type='number']:focus {
         height: 200px;
     }
 }
+
+#changePlaceInfo{
+    border-bottom: orange solid 2px;
+}
+
+
+#AddAvailables{
+    border-top: orange solid 2px;
+}
+
+.availableDate{
+    margin: 20px 0px;
+    display:inline-block;
+    border-bottom: orange solid 2px;
+}
+
+.availableDate button{
+    background-color: orange;
+    color: white;
+    padding: 12px 20px;
+    margin: 20px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}

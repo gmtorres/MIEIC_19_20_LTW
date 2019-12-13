@@ -1,24 +1,75 @@
-#pageContent{
-    
-    display: grid;
-    grid-template-columns: 15% auto; 
+@media only screen and (max-width: 800px) {
+    div#options {
+        align-content: center;
+        cursor: pointer;
+    }
+
+    div#options ul {
+        margin: 0px 0px;
+    }
+
+    div#options li {
+        padding: 13px 10px;
+    }
+
+    div#options li {
+        padding: 13px 10px;
+    }
+
+    div#options #tabSelected {
+        padding: 13px 10px;
+    }
+
+    section#requests {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.request {
+        display: block;
+        width: 75%;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2px;
+        margin-bottom: 35px;
+    }
+
+    section#rents {
+        padding: 0px;
+    }
 }
 
-#content-wrap{
+@media only screen and (min-width: 800px) {
+    #pageContent {
+        display: grid;
+        grid-template-columns: 15% auto; 
+    }
+    
+    #options {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    
+        min-width: 160px;
+    }
+    
+    #requests {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+}
+
+#content-wrap {
     padding-bottom: 0px;
 }
 
-#options{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    align-content: center;
-}
-
-#options ul{
+#options ul {
     background-color: orange;
-    border-radius:5px;
+    border-radius: 5px;
     padding-left: 0px;
     list-style-type: none;
     margin: 0;
@@ -27,25 +78,24 @@
     margin-top: 25%;
     margin-left: 50px;
 }
-#options li{
-    background-color: orange;
-    padding: 25px 40px;
+
+#options li {
+    padding: 25px 5px;
     text-align: center;
 }
 
-#options #tabSelected{
+#options #tabSelected {
     background-color: rgb(212, 147, 25);
-    padding: 25px 40px;
-    text-align: center;
+    padding: 25px 5px;
 }
 
-#options li:hover{
+#options li:hover {
     background-color:  rgb(255, 180, 42);
-    border-radius:5px;
-
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-#options li a{
+#options li a {
     height: auto;
     text-decoration: none;
     color: black;
@@ -53,46 +103,22 @@
     transition-duration: 0.5s;
 }
 
-#options li a:hover{
+#options li a:hover {
     transition-duration: 0.5s;
     border-bottom: white solid 1px;
 }
 
-
-
-
-#requests{
-
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-#rents{
+#rents {
     padding-left: 5%;
     padding-right: 5%;
 
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-gap: 2rem;
-        
+    grid-gap: 2rem;     
 }
 
-#rents > a{
+#rents > a {
     text-decoration: none;
     color: black;
 }
@@ -104,23 +130,23 @@
     border-bottom: 2px solid orange;
 }
 
-.request{
+#rents > h4{
+    margin-left: 20px ;
+}
+
+.request {
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
     width: 100%;
+    margin: 20px 5%;
     max-width: 350px;
     height: auto;
 
     background-color:  rgb(216, 228, 233);
-
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-
 }
 
-.request .requestProfilePicture{
+.request .requestProfilePicture {
     border-radius: 50%;
     display: block;
     width: 50px;
@@ -128,8 +154,7 @@
     margin: 15px 20px;
 }
 
-
-#buttonChangeOffer{
+#buttonChangeOffer {
     background-color: orange;
     color: white;
     padding: 10px 15px;
@@ -141,42 +166,74 @@
     transition-duration: 0.5s;
 }
 
+div#userInfo {
+    display: flex;
+}
+
+div#userInfo h3 {
+    align-self: center;
+    margin: 0px;
+}
+
 #buttonChangeOffer:hover {
     background-color: rgb(253, 219, 155);
     color:black;
     transition-duration: 0.5s;
+    cursor: pointer;
 }
 
-
-.request a{
+.request a {
     text-decoration: none;
     color: black;
 }
 
 .request h3 {
     margin-left: 20px;
+    margin-top: 0px;
 }
 
-#response{
+#response {
+    text-align: center;
+}
+
+#response button {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#dates {
     display: inline-block;
-    margin-left: 20px;
-}
-#response button{
-    margin-right: 20px;
 }
 
-
-#dates{
-    display: inline-block;
-
-}
-#dates #from{
+#dates #from {
     float: left;
     margin: 0;
     margin-left: 20px;
 }
-#dates #to{
+
+#dates #to {
     float: left;
     margin: 0;
     margin-left: 20px;
+}
+
+#cancelation button {
+    background-color: orange;
+    color: white;
+    padding: 10px 15px;
+    width: 200px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    margin-left: 20%
+}
+
+#cancelation button:hover {
+    background-color: rgb(253, 219, 155);
+    color:black;
+    transition-duration: 0.5s;
+    cursor: pointer;
 }

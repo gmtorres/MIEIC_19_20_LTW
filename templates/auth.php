@@ -43,7 +43,7 @@
         <?php
             if(isset($_SESSION['register_message'])){
                 ?>
-                    <h4> <?= $_SESSION['register_message'] ?> <h4>
+                    <h4> <?= $_SESSION['register_message'] ?> </h4>
                 <?php
                 unset($_SESSION['register_message']);
             }

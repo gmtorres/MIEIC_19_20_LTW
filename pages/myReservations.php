@@ -25,7 +25,7 @@
         </script>
     </div> 
     <section id='requests'>
-        <h3 id='title'> My Requests </h3>
+        <h3 id='title'> My Reservations </h3>
         <section id='rents'>
         </section>
     </section>

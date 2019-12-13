@@ -184,6 +184,20 @@ h3 {
 }
 .commentDate{float: right;}
 
+.removeComment{
+    float: right;
+    background-color: orange;
+    color: white;
+    border: 10px 15px;
+    padding: 0px;
+    width: 10px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
 .commentText h4{
     padding: 0px;
     margin-left: 5%;

@@ -69,6 +69,13 @@
                         <h3 class='commentTitle'> <?= $comment['title'] ?>  </h3>
                         <h3 class='commentDate'> <?= $comment['commentDate'] ?>  </h3>
                     </div>
+                    <?php
+                        if($comment['writer'] == $_SESSION['userId']){
+                            ?>  
+                                <!--<button class="removeComment">X</button>-->
+                            <?php
+                        }   
+                    ?>
                     <h4 > <?= $comment['comment'] ?>  </h4>
                 </div> 
             </div>

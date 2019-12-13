@@ -130,14 +130,20 @@ function drawPlaceAmenities($place)
         ?>
             <div id='availables'>
         <?php
+        if(count($dates) == 0){
+            ?>
+            <h4> No available dates yet </h4>
+            <?php
+        }
+
         foreach($dates as $date){
             ?>
-                <div id='available <?= $date["Available_DatesID" ]?>' >
-                    <h3> <?= $date['startDate']?> </h3>
-                    <h3> <?= $date['endDate']?> </h3>
-                    <h3> <?= $date['price']?> </h3>
+                <div class='availableDate' id='availableDate<?= $date["Available_DatesID" ]?>' >
+                    <h3>From: <?= $date['startDate']?> </h3>
+                    <h3>To: <?= $date['endDate']?> </h3>
+                    <h3>Price: <?= $date['price']?> €/night </h3>
                     <button type='button' onclick='removeAvailable( <?= $date["Available_DatesID"] ?> , calendarioRef)'> Remove </button>
-                </div>
+                </div><br/>
             <?php
         }
         ?>
@@ -281,6 +287,7 @@ function drawPlaceAmenities($place)
                     <img src="<?=$image['imagePath']?>" alt="Image of Place" > 
                     <h4><?=$image['imageDescription']?></h4>
                     <button class="removeImage" type='button' onclick="removeImage(<?=$image['placeImageID']?>)"> Delete Picture </button>
+                    <br/>
                 </div>
                 <?php
             }

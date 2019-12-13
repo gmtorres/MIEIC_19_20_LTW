@@ -18,9 +18,13 @@ function reloadAddAvailable(){
     let reservations = document.getElementById('availables');
 
     let available = document.createElement('div');
-    available.setAttribute('id','available' + data['id']);
-    available.innerHTML = '<h3>' + data['start'] + '</h3><h3>' +data['end']+ '</h3><h3>'+data['price']+ '</h3>'+
+    available.setAttribute('id','availableDate' + data['id']);
+    available.setAttribute('class','availableDate');
+    available.innerHTML = '<h3>From: ' + data['start'] + '</h3><h3>To: ' +data['end']+ '</h3><h3>Price: '+data['price']+ '€/night</h3>'+
     '<button type=\'button\' onclick=\'removeAvailable(' + data['id' ] + ',calendarioRef)\'> Remove </button>';
+
+    let br = document.createElement('br');
+    reservations.prepend(br);
     reservations.prepend(available);
 
     calendar.addBlocked([data['start'],data['end']]);
@@ -40,7 +44,7 @@ function removeAvailable(availableId , calendario){
 function reloadRemoveAvailable(){
     let data = JSON.parse(this.responseText);
 
-    let available =  document.getElementById('available'+data['id']);
+    let available =  document.getElementById('availableDate'+data['id']);
     available.remove();
     calendar.removeBlocked([data['start'],data['end']]);
     calendar.resetDates();

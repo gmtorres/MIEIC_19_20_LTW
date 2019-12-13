@@ -38,6 +38,9 @@ form {
 #formBlock h2 {
     text-align: center;
 }
+#formBlock h4 {
+    text-align: center;
+}
 
 #formBlock input {
     margin: 3%;
