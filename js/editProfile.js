@@ -53,6 +53,12 @@ document.getElementById('changePassword').addEventListener('submit',function (ev
             passwordNew1.focus();
             return;
         }
+        let re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+            if(!re.test(passwordNew1.value)){
+                message.innerHTML = "Password must have one number, one upper and one lower case letter";
+                passwordNew1.focus();
+                return;
+            }
     }
 
     let request = new XMLHttpRequest();
@@ -70,9 +76,9 @@ function passwordReload() {
     if(data["ret"] == 0){
         document.getElementById('changePassword').getElementsByTagName('input')[0].focus();
     }else{
-        document.getElementById('changePassword').getElementsByTagName('input')[0].value="";
-        document.getElementById('changePassword').getElementsByTagName('input')[1].value="";
-        document.getElementById('changePassword').getElementsByTagName('input')[2].value="";
+        document.getElementById('changePassword').getElementsByTagName('input')[0].value=null;
+        document.getElementById('changePassword').getElementsByTagName('input')[1].value=null;
+        document.getElementById('changePassword').getElementsByTagName('input')[2].value=null;
     }
 }
 

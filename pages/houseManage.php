@@ -23,7 +23,8 @@
     if($userplace == NULL)
         header('Location: ../pages/manage.php');
     
-    draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css","../css/slideshow.css", "../css/houseManage.css"], [["../js/editAvailables.js", "defer"],['../js/slideshow.js','defer'],['../js/removeImage.js','defer']]);
+    draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css","../css/slideshow.css", "../css/houseManage.css"], 
+    [["../js/editAvailables.js", "defer"],['../js/slideshow.js','defer'],['../js/removeImage.js','defer'],['../js/formChecks.js','defer']]);
 
     drawPlaceManager($place);
 

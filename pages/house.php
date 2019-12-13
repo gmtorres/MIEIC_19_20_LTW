@@ -10,7 +10,7 @@
     if(isset($_GET['id']))
         $placeId = $_GET['id'];
     draw_headerArgs(["../css/headerBlack.css", "../css/house.css","../css/slideshow.css","../css/calendar.css"] , 
-                    [["../js/slideshow.js","defer"],["../js/addComment.js","defer"]]);
+                    [["../js/slideshow.js","defer"],["../js/addComment.js","defer"],["../js/formChecks.js","defer"]]);
 
     $place = getPlace($placeId);
     if($place == null){

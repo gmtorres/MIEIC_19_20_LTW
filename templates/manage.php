@@ -131,7 +131,7 @@
                 <textarea name="Description" rows="20" cols="100"><?= $place['placeDescription'] ?></textarea>
             </label><br>
             <label> Maximum Guests<br>
-                <input type="text" name="maxGuests" placeholder="Max Guests" value='<?=$place['maxGuests']?>' required>
+                <input id='guestsForm' type="number" name="maxGuests" placeholder="Max Guests" value='<?=$place['maxGuests']?>' required>
             </label><br>    
             <input type="submit" value="Change Place Info">
         </form>

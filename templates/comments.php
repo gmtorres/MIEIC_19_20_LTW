@@ -14,7 +14,7 @@
             <label>Classification:
                 <input id="classificationForm" type = "number" min='1' max='5' name = "Classification" required = "required" placeholder="3"><br>
             </label>
-            <input id="submitComment" type="submit" value="Add comment" onclick="addComment">
+            <input id="submitComment" type="submit" value="Add comment">
         </form>
 
 
