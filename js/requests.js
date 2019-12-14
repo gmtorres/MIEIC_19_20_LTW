@@ -128,7 +128,7 @@ function displayRents(){
     rentDiv.innerHTML=" ";
 
     if(rents.length == 0){
-        rentDiv.innerHTML="<h4>No requests match this parameters</h4>";
+        rentDiv.innerHTML="<h4>No requests match these parameters</h4>";
     }
 
     rents.forEach(function(data){

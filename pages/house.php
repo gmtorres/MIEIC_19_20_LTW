@@ -16,15 +16,19 @@
     if($place == null){
         unknownPage();
         exit;
-    }
+    } ?>
 
+    <div id="houseInfo">
+    <?php
     drawPlaceTitle($place);
     drawPlaceCity($place);
     drawPlaceLocation($place);
 
     $images = getPlaceImages($placeId);
     displayPlaceImages($images);
-    drawPlaceDescription($place);
+    drawPlaceDescription($place); ?>
+    </div>
+    <?php
 
     ?>
         <section id='generalInfoRentContainer'>
