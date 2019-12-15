@@ -37,7 +37,7 @@
     }
     
     section#rents {
-        justify-content: center;
+        justify-content: space-evenly;
         padding: 0px;
     }
 
@@ -121,7 +121,7 @@
     padding-right: 5%;
 
     display: grid;
-    justify-items: center;
+    justify-content: space-evenly;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-gap: 2rem;     
 }
