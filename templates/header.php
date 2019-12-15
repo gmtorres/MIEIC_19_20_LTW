@@ -119,7 +119,7 @@
                     </label>
                     <br><br>
                     <label>Price
-                        <br><br> <input type="range" name = 'PriceRange' min="0" max="2000" value="500" class="slider" id="PriceRange" value=<?=$PriceRange?>>
+                        <br><br> <input type="range" name = 'PriceRange' min="0" max="3000" class="slider" id="PriceRange" value=<?=$PriceRange?>>
                         <p>Max. Price: <span id="range"></span> €</p>
                     </label>
                     <br>

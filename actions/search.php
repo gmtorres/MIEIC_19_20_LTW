@@ -38,7 +38,9 @@
                     group by place.placeId';
 
         $query = $query1;
-
+        if(!isset($_GET['Destiny'])){
+            return [];
+        }
         $city = $_GET['Destiny'];
         $guests = 1;
         $startDate = date("Y-m-d");
