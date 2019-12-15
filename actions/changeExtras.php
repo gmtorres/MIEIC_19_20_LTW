@@ -3,6 +3,7 @@
 
     include_once ('../includes/database.php');
     include_once ('../includes/session.php');
+    include_once ('../actions/generalChecks.php');
 
 
     if(isset($_POST['function'])){    
@@ -26,6 +27,11 @@
 
     function addExtra($placeId,$description){
 
+        if(!isPlaceFromUser($_SESSION['userId'],$placeId)){
+            echo json_encode(['error' => 'do not match']);
+            exit;
+        }
+
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('Insert INTO ExtraAmenities(placeID,amenitiesDescription) values (?,?)');
@@ -45,6 +51,11 @@
         return ['id' => $extraId];
     }
     function addRestriction($placeId,$description){
+
+        if(!isPlaceFromUser($_SESSION['userId'],$placeId)){
+            echo json_encode(['error' => 'do not match']);
+            exit;
+        }
 
         $db = Database::instance()->db();
 
