@@ -44,6 +44,12 @@
     }
     
     function removeExtra($extraId){
+
+        if(!isExtraFromUser($_SESSION['userId'],$extraId)){
+            echo json_encode(['error' => 'do not match']);
+            exit;
+        }
+
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('Delete From ExtraAmenities where amenitiesID=?');
@@ -69,6 +75,12 @@
     }
     
     function removeRestriction($extraId){
+
+        if(!isRestrictionFromUser($_SESSION['userId'],$extraId)){
+            echo json_encode(['error' => 'do not match']);
+            exit;
+        }
+
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('Delete From ExtraRestrictions where restrictionID=?');

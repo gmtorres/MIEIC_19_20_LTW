@@ -1,8 +1,10 @@
 <?php
 
     include_once ('../includes/session.php');
+    include_once ('../includes/database.php');
+    include_once ('../actions/generalChecks.php');
     
-    $db = new PDO('sqlite:../database.db');
+    $db = Database::instance()->db();
 
     $title = validate_input($_POST['Title']);
     $zone = validate_input($_POST['Zone']);
@@ -11,6 +13,11 @@
     $maxGuests = validate_input($_POST['maxGuests']);
     $placeOwner = validate_input($_SESSION['userId']);
     $placeId = validate_input($_POST['placeId']);
+
+    if(!isPlaceFromUser($_SESSION['userId'],$placeId)){
+        echo json_encode(['error' => 'do not match']);
+        exit;
+    }
 
     $stmt = $db->prepare('Update Place set title = ? , city = ? , placeAddress = ?, placeDescription = ?, maxGuests = ? where placeId = ?');
     $stmt->execute(array($title,$zone,$address,$description,$maxGuests,$placeId));

@@ -45,7 +45,7 @@ form.addEventListener("submit" , function(event){
     let extras = extraDiv.getElementsByClassName('extra');
     let array_extras = [];
     for(let i = 0; i < extras.length;i++){
-        let description = extras[i].getElementsByTagName('h3')[0].innerText;
+        let description = extras[i].getElementsByTagName('h4')[0].innerText;
         array_extras.push(description);
     }
     let input1 = document.createElement('input');
@@ -60,7 +60,7 @@ form.addEventListener("submit" , function(event){
     let restrictions = restrictionsDiv.getElementsByClassName('restriction');
     let array_restrictions = [];
     for(let i = 0; i < restrictions.length;i++){
-        let description = restrictions[i].getElementsByTagName('h3')[0].innerText;
+        let description = restrictions[i].getElementsByTagName('h4')[0].innerText;
         array_restrictions.push(description);
     }
     let input2 = document.createElement('input');
