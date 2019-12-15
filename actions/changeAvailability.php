@@ -3,6 +3,7 @@
     include_once ('../includes/session.php');
     include_once ('../includes/database.php');
     include_once ('../actions/getPlaceInfo.php');
+    include_once ('../actions/generalChecks.php');
 
     if(isset($_POST['function'])){    
         $function = $_POST['function'];
@@ -22,6 +23,11 @@
         $endDate = $_POST['endDate'];
         $price = $_POST['price'];
         $placeId = $_POST['placeId'];
+
+        if(!isPlaceFromUser($_SESSION['userId'],$placeId)){
+            echo json_encode(['error' => 'do not match']);
+            exit;
+        }
 
         if($startDate == $endDate){
             header('Location: ../pages/manage.php');
@@ -53,6 +59,11 @@
 
     function removeAvailableDates(){
         $id = $_POST['availableId'];
+
+        if(!isAvailableFromUser($_SESSION['userId'],$id)){
+            echo json_encode(['error' => 'do not match']);
+            exit;
+        }
 
         $db = Database::instance()->db();
 

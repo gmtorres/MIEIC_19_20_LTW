@@ -2,9 +2,15 @@
 
     include_once ('../includes/database.php');
     include_once ('../includes/session.php');
+    include_once ('../actions/generalChecks.php');
 
     $description =  validate_input($_POST['description']);
     $placeId = $_POST['placeId'];
+
+    if(!isPlaceFromUser($_SESSION['userId'],$placeId)){
+        echo json_encode(['error' => 'do not match']);
+        exit;
+    }
 
     $db = Database::instance()->db();
 

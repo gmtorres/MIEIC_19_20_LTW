@@ -1,8 +1,16 @@
 <?php
 
     include_once ('../includes/database.php');
+    include_once ('../includes/session.php');
+    include_once ('../actions/generalChecks.php');
+
 
     $imageId = $_GET['imageId'];
+
+    if(!isPlaceFromUser($_SESSION['userId'],$pic)){
+        echo json_encode(['error' => 'do not match']);
+        exit;
+    }
 
     $db = Database::instance()->db();
 

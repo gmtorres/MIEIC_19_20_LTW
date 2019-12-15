@@ -8,7 +8,7 @@
     if(!isset($_SESSION['username']))
         header('Location: ../pages/homePage.php');
 
-    draw_headerArgs(["../css/headerBlack.css", "../css/addPlace.css"], [['../js/addPlaceOptions.js','defer']]);
+    draw_headerArgs(["../css/headerBlack.css", "../css/addPlace.css"], [['../js/addPlaceOptions.js','defer'],['../js/formChecks.js','defer']]);
     draw_addPlace();
     draw_footer();
 

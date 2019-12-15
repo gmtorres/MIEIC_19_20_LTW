@@ -92,7 +92,7 @@
                 <br>
             </label><br>
             <label> Maximum Guests<br>
-                <input type="number" name="maxGuests" placeholder="Max Guests" required>
+                <input id='guestsForm' type="number" name="maxGuests" placeholder="Max Guests" required>
             </label>
             <div id='extras'>
                 <h3>Extras</h3>

@@ -2,8 +2,15 @@
 
     include_once ('../includes/session.php');
     include_once ('../includes/database.php');
+    include_once ('../actions/generalChecks.php');
+
+    if(!isRentFromUser($_SESSION['userId'],$_SESSION['chatRentId'])){
+        echo json_encode(['error' => 'do not match']);
+        exit;
+    }
+
     // Current time
-    $timestamp = date("Y-m-d");
+    $timestamp = date("Y-m-d H:i:s");
 
     // Get last_id
     $last_id = $_POST['last_id'];

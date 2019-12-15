@@ -1,19 +1,27 @@
 <?php
 
     include_once ('../includes/database.php');
+    include_once ('../includes/session.php');
+    include_once ('../actions/generalChecks.php');
 
     if(isset($_GET['function'])){    
         $function = $_GET['function'];
 
 
         $placeId = validate_input($_POST['placeId']);
+
+        if(!isPlaceFromUser($_SESSION['userId'],$placeId)){
+            echo json_encode(['error' => 'do not match']);
+            exit;
+        }
+
         $description = validate_input($_POST['description']);
 
-        $stmt = $db->prepare('Select * from Place where placeId = ? and placeOwner = ?');
-        $stmt->execute(array($placeId,$_SESSION['userId']));
-        if($stmt->fetch() == FALSE){
-            return json_encode(['error' => 'do not match']);
-        }
+        //$stmt = $db->prepare('Select * from Place where placeId = ? and placeOwner = ?');
+        //$stmt->execute(array($placeId,$_SESSION['userId']));
+        //if($stmt->fetch() == FALSE){
+            //return json_encode(['error' => 'do not match']);
+        //}
 
         if($function == 'addExtra'){
             $value = addExtra($placeId,$description);         
