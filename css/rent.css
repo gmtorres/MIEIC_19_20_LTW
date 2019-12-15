@@ -55,63 +55,32 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-}
 
-@media only screen and (max-width: 600px) {
-
-    #pageContent{
-    
-        display: grid;
-        grid-template-columns: auto; 
-    
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
-    #chat{
-
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 2;
-        grid-row-end: 3;
-    }
 
 }
 
-#chat > h3 {
-    border-bottom : orange solid 2px;
+
+#rentChat{
+    overflow: auto;
+    height: 60vh;
 }
 
 .message{
     border: orange 2px solid;
     border-radius: 5px;
-    margin: 20px 10px;
+    margin: 20px 10px;  
+    width: 60%;
+}
+
+.currentUser{
+    background-color: rgb(179, 186, 199);
+    float: left;
+}
+
+.otherUser{
     background-color: rgb(216, 228, 233);
-}
-
-.textHeader{
-    padding: 0px;
-    margin-left: 2%;
-    margin-right: 5%;
-    margin-top: 5px;
-    border-bottom: 2px solid orange;
-}
-
-.textHeader h3{
-    display: inline-block;
-}
-
-.textInfo_time{
     float: right;
 }
-
-.text{
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-
-
 
 #chatForm textarea {
     margin-top: 10px;
@@ -158,3 +127,70 @@
     color:black;
     transition-duration: 0.5s;  
 }
+
+@media only screen and (max-width: 600px) {
+
+    #pageContent{
+    
+        display: grid;
+        grid-template-columns: auto; 
+    
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    #chat{
+
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .currentUser{
+        background-color: rgb(179, 186, 199);
+        float: left;
+    }
+    
+    .otherUser{
+        background-color: rgb(216, 228, 233);
+        float: left;
+    }
+
+    #chatForm textarea{
+        width: 300px;
+    }
+
+}
+
+
+#chat > h3 {
+    border-bottom : orange solid 2px;
+}
+
+
+
+.textHeader{
+    padding: 0px;
+    margin-left: 2%;
+    margin-right: 5%;
+    margin-top: 5px;
+    border-bottom: 2px solid orange;
+}
+
+.textHeader h3{
+    display: inline-block;
+}
+
+.textInfo_time{
+    float: right;
+}
+
+.text{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+
+

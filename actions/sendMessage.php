@@ -21,8 +21,8 @@
     }
 
     // Retrieve new messages
-    $stmt = $db->prepare("SELECT * FROM RentMessage INNER JOIN User on RentMessage.userId = user.userId WHERE rentMessageID > ? and rentID = ? ORDER BY rentMessageID ASC");
-    $stmt->execute(array($last_id,$_SESSION['chatRentId']));
+    $stmt = $db->prepare("SELECT * , RentMessage.userId = ? as isUser FROM RentMessage INNER JOIN User on RentMessage.userId = user.userId WHERE rentMessageID > ? and rentID = ? ORDER BY rentMessageID ASC");
+    $stmt->execute(array($_SESSION['userId'],$last_id,$_SESSION['chatRentId']));
     $messages = $stmt->fetchAll();
 
     // In order to get the most recent messages we have to reverse twice

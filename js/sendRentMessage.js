@@ -18,6 +18,8 @@ function sendMessage(event) {
     request.addEventListener('load', messagesReceived);
     request.send(encodeForAjax({'last_id': last_id , 'text' : text}));
 
+    document.getElementById("chatTextForm").value = "";
+
     event.preventDefault();
 }
 
@@ -38,6 +40,11 @@ function messagesReceived() {
     lines.forEach(function(data){
         let line = document.createElement('div');
         line.setAttribute('class','message');
+        if(data['isUser'] == 1){
+            line.classList.add('currentUser');
+        }else{
+            line.classList.add('otherUser');
+        }
         
         last_id = data.rentMessageID;
     
