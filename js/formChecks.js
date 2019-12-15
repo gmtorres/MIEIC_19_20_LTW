@@ -43,8 +43,23 @@ if(changePlaceForm != undefined && changePlaceForm != null){
     });
 }
 
-let registerForm = document.getElementById('register');
+let addPlaceForm = document.getElementById("addPlaceForm");
+if(addPlaceForm != undefined && addPlaceForm != null){
+    addPlaceForm.addEventListener('input',function(event){
+        let guests = document.getElementById('guestsForm');
+        if(guests.value != null){
+            if(guests.value < 1){
+                guests.value = 1;
+            }
+            if(guests.value > 20){
+                guests.value = 20;
+            }
+        }
+    });
+}
 
+
+let registerForm = document.getElementById('register');
 if(registerForm != undefined && registerForm != null){
     registerForm.addEventListener('input',function (event) {
         let message = registerForm.getElementsByTagName('span')[0];
