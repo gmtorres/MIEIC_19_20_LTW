@@ -4,7 +4,7 @@
     include_once ('../templates/footer.php');
     include_once ('../actions/search.php');
 
-    draw_headerArgs(["../css/header.css","../css/calendar.css","../css/search.css"],[]);
+    draw_headerArgs(["../css/header.css","../css/calendar.css","../css/search.css"],[["../js/slider.js","defer"]]);
 
     drawSearchForm();
 

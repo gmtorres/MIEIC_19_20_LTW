@@ -1,34 +1,39 @@
-#pageContent{
+#pageContent {
     margin-left: 10%;
     margin-right: 10%;
 }
 
 h1 {
     font-size: 50px;
+    margin-bottom: 10px;
 }
 
-h3 {
-    font-size: medium;
+div#houseInfo h3 {
+    font-size: 30px;
+    margin: 3px auto;
 }
 
-#placeTitle{
+div#houseInfo h5 {
+    font-size: 18px;
+    margin: 3px auto;
+}
+
+#placeTitle {
     border-bottom: orange solid 2px;
 }
-
 
 #placeImages {
     padding: 20px 10px;
     padding-block-end: 0px;
-    display:grid;
+    display: grid;
 }
 
-#description{
+#description {
     padding: 20px 20px;
     font-size: large;
     border-bottom: orange;
     border-bottom-style: solid;
     border-bottom-width: 2px;
-
 }
 
 #amenities {
@@ -39,17 +44,11 @@ h3 {
 #Restrictions {
     padding: 20px 20px;
     display:block;
-    
 }
 
 .unavailable {
     color: dimgray;
     background: white;
-}
-
-.amenities {
-    padding:20px 20px;
-
 }
 
 .userPicture {
@@ -95,48 +94,60 @@ h3 {
 }
 
 #input_0_start {
-    display:grid;
+    display: grid;
     width: -20%;
-    height: 20px;
+    height: 25px;
     margin: 10px 0px;
-
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 10px;
 }
 
 #input_0_end {
-    display:grid;
+    display: grid;
     width: -20%;
-    height: 20px;
+    height: 25px;
     margin: 10px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 10px;
 }
 
-#Comments{
+#rentForm input#input_price {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+}
+
+#Comments {
     border-top: orange solid 2px;
 }
 
-.comment{
+.comment {
     display: flex;
     flex-direction: row;
     margin: 20px 5px;
-
 }
 
-.commentInfo{
+.commentInfo {
     width: 10%;
     text-align: center;
 }
 
-.commentInfo a{
+.commentInfo a {
     text-decoration: none;
     color:black;
 }
 
-.commentInfo .commentUserPicture{
+.commentInfo .commentUserPicture {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-.commentText{
+.commentText {
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
@@ -152,8 +163,8 @@ h3 {
     box-shadow: 0 0 1px transparent;
 
     transition-duration: 0.6s;
-
 }
+
 .commentText:before {
     pointer-events: none;
     position: absolute;
@@ -166,25 +177,29 @@ h3 {
     border-width: 20px 20px 20px 0;
     border-color: transparent transparent transparent transparent;
 }
+
 .commentText:hover:before {
     left: -20px;
     border-color: transparent rgb(216, 228, 233) transparent transparent;
 }
 
-
-.commentText .commentHeader{
+.commentText .commentHeader {
     padding: 0px;
     margin-left: 2%;
     margin-right: 5%;
     margin-top: 5px;
     border-bottom: 2px solid orange;
 }
-.commentText h3{
+
+.commentText h3 {
     display: inline-block;
 }
-.commentDate{float: right;}
 
-.removeComment{
+.commentDate {
+    float: right;
+}
+
+.removeComment {
     float: right;
     background-color: orange;
     color: white;
@@ -198,13 +213,13 @@ h3 {
     text-align: center;
 }
 
-.commentText h4{
+.commentText h4 {
     padding: 0px;
     margin-left: 5%;
     margin-right: 5%;
 }
 
-#commentForm{
+#commentForm {
     margin-left: 10%;
 }
 
@@ -296,12 +311,12 @@ h3 {
     cursor: pointer;
 }
 
-#generalInfoRentContainer{
+#generalInfoRentContainer {
     display: grid;
-    grid-template-columns: auto auto auto auto; 
+    grid-template-columns: 20% 25% 25% 30%; 
 }
 
-#userInformations{
+#userInformations {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
@@ -309,56 +324,85 @@ h3 {
     text-align: center;
 }
 
-#userInformations > *{
-    margin-right: auto;
-    margin-left: auto;
+#userInformations * {
+    margin: 5px auto;
 }
 
-#amenities{
+#amenities {
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 3;
     text-align: center;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
-#extraAmenities{
+
+#extraAmenities {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 2;
 }
-#extraRestrictions{
+
+#extraRestrictions {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 2;
 }
-#rentForm{
+
+#rentForm {
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 2;
+    justify-self: center;
+    align-self: center;
+    padding: 10px 20px;
+    background-color:  rgba(255, 180, 42, 0.596);
+    border: orange solid 2px;
+    border-radius: 5px;
 }
 
-#extraAmenities h3{
-    padding-left: 4%;
-}
-#extraRestrictions h3{
-    padding-left: 4%;
+#extraAmenities h4 {
+    padding-left: 5%;
+    font-size: 20px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-#rentForm #rentSubmission{
+#extraAmenities h3 {
+    padding-left: 10%;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+#extraRestrictions h4 {
+    padding-left: 5%;
+    font-size: 20px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#extraRestrictions h3 {
+    padding-left: 10%;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+#rentForm #rentSubmission {
     background-color: orange;
     color: white;
     padding: 10px 15px;
-    width: 200px;
+    width: 110px;
     margin: 10px 0px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition-duration: 0.5s;
 }
-
 
 #rentForm #rentSubmission:hover {
     background-color: rgb(253, 219, 155);

@@ -73,23 +73,26 @@
 
         ?>
 
-        <form method="post" action="../actions/addPlace.php">
-            <label> Place Title
+        <form id='addPlaceForm' method="post" action="../actions/addPlace.php">
+            <label> Place Title<br>
                 <input type="text" name="Title" placeholder="Title" required>
             </label>
-            <label> Zone/City
+            <br>
+            <label> Zone/City<br>
                 <input type="text" name="Zone" placeholder="Zone" required>
             </label>
-            <label> Adress
+            <br>
+            <label> Address<br>
                 <input type="text" name="Address" placeholder="Address" required>
             </label>
+            <br>
             <label> Description
                 <br>
                 <textarea name="Description" rows="20" cols="100"></textarea>
                 <br>
-            </label>
-            <label> Maximum Guests
-                <input type="text" name="maxGuests" placeholder="Max Guests" required>
+            </label><br>
+            <label> Maximum Guests<br>
+                <input type="number" name="maxGuests" placeholder="Max Guests" required>
             </label>
             <div id='extras'>
                 <h3>Extras</h3>
@@ -122,7 +125,7 @@
                 <br>
                 <input type="text" name="Zone" placeholder="Zone" value='<?=$place['city']?>' required>
             </label><br>
-            <label> Adress
+            <label> Address
                 <br>
                 <input type="text" name="Address" placeholder="Address" value='<?=$place['placeAddress']?>' required>
             </label><br>
@@ -211,5 +214,53 @@
             </form>
         <?php
     }
+
+    function drawExtrasForm($placeId){
+        $extras = getExtraAmenities($placeId);
+        $restrictions = getExtraRestrictions($placeId);
+        ?>  
+            <div id='extras'>
+                <h3>Extras</h3>
+                <?php
+
+                    foreach($extras as $extra){
+                        ?>
+                            <div class='extra' id="extra<?=$extra['amenitiesID']?>">
+                                <h4> <?= $extra['amenitiesDescription'] ?> </h4>
+                                <button type="button" onclick="removeExtra('<?=$extra['amenitiesID']?>')"> Remove extra </button>
+                            </div>
+                        <?php
+                    }
+
+                ?>
+            </div>
+            <form id='addPlacePicture' method='post' action='../actions/addPlacePicture.php' enctype="multipart/form-data">
+                <input id='extraDescription' type="text" name="Extra" placeholder="Extra">
+                <button onclick="addExtra(<?=$placeId?>)" type="button"> Add extra </button>
+            </form>
+            <div id='restrictions'>
+                <h3>Restrictions</h3>
+                <?php
+
+                    foreach($restrictions as $restriction){
+                        ?>
+                            <div class='restriction' id="restriction<?=$restriction['restrictionID']?>">
+                                <h4> <?= $restriction['restrictionDescription'] ?> </h4>
+                                <button type="button" onclick="removeRestriction('<?=$restriction['restrictionID']?>')"> Remove restriction </button>
+                            </div>
+                        <?php
+                    }
+
+                ?>
+            </div>
+            <form id='addPlacePicture' method='post' action='../actions/addPlacePicture.php' enctype="multipart/form-data">
+                <input id='restrictionDescription' type="text" name="Restriction" placeholder="Restriction">
+                <button onclick="addRestriction(<?=$placeId?>)" type="button"> Add restriction </button>
+
+            <br></form>
+        <?php
+
+    }
+
 
 ?>

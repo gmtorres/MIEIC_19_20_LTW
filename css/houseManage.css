@@ -210,3 +210,24 @@ input[type='number']:focus {
     cursor: pointer;
     font-size: 12px;
 }
+
+#extrasDiv{
+    border-bottom: orange solid 2px;
+    padding: 20px 0px;
+}
+
+#extrasDiv button{
+    background-color: orange;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#extrasDiv h4{
+    margin: 0px;
+    margin-top: 20px;
+}

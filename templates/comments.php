@@ -70,7 +70,7 @@
                         <h3 class='commentDate'> <?= $comment['commentDate'] ?>  </h3>
                     </div>
                     <?php
-                        if($comment['writer'] == $_SESSION['userId']){
+                        if(isset($_SESSION['userId']) && $comment['writer'] == $_SESSION['userId']){
                             ?>  
                                 <!--<button class="removeComment">X</button>-->
                             <?php

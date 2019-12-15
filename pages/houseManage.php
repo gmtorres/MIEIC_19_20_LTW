@@ -24,9 +24,15 @@
         header('Location: ../pages/manage.php');
     
     draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css","../css/slideshow.css", "../css/houseManage.css"], 
-    [["../js/editAvailables.js", "defer"],['../js/slideshow.js','defer'],['../js/removeImage.js','defer'],['../js/formChecks.js','defer']]);
+    [["../js/editAvailables.js", "defer"],['../js/slideshow.js','defer'],['../js/removeImage.js','defer'],['../js/formChecks.js','defer'],['../js/changeExtras.js','defer']]);
 
     drawPlaceManager($place);
+
+    ?>
+    <div id='extrasDiv'>
+        <?php drawExtrasForm($houseID); ?>
+    </div>
+    <?php
 
     drawAddPictureForm($userplace);
 
@@ -34,11 +40,7 @@
     displayPlaceImagesRemove($images);
 
     drawAvailablesForm($userplace);
-    ?>
-    <div id='teste'>
-    
-    </div>
-    <?php
+
     draw_footer();
 
 

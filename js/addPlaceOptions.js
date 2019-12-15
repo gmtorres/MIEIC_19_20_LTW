@@ -10,7 +10,7 @@ function appendExtra() {
     let elem = document.createElement('div');
     elem.setAttribute('id','extra'+String(extrasIndex));
     elem.setAttribute('class','extra');
-    elem.innerHTML = "<h3>" +  description + "</h3> <button type='button' onclick='removeElem("+'extra'+String(extrasIndex)+")' > Remove </button>" ;
+    elem.innerHTML = "<h4>" +  description + "</h4> <button type='button' onclick='removeElem("+'extra'+String(extrasIndex)+")' > Remove </button>" ;
     div.append(elem);
     extrasIndex++;
 }
@@ -23,7 +23,7 @@ function appendRestriction() {
     let elem = document.createElement('div');
     elem.setAttribute('id','restriction' + String(extrasIndex));
     elem.setAttribute('class','restriction');
-    elem.innerHTML = "<h3>" +  description + "</h3> <button type='button' onclick='removeElem("+'restriction' + String(extrasIndex)+")' > Remove </button>" ;
+    elem.innerHTML = "<h4>" +  description + "</h4> <button type='button' onclick='removeElem("+'restriction' + String(extrasIndex)+")' > Remove </button>" ;
     div.append(elem);
     extrasIndex++;
 }

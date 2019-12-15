@@ -23,8 +23,9 @@
     section#requests {
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
     }
-
+    
     div.request {
         display: block;
         width: 75%;
@@ -34,9 +35,15 @@
         margin-top: 2px;
         margin-bottom: 35px;
     }
-
+    
     section#rents {
+        justify-content: center;
         padding: 0px;
+    }
+
+    #requests h3 {
+        margin-top: 24px;
+        margin-right: auto;
     }
 }
 
@@ -87,6 +94,7 @@
 #options #tabSelected {
     background-color: rgb(212, 147, 25);
     padding: 25px 5px;
+    border-radius: 5px;
 }
 
 #options li:hover {
@@ -109,11 +117,11 @@
 }
 
 #rents {
-    padding-left: 5%;
+    padding-left: 10%;
     padding-right: 5%;
 
     display: grid;
-    align-items: center;
+    justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-gap: 2rem;     
 }
@@ -123,14 +131,16 @@
     color: black;
 }
 
-#title{
-    margin-left: 5%;
+#title {
+    margin-left: 10%;
+    font-size: 24px;
     margin-right: 5%;
+    padding-bottom: 10px;
     margin-top: 5px;
     border-bottom: 2px solid orange;
 }
 
-#rents > h4{
+#rents > h4 {
     margin-left: 20px ;
 }
 
