@@ -1,5 +1,8 @@
 <?php
-  $db = new PDO('sqlite:database.db');
+
+  include_once ('../includes/database.php');
+
+  $db = Database::instance()->db();
 
   $stmt = $db->prepare('SELECT * FROM User');
   $stmt->execute();

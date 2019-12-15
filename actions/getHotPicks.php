@@ -1,10 +1,12 @@
 <?php 
 
     include_once ('../actions/getPlaceInfo.php');
+    include_once ('../includes/database.php');
+
 
     function drawHotPicks() {
     
-    $db = new PDO('sqlite:../database.db');
+        $db = Database::instance()->db();
 
     $stmt = $db->prepare('Select Place.placeId as id, 
                                 Place.title, Place.city,

@@ -37,8 +37,8 @@
 
     function isRentFromUser($user,$rent){
         $db = Database::instance()->db();
-        $stmt = $db->prepare("SELECT * FROM Rent Inner JOIN Place on Rent.place = Place.placeId where placeOwner = ? and rentID = ?");
-        $stmt->execute(array($user,$rent));
+        $stmt = $db->prepare("SELECT * FROM Rent Inner JOIN Place on Rent.place = Place.placeId where (placeOwner = ? or tourist = ?) and rentID = ?");
+        $stmt->execute(array($user,$user,$rent));
         $res = $stmt->fetch();
         return $res != FALSE;
     }
@@ -46,7 +46,7 @@
     function isPicPlaceFromUser($user,$pic){
         $db = Database::instance()->db();
         $stmt = $db->prepare("SELECT * FROM PlaceImage Inner JOIN Place on PlaceImage.placeID = Place.placeId where placeOwner = ? and placeImageID = ?");
-        $stmt->execute(array($user,$rent));
+        $stmt->execute(array($user,$pic));
         $res = $stmt->fetch();
         return $res != FALSE;
     }

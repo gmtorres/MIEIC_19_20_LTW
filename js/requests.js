@@ -194,8 +194,8 @@ function displayReservations(){
     }
 
     rents.forEach(function(data){
-        let rent_container = document.createElement('a');
-        rent_container.setAttribute("href","../pages/rent.php?id="+data['rentID']);
+        //let rent_container = document.createElement('a');
+        //rent_container.setAttribute("href","../pages/rent.php?id="+data['rentID']);
         let rent = document.createElement('div');
         rent.setAttribute('class','request');
         rent.setAttribute('id','request' + data['rentID']);
@@ -213,9 +213,11 @@ function displayReservations(){
             data['accepted'] = -2;
         }
         if(data['accepted'] == 0){
-            rent.innerHTML += "<h3>Status: Waiting for response </h3>";
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Waiting for response </h3> </a>";
         }else if(data['accepted'] == 1){
-            rent.innerHTML += "<h3>Status: Accepted </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Accepted </h3> </a>"
             let maxLimit = new Date();  maxLimit.setDate(maxLimit.getDate()+10); //maximo sao 10 dias
             let startDate = new Date(data['startDate']);
             console.log(startDate.getUTCDate());
@@ -224,15 +226,18 @@ function displayReservations(){
                 rent.innerHTML +=" <div id='cancelation'> <button onclick=\"cancellOffer(" + data['rentID'] + ")\">Cancell</button> </div>";
             }
         }else if(data['accepted'] == -1){
-            rent.innerHTML += "<h3>Status: Declined </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Declined </h3> </a>"
         }else if(data['accepted'] == -2){
-            rent.innerHTML += "<h3>Status: Exceded time </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Exceded time </h3> </a>"
         }else if(data['accepted'] == -3){
-            rent.innerHTML += "<h3>Status: Canceled </h3>"
+            rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
+            "\"> <h3>Status: Canceled </h3> </a>"
         }
 
-        rent_container.append(rent);
-        rentDiv.append(rent_container);
+        //rent_container.append(rent);
+        rentDiv.append(rent);
     });
 
 }
