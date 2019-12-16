@@ -15,7 +15,7 @@
             return $user;
         }
         else{
-            echo "PAGE NOT FOUND";
+            null;
         }
     }
 

@@ -38,6 +38,10 @@
         $userId = $_GET['id'];
 
         $user_info = getUserInfo($userId);
+        if($user_info == null){
+            unknownPage();
+            exit;
+        }
         drawUserInfo($user_info);
         ?>
         <section id='placesSection'>

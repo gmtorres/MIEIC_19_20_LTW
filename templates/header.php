@@ -97,9 +97,10 @@
 
     function unknownPage(){
 
-        ?>
-            <h2> Page not found </h2>
-            <h4> This page could be not working properly or is no longer available. </h4>
+        ?>  <div>
+                <h2> Page not found </h2>
+                <h4> This page is not working properly or is no longer available. </h4>
+            </div>
         <?php
 
     }
