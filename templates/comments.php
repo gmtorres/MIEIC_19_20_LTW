@@ -54,16 +54,20 @@
         ?>  
             <div class='comment'>
                 <div class='commentInfo'>
-                    <div class='commentUserPicture'>
-                        <a href="user.php?id=<?=$comment['writer']?>"> 
-                            <img src="../images/profile/<?=$profilePic?>.jpg" alt='profilePicture'> 
-                        </a>
-                    </div>
-                    <a href="./user.php?id=<?= $comment['writer'] ?>">
+                    <div class='commentUser'>
+                        <div class='commentUserPicture'>
+                            <a href="user.php?id=<?=$comment['writer']?>"> 
+                                <img src="../images/profile/<?=$profilePic?>.jpg" alt='profilePicture'> 
+                            </a>
+                        </div>
+                        <a href="./user.php?id=<?= $comment['writer'] ?>">
                         <h5> <?= $userName ?> </h5>
                     </a>
+                </div>
+                <div class='commentClass'>
                     <h3> <?= $comment['classification'] ?> </h3> 
                     <h3 class='star star<?= $comment['classification'] ?>'> ★ <h3>
+                </div>
                 </div>
                 <div class='commentText'>
                     <div class='commentHeader'>

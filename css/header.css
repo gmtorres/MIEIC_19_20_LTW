@@ -6,6 +6,10 @@
   #login a:nth-child(2) {
     display: none;
   }
+
+  #login {
+    margin-top: 5px;
+  }
 }
 
 .bar {
