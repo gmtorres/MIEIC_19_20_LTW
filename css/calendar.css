@@ -6,6 +6,16 @@
     position: absolute;
 }
 
+.calendar h5 {
+    margin: 0;
+    display: inline-block;    
+}
+
+.calendar #refresh {
+    display: inline-block;
+    float: right;
+}
+
 .calendarHeaderContainer {
     display: flex;
     justify-content: space-between;

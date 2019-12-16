@@ -3,8 +3,10 @@
     include_once ('../includes/session.php');
     include_once ('../includes/database.php');
 
-    $placeId = $_POST['PlaceId'];
-    $tourist = $_POST['Tourist'];
+    checkCSRF();
+
+    $placeId = $_SESSION['placeToRent'];
+    $tourist = $_SESSION['userId'];
     $startDate = $_POST['startDate'];
     $endDate = $_POST['endDate'];
 

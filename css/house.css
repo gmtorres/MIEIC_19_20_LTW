@@ -123,6 +123,7 @@ div#houseInfo h5 {
 
 #Comments {
     border-top: orange solid 2px;
+    margin-top: 10px;
 }
 
 .comment {
@@ -314,6 +315,7 @@ div#houseInfo h5 {
 #generalInfoRentContainer {
     display: grid;
     grid-template-columns: 20% 25% 25% 30%; 
+    margin-bottom: 20px ;
 }
 
 #userInformations {

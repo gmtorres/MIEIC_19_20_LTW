@@ -5,6 +5,8 @@
 
     $db = Database::instance()->db();
 
+    checkCSRF();
+
     $title = validate_input($_POST['Title']);
     $zone = validate_input($_POST['Zone']);
     $address = validate_input($_POST['Address']);

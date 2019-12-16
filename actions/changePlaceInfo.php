@@ -6,13 +6,15 @@
     
     $db = Database::instance()->db();
 
+    checkCSRF();
+
     $title = validate_input($_POST['Title']);
     $zone = validate_input($_POST['Zone']);
     $address = validate_input($_POST['Address']);
     $description = validate_input($_POST['Description']);
     $maxGuests = validate_input($_POST['maxGuests']);
     $placeOwner = validate_input($_SESSION['userId']);
-    $placeId = validate_input($_POST['placeId']);
+    $placeId = $_SESSION['placeManaging'];
 
     if(!isPlaceFromUser($_SESSION['userId'],$placeId)){
         echo json_encode(['error' => 'do not match']);

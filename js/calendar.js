@@ -110,7 +110,16 @@ class Calendar {
     update(calendarBody,calendarHeader,mainHeader){
         let month = currentDate.toLocaleString('default', { month: 'short' });
         let dayName = currentDate.toString().split(' ')[0];
-        mainHeader.innerHTML = dayName+", "+ month + " " + currentDate.getDate();
+        mainHeader.innerHTML = "<h5>"+dayName+", "+ month + " " + currentDate.getDate() + "</h5>";
+        let button = document.createElement('button');
+        button.setAttribute('id','refresh');
+        button.innerHTML = "X";
+        let vm2 = this;
+        button.addEventListener('click',function(e){
+            vm2.resetDates();
+            e.preventDefault();                                
+        });
+        mainHeader.append(button);
 
         calendarHeader.innerHTML = months[this.month] + " " + this.year;
         calendarBody.innerHTML = "";
@@ -228,6 +237,8 @@ class Calendar {
             mainHeader.setAttribute("id", "topHeader_"+ vm.id)
             mainHeader.classList.add("topHeader");
             mainHeader.innerHTML = vm.header;
+        let button = document.createElement('button');
+        mainHeader.append(button);
 
         let calendar = document.createElement("div");
             calendar.setAttribute("id", "calendar_"+vm.id);
@@ -531,6 +542,8 @@ class Calendar {
         this.endDate = null;
         document.getElementById("input_"+ this.id+"_start").value = null;
         document.getElementById("input_"+ this.id+"_end").value = null;
+        this.price = null;
+        document.getElementById("input_price").value = this.price;
         this.update(this.calendarBody,this.calendarHeader,this.mainHeader);
     }
 

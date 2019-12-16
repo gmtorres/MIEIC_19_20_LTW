@@ -202,11 +202,11 @@ div#userInfo h3 {
     margin-top: 0px;
 }
 
-#response {
+.response {
     text-align: center;
 }
 
-#response button {
+.response button {
     margin-top: 0px;
     margin-bottom: 10px;
     font-size: 14px;

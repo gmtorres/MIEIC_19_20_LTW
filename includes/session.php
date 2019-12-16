@@ -19,6 +19,12 @@
             exit;   
         }
     }
+    function checkCSRF_G($csrf){
+        if ( $_SESSION['csrf'] !== $csrf) {
+            echo json_encode(["ret" => 0,"message" => "Error"]);
+            exit;   
+        }
+    }
 
 
 ?>

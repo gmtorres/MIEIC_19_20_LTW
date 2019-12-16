@@ -8,9 +8,11 @@
     $stmt->execute(array($_SESSION['userId']));
     $pic = $stmt->fetch();
 
-    if($pic !== FALSE || $pic['profilePicture'] !== null ){
-        if(file_exists('../images/profile/'. $pic['profilePicture'] . '.jpg'))
-            unlink('../images/profile/'. $pic['profilePicture'] . '.jpg');
+    if($pic !== FALSE || $pic['profilePicture'] !== null  ){
+        if($pic['profilePicture'] != "default"){
+            if(file_exists('../images/profile/'. $pic['profilePicture'] . '.jpg'))
+                unlink('../images/profile/'. $pic['profilePicture'] . '.jpg');
+        }
     }
 
     // Insert image data into database
@@ -33,6 +35,6 @@
     // Move the uploaded file to its final destination
     move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
 
-    header("Location: ../pages/editProfile.php")
+    header("Location: ../pages/editProfile.php");
 
 ?>

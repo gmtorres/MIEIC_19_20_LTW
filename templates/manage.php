@@ -74,6 +74,7 @@
         ?>
 
         <form id='addPlaceForm' method="post" action="../actions/addPlace.php">
+            <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label> Place Title<br>
                 <input type="text" name="Title" placeholder="Title" required>
             </label>
@@ -116,7 +117,7 @@
         ?>
 
         <form id='changePlaceInfo' method="post" action='../actions/changePlaceInfo.php'>
-            <input type="hidden" id="placeId" name="placeId" value=<?=$place['id']?>>
+            <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label> Place Title
                 <br>
                 <input type="text" name="Title" placeholder="Title" value='<?=$place['title']?>' required>

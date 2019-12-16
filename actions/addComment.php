@@ -3,8 +3,10 @@
     include_once ('../includes/session.php');
     include_once ('../includes/database.php');
 
-    $placeId = validate_input($_POST['placeId']);
-    $writerId = validate_input($_POST['writerId']);
+    checkCSRF();
+
+    $placeId = validate_input($_SESSION['placeToComment']);
+    $writerId = validate_input($_SESSION['userId']);
     $title = validate_input($_POST['title']);
     $comment = validate_input($_POST['comment']);
     $classification = validate_input($_POST['classification']);

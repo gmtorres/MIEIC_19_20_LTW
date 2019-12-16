@@ -25,20 +25,23 @@ function replaceRent(){
     let data = JSON.parse(this.responseText);
     let id = "request" + data[0];
     let request = document.getElementById(id);
-    let response = request.getElementsByTagName('div')[0];
+    let response = request.getElementsByClassName('response')[0];
     if(response){
         response.remove();
     }
     let lastElem = request.lastElementChild;
+    lastElem.innerHTML = "";
+    let h3 = document.createElement('h3');
     if(data[1] == 1){
-        lastElem.innerHTML = "<h3>Accepted</h3>";
+        h3.innerHTML = "Status: Accepted";
     }else if(data[1] == -1){
-        lastElem.innerText = "<h3>Declined</h3>";
+        h3.innerText = "Status: Declined";
     }else if(data[1] == -2){
-        lastElem.innerHTML = "<h3>Exceeded time</h3>";
+        h3.innerHTML = "Status: Exceeded time";
     }else if(data[1] == -3){
-        lastElem.innerHTML = "<h3>Cancelled</h3>";
+        h3.innerHTML = "Status: Cancelled";
     }
+    lastElem.append(h3);
     console.log(request);
 }
 
@@ -152,7 +155,7 @@ function displayRents(){
         }
         if(data['accepted'] == 0){
             rent.innerHTML += "<a href=\"../pages/rent.php?id=" + data['rentID'] + 
-            "\"> <h3>Status: Waiting for response </h3> </a> <div id='response'> " +
+            "\"> <h3>Status: Waiting for response </h3> </a> <div class='response'> " +
              "<button id='buttonChangeOffer' onclick=\"acceptOffer(" + data['rentID'] + ")\">Accept</button> "+
              "<button id='buttonChangeOffer' onclick=\"declineOffer(" + data['rentID'] + ")\">Decline</button> "+
              "</div>"

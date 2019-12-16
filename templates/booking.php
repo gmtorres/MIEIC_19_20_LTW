@@ -1,10 +1,10 @@
 <?php
 
     function drawRentSubmition($placeId,$userId,$rents , $availables){
+        $_SESSION['placeToRent'] = $placeId;
         ?>
             <form id='rentForm' method="post" action = '../actions/addBooking.php' >
-                <input type = "hidden" name = "PlaceId" value = "<?= $placeId?>" />
-                <input type = "hidden" name = "Tourist" value = "<?= $userId?>" />
+                <input type = "hidden" name = "csrf" value = "<?= $_SESSION['csrf']?>" />
                 
                 <myDatePicker id = 'dates' allowOverlaps='true' calcultatePrice='true'></myDatePicker>
                 <script type="text/javascript" src='../js/calendar.js'> </script>

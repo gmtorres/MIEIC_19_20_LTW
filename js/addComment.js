@@ -1,20 +1,19 @@
 "use strict";
-
-document.getElementById('commentForm').addEventListener('submit',function (event) {
-    let placeId = document.getElementById("placeIdForm").value;
-    let writerId = document.getElementById("writerIdForm").value;
-    let title = document.getElementById("titleForm").value;
-    let comment = document.getElementById("commentTextForm").value;
-    let classification = document.getElementById("classificationForm").value;
-    let request = new XMLHttpRequest();
-    request.open('post', '../actions/addComment.php' , true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-    request.addEventListener('load', reloadAddComment);
-    request.send(encodeForAjax({'placeId' : placeId , 'writerId' : writerId , 'title' : title , "comment" : comment , "classification" : classification}));
-    
-    event.preventDefault();
-});
-
+if(document.getElementById('commentForm') != null){
+    document.getElementById('commentForm').addEventListener('submit',function (event) {
+        let csrf = document.getElementById('commentForm').getElementsByClassName('csrf')[0].value;
+        let title = document.getElementById("titleForm").value;
+        let comment = document.getElementById("commentTextForm").value;
+        let classification = document.getElementById("classificationForm").value;
+        let request = new XMLHttpRequest();
+        request.open('post', '../actions/addComment.php' , true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        request.addEventListener('load', reloadAddComment);
+        request.send(encodeForAjax({'csrf' : csrf ,'title' : title , "comment" : comment , "classification" : classification}));
+        
+        event.preventDefault();
+    });
+}
 function reloadAddComment(){
     let data = JSON.parse(this.responseText);
     

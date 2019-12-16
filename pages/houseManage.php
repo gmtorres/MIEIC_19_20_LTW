@@ -22,6 +22,8 @@
     }
     if($userplace == NULL)
         header('Location: ../pages/manage.php');
+
+    $_SESSION['placeManaging'] = $houseID;
     
     draw_headerArgs(["../css/headerBlack.css", "../css/calendar.css","../css/slideshow.css", "../css/houseManage.css"], 
     [["../js/editAvailables.js", "defer"],['../js/slideshow.js','defer'],['../js/removeImage.js','defer'],['../js/formChecks.js','defer'],['../js/changeExtras.js','defer']]);

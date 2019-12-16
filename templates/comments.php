@@ -5,10 +5,10 @@
     include_once ('../actions/getUserInfo.php');
 
     function drawCommentsSubmition($place, $writer){
+        $_SESSION['placeToComment'] = $place;
     ?>
-        <form id='commentForm' method="post" >
-            <input id="placeIdForm" type = "hidden" name = "PlaceId" value = "<?= $place?>" />
-            <input id="writerIdForm" type = "hidden" name = "WriterId" value = "<?= $writer?>" />
+        <form id='commentForm' method="post">
+            <input class='csrf' type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input id="titleForm" type = "text" name = "Title" required = "required" placeholder="Title"><br>
                 <textarea id="commentTextForm" name="Comment" rows="10" cols="40"></textarea><br>
             <label>Classification:

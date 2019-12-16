@@ -43,7 +43,7 @@
         return $res != FALSE;
     }
 
-    function isPicPlaceFromUser($user,$pic){
+    function isPicFromUser($user,$pic){
         $db = Database::instance()->db();
         $stmt = $db->prepare("SELECT * FROM PlaceImage Inner JOIN Place on PlaceImage.placeID = Place.placeId where placeOwner = ? and placeImageID = ?");
         $stmt->execute(array($user,$pic));

@@ -7,7 +7,7 @@
 
     $imageId = $_GET['imageId'];
 
-    if(!isPlaceFromUser($_SESSION['userId'],$pic)){
+    if(!isPicFromUser($_SESSION['userId'],$imageId)){
         echo json_encode(['error' => 'do not match']);
         exit;
     }
