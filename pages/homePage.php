@@ -24,9 +24,9 @@
             ?>
         </div>
     </div>
-    <div id = categories>
+    <!--<div id = categories>
         <h1>Categories</h1>
-    </div>
+    </div>-->
 
     <?php
     draw_footer();

@@ -324,9 +324,17 @@ div#houseInfo h5 {
     text-align: center;
 }
 
+
 #userInformations * {
     margin: 5px auto;
+    
 }
+
+#userInformations > a{
+    text-decoration: none;
+    color: black;
+}
+
 
 #amenities {
     grid-column-start: 1;
