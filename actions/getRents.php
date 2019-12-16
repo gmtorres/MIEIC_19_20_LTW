@@ -34,7 +34,7 @@
         $db = Database::instance()->db();
         $stmt = $db->prepare('Select User.profilePicture, User.userName, Rent.place,Place.title, Place.placeId, Rent.rentID,Rent.tourist,startDate,endDate,accepted
                                 from Rent
-                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Rent.tourist
+                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Place.placeowner
                               where Rent.tourist = :userId
                                 ');
         $stmt->bindParam(':userId', $userId);
@@ -48,7 +48,7 @@
         $db = Database::instance()->db();
         $stmt = $db->prepare('Select User.profilePicture, User.userName, Rent.place,Place.title, Place.placeId, Rent.rentID,Rent.tourist,startDate,endDate,accepted
                                 from Rent
-                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Rent.tourist
+                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Place.placeowner
                               where Rent.tourist = ? and Rent.startDate < ?
                                 ');
         $date = date('Y-m-d');
@@ -62,7 +62,7 @@
         $db = Database::instance()->db();
         $stmt = $db->prepare('Select User.profilePicture, User.userName, Rent.place,Place.title, Place.placeId, Rent.rentID,Rent.tourist,startDate,endDate,accepted
                                 from Rent
-                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Rent.tourist
+                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Place.placeowner
                               where Rent.tourist = ? and Rent.startDate >= ? and Rent.accepted = 1
                                 ');
         $date = date('Y-m-d');
@@ -77,7 +77,7 @@
         $db = Database::instance()->db();
         $stmt = $db->prepare('Select User.profilePicture, User.userName, Rent.place,Place.title, Place.placeId, Rent.rentID,Rent.tourist,startDate,endDate,accepted
                                 from Rent
-                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Rent.tourist
+                                Inner Join Place on Rent.place = Place.placeID Inner Join User on User.userId = Place.placeowner
                               where Rent.tourist = :userId and Rent.accepted = 0 and Rent.startDate >= ?
                                 ');
         $date = date('Y-m-d');
@@ -86,6 +86,11 @@
         return $rents;
     }
 
+    
+
+
+
+    
     function getAllRentsByOwner($userId){
 
         $db = Database::instance()->db();
