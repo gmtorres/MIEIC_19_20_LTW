@@ -17,12 +17,20 @@
                 where 
                     Place.city = :city and maxGuests >= :guests group by place.placeId';
 
-        $query2 = 'Select placeId as PlaceId2, 
-                    sum(max(0,julianday(min(endDate, :endDate)) - julianday(max(startDate,:startDate)))*price) as rentPrice, 
-                    sum(max(0,julianday(min(endDate, :endDate)) - julianday(max(startDate,:startDate)))) as totalDays
-                    from Available_Dates where endDate > :startDate 
-                    and startDate < :endDate 
-                    group by placeId';
+        $query2 = 'Select * from (Select placeId as PlaceId2, 
+            sum(max(0,julianday(min(Available_Dates.endDate, :endDate)) - julianday(max(Available_Dates.startDate,:startDate)))*price) as rentPrice, 
+            sum(max(0,julianday(min(Available_Dates.endDate, :endDate)) - julianday(max(Available_Dates.startDate,:startDate)))) as totalDays
+            from Available_Dates where endDate > :startDate 
+            and startDate < :endDate 
+            group by placeId) 
+            Left JOIN 
+            (
+                Select place as PlaceId3,
+                sum(max(0,julianday(min(endDate, :endDate)) - julianday(max(startDate,:startDate)))) as totalDaysRent
+                from Rent 
+                where endDate > :startDate and startDate < :endDate and (accepted = 1 or accepted = 0)
+                group by place
+                ) on PlaceId3 = PlaceId2 where totalDaysRent IS NULL';
 
         $query3='Select Place.placeId as id,Place.title, Place.city,Place.maxGuests as maxGuests, 
                 IFNULL(avg(comment.classification),\'No Reviews yet\') as class,place.placeDescription
@@ -36,6 +44,7 @@
                     and julianday(Available_Dates.startDate) <= julianday(:startDate) 
                     and julianday(Available_Dates.endDate) > julianday(:endDate)
                     group by place.placeId';
+
 
         $query = $query1;
         if(!isset($_GET['Destiny'])){
@@ -72,7 +81,7 @@
 
         //echo($query);
         
-        //$query = $query . 'limit 20';
+        //$query = $query2;
         $city = $_GET['Destiny'];
 
         $stmt = $db->prepare($query);
@@ -119,15 +128,18 @@
                         displayPlaceImage($images);?>
                         <div class='userPlaceInfo'>
                             <h2> <?= $place['title']?> </h2>
-                            <h3>
+                            <h3 class='classi'>
                             <?php
                                 if($place['class'] != 'No Reviews yet'){
                             ?>
                                 Classification 
+                                <?= round($place['class']*100)/100?> </h3>
+                                <h3 class='star star<?= round($place['class']) ?>'> ★ <h3>
                             <?php
-                                }   
+                                }else{
+                                    ?> <?= $place['class']?> </h3>  <?php
+                                }
                             ?>
-                            <?= $place['class']?> </h3>
                             <h3> <?= $place['city']?> </h3>
                             <p> <?= $place['placeDescription']?> </p>
                             <?php if(isset($place['rentPrice'])){ ?><h4> <?= $place['rentPrice']?> € </h4> <?php } ?>
@@ -141,4 +153,4 @@
         <?php
     }
 
-?>
+?>  
