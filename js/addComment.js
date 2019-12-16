@@ -24,10 +24,11 @@ function reloadAddComment(){
     let commentInfo = document.createElement('div');
     commentInfo.setAttribute("class",'commentInfo');
 
-    commentInfo.innerHTML = "<div id=\'commentUserPicture\'> <a href='user.php?id="+data["writerId"]+
+    commentInfo.innerHTML = "<div class=\'commentUserPicture\'> <a href='user.php?id="+data["writerId"]+
                             "'> <img src='../images/profile/"  + data['pic'] + ".jpg'> </a> </div>" + 
                             "<a href='user.php?id="+data["writerId"]+
-                            "'> <h5>"+ data["username"] + "</h5> </a>" + "<h3>" + data['classification'] + "</h3>";
+                            "'> <h5>"+ data["username"] + "</h5> </a>" + "<h3>" + data['classification'] + "</h3>"
+                            +"<h3 class='star star"+ Math.floor(data['classification']) +"'> ★ <h3>";
 
     
     let commentText = document.createElement('div');

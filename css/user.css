@@ -243,3 +243,41 @@ div.userPlaceInfo {
     text-align: center;
     color: white;
 }
+
+.classi {
+    display: inline-block;
+}
+.star{
+    display: inline-block;
+}
+
+.star1{
+    background: -webkit-linear-gradient(0deg,rgb(236, 201, 0) 20%, black 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.star2{
+    background: -webkit-linear-gradient(0deg,rgb(236, 201, 0) 40%, black 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.star3{
+    background: -webkit-linear-gradient(0deg,rgb(236, 201, 0) 55%, black 45%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.star4{
+    background: -webkit-linear-gradient(0deg,rgb(236, 201, 0) 70%, black 30%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.star5{
+    background: -webkit-linear-gradient(0deg,rgb(236, 201, 0) 100%, black 0%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

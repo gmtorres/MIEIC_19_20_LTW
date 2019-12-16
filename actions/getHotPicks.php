@@ -17,7 +17,7 @@
                             where Place.placeID = comment.placeId 
                             group by place.placeid 
                             order by class DESC
-                            limit 5');
+                            limit 4');
     $stmt->execute();
     $places = $stmt->fetchAll();
     
@@ -32,7 +32,8 @@
                     ?>
                     <h3> <?= $place['title']?> </h3>
                     <div class='otherInfo'>
-                        <h4> <?= $place['class']?> </h4>
+                        <h4 class='classi'> <?= round($place['class']*100)/100?> </h4>
+                        <h4 class='star star<?= round($place['class']) ?>'> ★ <h4>
                         <h4> <?= $place['city']?> </h4>
                     </div>
                 </div>

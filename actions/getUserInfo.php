@@ -99,15 +99,19 @@
                     displayPlaceImage($images);?>
                     <div class='userPlaceInfo'>
                         <h2> <?= $place['title']?> </h2>
-                        <h3>
+                        <h3 class='classi'>
                         <?php
                             if($place['class'] != 'No Reviews yet'){
                         ?>
                             Classification 
+                            <?= round($place['class']*100)/100?> </h3>
+                            <h3 class='star star<?= round($place['class']) ?>'> ★ <h3>
                         <?php
-                            }   
+                            }else{
+                                ?> <?= $place['class']?> </h3>  <?php
+                            }
                         ?>
-                        <?= $place['class']?> </h3>
+                                      
                         <h3> <?= $place['city']?> </h3>
                         <p> <?= $place['placeDescription']?> </p>
                     </div>

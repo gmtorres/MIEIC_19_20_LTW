@@ -62,7 +62,8 @@
                     <a href="./user.php?id=<?= $comment['writer'] ?>">
                         <h5> <?= $userName ?> </h5>
                     </a>
-                    <h3> <?= $comment['classification'] ?>  </h3>
+                    <h3> <?= $comment['classification'] ?> </h3> 
+                    <h3 class='star star<?= $comment['classification'] ?>'> ★ <h3>
                 </div>
                 <div class='commentText'>
                     <div class='commentHeader'>
