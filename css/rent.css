@@ -165,7 +165,9 @@
 
 
 #chat > h3 {
-    border-bottom : orange solid 2px;
+    border-bottom: orange solid 2px;
+    font-size: 24px;
+    padding-bottom: 10px;
 }
 
 
